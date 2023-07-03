@@ -7,3 +7,23 @@
   font-family: "Roboto", sans-serif;
 }
 
+ul,
+li {
+  list-style: none;
+}
+
+.header {
+  display: flex;
+  background-color: #00bf63;
+  color: white;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+.header-options {
+  justify-content: flex-end;
+}
+
+.logo {
+  fill: currentColor;
+}
