@@ -1,0 +1,11 @@
+.form-input {
+  padding: 10px;
+  border-radius: 15px;
+  opacity: 0.9;
+  border: none;
+}
+
+.form-input:active,
+.form-input:focus {
+  border: none;
+}
