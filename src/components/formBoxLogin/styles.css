@@ -9,7 +9,14 @@
   font-weight: 100;
 }
 
-.forgot-password {
+.forgot-password-container {
+  margin-bottom: 20px;
+  color: #fefefe;
+  text-align: right;
+  text-decoration: underline;
+}
+
+.forgot-password-link {
   margin-bottom: 20px;
   color: #fefefe;
   text-align: right;

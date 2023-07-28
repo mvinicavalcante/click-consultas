@@ -5,9 +5,9 @@ import Patient from "../../assets/user-patient.svg";
 const PictureBox = ({ type }) => {
   function redirectToPage() {
     if (type === "doctor") {
-      window.location.href = "/register/doctor-register";
+      window.location.href = "/cadastro/medico-cadastro";
     } else {
-      window.location.href = "/register/patient-register";
+      window.location.href = "/cadastro/paciente-cadastro";
     }
   }
 

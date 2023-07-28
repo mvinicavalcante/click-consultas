@@ -7,11 +7,16 @@ const FormBox = () => {
   const [senha, setSenha] = useState("");
 
   function logarUsuario() {
-    if (email === "" || senha === "") {
-      alert("Preencha os campos corretamente!");
+    if (!email.includes("@")) {
+      alert("Digite um e-mail válido!");
       return;
     }
-    alert(email + " " + senha);
+
+    if (email === "" || senha === "") {
+      alert("Os campos não podem ser vazios!");
+      return;
+    }
+    alert(email + "\n" + senha);
     return;
   }
 
@@ -33,9 +38,11 @@ const FormBox = () => {
         onChange={(e) => setSenha(e.target.value)}
       />
 
-      <a href="#" className="forgot-password">
-        Esqueci minha senha
-      </a>
+      <div className="forgot-password-container">
+        <a href="#" className="forgot-password-link">
+          Esqueci minha senha
+        </a>
+      </div>
 
       <div className="text-center mt-4">
         <button className="form-button" onClick={logarUsuario}>
@@ -43,7 +50,7 @@ const FormBox = () => {
         </button>
         <p className="mt-3">
           Não tem uma conta?{" "}
-          <a href="/register" className="register-link">
+          <a href="/cadastro" className="register-link">
             Cadastre-se
           </a>
         </p>

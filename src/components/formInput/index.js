@@ -20,6 +20,7 @@ const FormInput = ({ placeholder, type, value, onChange, label }) => {
           )}
         </div>
       )}
+
       <label className="form-label">{label}</label>
       <input
         className="form-input"
