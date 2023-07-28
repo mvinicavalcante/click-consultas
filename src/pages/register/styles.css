@@ -1,0 +1,24 @@
+* {
+  overflow: hidden;
+}
+
+img {
+  widht: 100%;
+}
+
+.logo-box {
+  border-radius: 15px;
+  margin-top: 2vw;
+  margin-left: 3vw;
+  margin-right: 5vw;
+}
+
+@media screen and (max-width: 600px) {
+  .logo-box {
+    height: auto;
+    widht: auto;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

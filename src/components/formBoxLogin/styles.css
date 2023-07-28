@@ -9,12 +9,8 @@
   font-weight: 100;
 }
 
-.form-label {
-  margin-top: 15px;
-}
-
 .forgot-password {
-  margin-top: 5px;
+  margin-bottom: 20px;
   color: #fefefe;
   text-align: right;
   text-decoration: underline;
@@ -26,6 +22,7 @@
   padding: 10px;
   border: none;
   color: #00bf63;
+  background-color: white;
   text-transform: uppercase;
 }
 

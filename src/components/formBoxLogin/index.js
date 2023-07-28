@@ -17,16 +17,16 @@ const FormBox = () => {
 
   return (
     <div className="form-box">
-      <label className="form-label">E-mail</label>
       <FormInput
+        label={"E-mail"}
         type={"email"}
         placeholder={"exemplo@exemplo.com"}
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
 
-      <label className="form-label">Senha</label>
       <FormInput
+        label={"Senha"}
         type={"password"}
         placeholder={"Senha"}
         value={senha}
@@ -43,7 +43,7 @@ const FormBox = () => {
         </button>
         <p className="mt-3">
           Não tem uma conta?{" "}
-          <a href="#" className="register-link">
+          <a href="/register" className="register-link">
             Cadastre-se
           </a>
         </p>

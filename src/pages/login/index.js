@@ -1,6 +1,6 @@
 import React from "react";
 import Logo from "../../assets/logo.png";
-import FormBox from "../../components/formBox";
+import FormBoxLogin from "../../components/formBoxLogin";
 
 import "./styles.css";
 
@@ -12,7 +12,7 @@ const Login = () => {
           <img src={Logo} className="img-fluid logo" alt="Logo" />
         </div>
         <div className="col-md-6 col-sm-12">
-          <FormBox />
+          <FormBoxLogin />
         </div>
       </div>
     </div>

@@ -7,14 +7,14 @@ import Register from "./pages/register";
 
 function App() {
   return (
-    <div className="container">
+    <>
       <BrowserRouter>
         <Routes>
           <Route element={<Login />} path="/login" />
           <Route element={<Register />} path="/register" />
         </Routes>
       </BrowserRouter>
-    </div>
+    </>
   );
 }
 

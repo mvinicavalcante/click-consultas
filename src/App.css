@@ -19,3 +19,23 @@ li {
 .logo {
   fill: currentColor;
 }
+
+.color-container {
+  background-color: #00bf63;
+  height: 100vh;
+  widht: 50vw;
+  overflow: hidden;
+  padding-top: 15vh;
+  overflow: hidden;
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+
+@media screen and (max-width: 600px) {
+  .color-container {
+    height: auto;
+    overflow: hidden;
+    widht: auto;
+    padding: 5vh;
+  }
+}
