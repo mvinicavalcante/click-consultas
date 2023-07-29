@@ -1,10 +1,8 @@
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@100&display=swap" rel="stylesheet">
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,200;0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 * {
-  font-family: "Open Sans", sans-serif;
   font-family: "Roboto", sans-serif;
+  font-weight: 400;
 }
 
 ul,
@@ -18,24 +16,4 @@ li {
 
 .logo {
   fill: currentColor;
-}
-
-.color-container {
-  background-color: #00bf63;
-  height: 100vh;
-  widht: 50vw;
-  overflow: hidden;
-  padding-top: 15vh;
-  overflow: hidden;
-  padding-left: 4rem;
-  padding-right: 4rem;
-}
-
-@media screen and (max-width: 600px) {
-  .color-container {
-    height: auto;
-    overflow: hidden;
-    widht: auto;
-    padding: 5vh;
-  }
 }

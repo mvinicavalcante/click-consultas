@@ -1,24 +1,30 @@
-.picture-box {
-  cursor: pointer;
-  margin-left: 20px;
-  margin-right: 25px;
-  padding: 10px;
-}
-.picture-box-button {
-  cursor: pointer;
-  border: 2px solid #00bf63;
-  padding: 15px;
-  border-radius: 10px;
+button {
   background-color: transparent;
+  border: 2px #1E3050 solid;
 }
 
-label {
-  cursor: pointer;
-  margin-top: 10px;
+button p {
+  font-size: 1.5em;
 }
 
-@media screen and (max-width: 600px) {
-  .picture-box {
-    margin-top: 20px;
+button:hover {
+  background-color: #f3f3f3;
+}
+
+button div {
+  padding: 1.5em 3rem;
+}
+
+.icon {
+  font-size: 8em;
+}
+
+@media screen and (max-width: 1200px) {
+  .icon {
+    font-size: 6em;
+  }
+
+  button div {
+    padding: 1em 2rem;
   }
 }

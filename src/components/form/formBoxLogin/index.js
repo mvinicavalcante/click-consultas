@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import FormInput from "../formInput";
 import "./styles.css";
 
-const FormBox = () => {
+const FormBoxLogin = () => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
 
@@ -11,7 +11,6 @@ const FormBox = () => {
       alert("Digite um e-mail válido!");
       return;
     }
-
     if (email === "" || senha === "") {
       alert("Os campos não podem ser vazios!");
       return;
@@ -21,7 +20,8 @@ const FormBox = () => {
   }
 
   return (
-    <div className="form-box">
+    <div className="form-box p-4">
+      <div className="pt-1"></div>
       <FormInput
         label={"E-mail"}
         type={"email"}
@@ -29,7 +29,8 @@ const FormBox = () => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-
+      
+      <div className="pt-4"></div>
       <FormInput
         label={"Senha"}
         type={"password"}
@@ -38,19 +39,19 @@ const FormBox = () => {
         onChange={(e) => setSenha(e.target.value)}
       />
 
-      <div className="forgot-password-container">
-        <a href="#" className="forgot-password-link">
+      <div className="text-end mt-2">
+        <a href="redefine-senha" className="forgot-password">
           Esqueci minha senha
         </a>
       </div>
 
-      <div className="text-center mt-4">
+      <div className="text-center mt-5">
         <button className="form-button" onClick={logarUsuario}>
           Entrar
         </button>
         <p className="mt-3">
           Não tem uma conta?{" "}
-          <a href="/cadastro" className="register-link">
+          <a href="cadastro" className="text-uppercase">
             Cadastre-se
           </a>
         </p>
@@ -59,4 +60,4 @@ const FormBox = () => {
   );
 };
 
-export default FormBox;
+export default FormBoxLogin;

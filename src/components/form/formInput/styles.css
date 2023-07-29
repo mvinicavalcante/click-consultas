@@ -1,0 +1,18 @@
+.form-input {
+  padding: 10px 15px;
+  border-radius: 16px;
+  border: none;
+}
+
+.form-input:active,
+.form-input:focus {
+  outline: 0;
+}
+
+.view-password{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+

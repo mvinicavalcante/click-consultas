@@ -1,36 +1,33 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserDoctor, faUserPlus } from "@fortawesome/free-solid-svg-icons";
+
 import "./styles.css";
-import Doctor from "../../assets/user-doctor.svg";
-import Patient from "../../assets/user-patient.svg";
 
 const PictureBox = ({ type }) => {
   function redirectToPage() {
-    if (type === "doctor") {
-      window.location.href = "/cadastro/medico-cadastro";
+    if (type === "medico") {
+      window.location.href = "/cadastro/medico";
     } else {
-      window.location.href = "/cadastro/paciente-cadastro";
+      window.location.href = "/cadastro/paciente";
     }
   }
 
   return (
-    <div className="picture-box d-flex flex-column align-items-center">
-      {type === "doctor" ? (
-        <button onClick={redirectToPage} className="picture-box-button">
-          <div className="img-fluid logo">
-            <img src={Doctor} height={150} alt="Doctor" />
-          </div>
-          <label className="d-flex justify-content-center">Sou um médico</label>
-        </button>
-      ) : (
-        <button onClick={redirectToPage} className="picture-box-button">
-          <div className="img-fluid logo">
-            <img src={Patient} height={150} alt="Patient" />
-          </div>
-          <label className="d-flex justify-content-center">
-            Sou um paciente
-          </label>
-        </button>
-      )}
-    </div>
+    <button className="rounded-4" onClick={redirectToPage}>
+      <div className="d-flex flex-column align-items-center">
+        {type === 'medico' ? (
+          <>
+            <FontAwesomeIcon icon={faUserDoctor} color="#1E3050" className="icon" />
+            <p className="mt-3 mb-0">Sou médico</p>
+          </>
+        ) : (
+          <>
+            <FontAwesomeIcon icon={faUserPlus} color="#1E3050" className="icon" />
+            <p className="mt-3 mb-0">Sou paciente</p>
+          </>
+        )}
+      </div>
+    </button>
   );
 };
 

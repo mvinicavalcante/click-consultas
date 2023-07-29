@@ -1,32 +1,25 @@
 import React from "react";
-import Logo from "../../assets/Click Consultas.png";
-import PictureBox from "../../components/pictureBox";
+import Logo from "../../assets/logo.png";
+
+import PictureBox from "../../components/PictureBox";
 
 import "./styles.css";
 
 const Register = () => {
   return (
-    <div className="row align-items-center justify-content-center mr-5">
-      <div className="col-md-6 col-sm-12">
-        <div className="color-container">
-          <div className="logo-box">
-            <img src={Logo} className="img-fluid" alt="Logo" />
-          </div>
+    <div class="container-fluid vh-100 vw-100 overflow-hidden">
+      <div class="row vh-100">
+        <div className="col-logo col-12 col-md-6 d-flex justify-content-center align-items-center">
+          <img src={Logo} className="img-fluid rounded-4 col-6 col-md-7" alt="Logo" />
         </div>
-      </div>
-      <div className="col-md-6 col-sm-12">
-        {/* Centralize as PictureBox dentro da col */}
-        <div className="d-flex justify-content-center">
-          <div className="icons-container">
-            <div className="d-flex align-items-center justify-content-center">
-              <div className="row">
-                <div className="col-md-6 col-sm-12">
-                  <PictureBox type={"doctor"} />
-                </div>
-                <div className="col-md-6 col-sm-12">
-                  <PictureBox type={"patient"} />
-                </div>
-              </div>
+
+        <div className="col-12 col-md-6 d-flex justify-content-center align-items-center">
+          <div className="row g-4 g-lg-5">
+            <div className="col-12 col-lg-6 d-flex justify-content-center">
+              <PictureBox type={"medico"} />
+            </div>
+            <div className="col-12 col-lg-6 d-flex justify-content-center">
+              <PictureBox type={"paciente"} />
             </div>
           </div>
         </div>

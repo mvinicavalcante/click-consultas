@@ -1,18 +1,18 @@
 import React from "react";
-import Logo from "../../assets/logo.png";
-import FormBoxLogin from "../../components/formBoxLogin";
-
-import "./styles.css";
+import Logo from "../../assets/clickConsultas.png";
+import FormBoxLogin from "../../components/form/formBoxLogin";
 
 const Login = () => {
   return (
-    <div className="container login-container">
-      <div className="row align-items-center justify-content-center">
-        <div className="col-md-6 col-sm-12 align-middle">
-          <img src={Logo} className="img-fluid logo" alt="Logo" />
-        </div>
-        <div className="col-md-6 col-sm-12">
-          <FormBoxLogin />
+    <div className="d-flex align-items-center" style={{height: '95vh'}}>
+      <div className="container">
+        <div className="row align-items-center justify-content-center g-5">
+          <div className="col-8 col-lg-6">
+            <img src={Logo} className="img-fluid logo" alt="Logo" />
+          </div>
+          <div className="col-12 col-lg-6">
+            <FormBoxLogin />
+          </div>
         </div>
       </div>
     </div>

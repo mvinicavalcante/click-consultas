@@ -1,0 +1,35 @@
+.form-box {
+  background-color: #00bf63;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+
+.form-label {
+  font-size: 20px;
+}
+
+.forgot-password {
+  color: #fff;
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.form-button {
+  background-color: #fff;
+  border-radius: 24px;
+  width: 60%;
+  padding: 10px;
+  border: none;
+  color: #00bf63;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+
+.form-button:hover {
+  box-shadow: 10px 10px 8px #888888;
+}
