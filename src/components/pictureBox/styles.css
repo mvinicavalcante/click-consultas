@@ -1,6 +1,6 @@
 button {
   background-color: transparent;
-  border: 2px #1E3050 solid;
+  border: 2px #1e3050 solid;
 }
 
 button p {
@@ -12,6 +12,7 @@ button:hover {
 }
 
 button div {
+  overflow: hidden;
   padding: 1.5em 3rem;
 }
 

@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "../../assets/logo.png";
 
-import PictureBox from "../../components/PictureBox";
+import PictureBox from "../../components/pictureBox";
 
 import "./styles.css";
 
@@ -10,7 +10,11 @@ const Register = () => {
     <div class="container-fluid vh-100 vw-100 overflow-hidden">
       <div class="row vh-100">
         <div className="col-logo col-12 col-md-6 d-flex justify-content-center align-items-center">
-          <img src={Logo} className="img-fluid rounded-4 col-6 col-md-7" alt="Logo" />
+          <img
+            src={Logo}
+            className="img-fluid rounded-4 col-6 col-md-7"
+            alt="Logo"
+          />
         </div>
 
         <div className="col-12 col-md-6 d-flex justify-content-center align-items-center">

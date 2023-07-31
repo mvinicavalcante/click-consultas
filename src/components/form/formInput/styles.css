@@ -2,6 +2,12 @@
   padding: 10px 15px;
   border-radius: 16px;
   border: none;
+  margin-bottom: 10px;
+  min-width: 100%;
+}
+
+.form-label {
+  color: white;
 }
 
 .form-input:active,
@@ -9,10 +15,22 @@
   outline: 0;
 }
 
-.view-password{
+.view-password {
   position: absolute;
   right: 10px;
   top: 10px;
   cursor: pointer;
 }
 
+.form-select {
+  padding: 10px 15px;
+  border-radius: 16px;
+  border: none;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.form-select:active,
+.form-select:focus {
+  outline: 0;
+}
