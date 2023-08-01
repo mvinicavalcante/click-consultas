@@ -1,24 +1,3 @@
-* {
-  overflow: auto;
-}
-
-.next {
-  margin-bottom: 0;
-  align-itens: right;
-  text-align: right;
-  color: black;
-}
-
-.next label {
-  font-size: 16px;
-  padding-right: 10px;
-}
-
-.next label,
-.next svg {
-  cursor: pointer;
-}
-
 .no-plan {
   color: white;
 }

@@ -1,19 +1,14 @@
 button {
   background-color: transparent;
-  border: 2px #1e3050 solid;
+  border: 2px #1E3050 solid;
 }
 
 button p {
-  font-size: 1.5em;
+  font-size: 1.4em;
 }
 
 button:hover {
   background-color: #f3f3f3;
-}
-
-button div {
-  overflow: hidden;
-  padding: 1.5em 3rem;
 }
 
 .icon {
@@ -21,11 +16,11 @@ button div {
 }
 
 @media screen and (max-width: 1200px) {
-  .icon {
-    font-size: 6em;
+  button p {
+    font-size: 1.2em;
   }
 
-  button div {
-    padding: 1em 2rem;
+  .icon {
+    font-size: 6em;
   }
 }

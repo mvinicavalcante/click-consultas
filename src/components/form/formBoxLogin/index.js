@@ -21,22 +21,21 @@ const FormBoxLogin = () => {
 
   return (
     <div className="form-box p-4">
-      <div className="pt-1"></div>
       <FormInput
         label={"E-mail"}
         type={"email"}
         placeholder={"exemplo@exemplo.com"}
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        classNameGroup={"pt-1 m-0"}
       />
-      
-      <div className="pt-4"></div>
       <FormInput
         label={"Senha"}
         type={"password"}
         placeholder={"Senha"}
         value={senha}
         onChange={(e) => setSenha(e.target.value)}
+        classNameGroup={"pt-4 m-0"}
       />
 
       <div className="text-end mt-2">

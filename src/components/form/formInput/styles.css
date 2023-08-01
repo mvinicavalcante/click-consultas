@@ -1,9 +1,18 @@
-.form-input {
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-input,
+.form-select,
+.form-control {
   padding: 10px 15px;
   border-radius: 16px;
   border: none;
-  margin-bottom: 10px;
-  min-width: 100%;
+}
+
+.form-select {
+  padding: 12px 15px;
+  font-size: 14px;
 }
 
 .form-label {
@@ -11,7 +20,11 @@
 }
 
 .form-input:active,
-.form-input:focus {
+.form-input:focus,
+.form-select:active,
+.form-select:focus, 
+.form-control:active,
+.form-control:focus {
   outline: 0;
 }
 
@@ -22,15 +35,3 @@
   cursor: pointer;
 }
 
-.form-select {
-  padding: 10px 15px;
-  border-radius: 16px;
-  border: none;
-  margin-bottom: 10px;
-  font-size: 14px;
-}
-
-.form-select:active,
-.form-select:focus {
-  outline: 0;
-}

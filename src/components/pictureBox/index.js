@@ -13,24 +13,16 @@ const PictureBox = ({ type }) => {
   }
 
   return (
-    <button className="rounded-3" onClick={redirectToPage}>
+    <button className="rounded-4 py-3 px-4 py-xl-4 px-xl-5" onClick={redirectToPage}>
       <div className="d-flex flex-column align-items-center">
         {type === "medico" ? (
           <>
-            <FontAwesomeIcon
-              icon={faUserDoctor}
-              color="#1E3050"
-              className="icon"
-            />
+            <FontAwesomeIcon icon={faUserDoctor} color="#1E3050" className="icon" />
             <p className="mt-3 mb-0">Sou médico</p>
           </>
         ) : (
           <>
-            <FontAwesomeIcon
-              icon={faUserPlus}
-              color="#1E3050"
-              className="icon"
-            />
+            <FontAwesomeIcon icon={faUserPlus} color="#1E3050" className="icon" />
             <p className="mt-3 mb-0">Sou paciente</p>
           </>
         )}
