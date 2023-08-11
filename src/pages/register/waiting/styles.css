@@ -1,0 +1,21 @@
+.waiting {
+  font-size: 24px;
+}
+
+.blink-logo {
+  animation: blinking 4s linear infinite;
+}
+
+@keyframes blinking {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

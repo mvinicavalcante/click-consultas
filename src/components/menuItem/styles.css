@@ -1,0 +1,23 @@
+.item-group {
+  background-color: white;
+  cursor: pointer;
+}
+
+.item-title {
+  color: #00bf63;
+  font-size: 24px;
+}
+
+.item-icon {
+  font-size: 6em;
+}
+
+@media screen and (max-width: 1400px) {
+  .item-title {
+    font-size: 18px;
+  }
+
+  .item-icon {
+    font-size: 5em;
+  }
+}

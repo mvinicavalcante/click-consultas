@@ -5,6 +5,7 @@ button {
 
 button p {
   font-size: 1.4em;
+  color: #1E3050;
 }
 
 button:hover {

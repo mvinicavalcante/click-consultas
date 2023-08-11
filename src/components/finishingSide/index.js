@@ -1,21 +1,26 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { faUserDoctor, faUserPlus, faCheck } from "@fortawesome/free-solid-svg-icons";
 
 import "./styles.css";
 
-const FinishingSide = ({ type }) => {
+library.add(faUserDoctor, faUserPlus, faCheck);
+
+const FinishingSide = ({ icon, path, action }) => {
+  function redirectToPage() {
+    window.location.href = path;
+  }
+
   return (
     <>
       <div className="user-icon d-flex align-items-end justify-content-center">
-        {type === "patient" ?
-          <FontAwesomeIcon icon={faUserPlus} color="#1E3050" className="icon" />
-          :
-          <FontAwesomeIcon icon={faUserDoctor} color="#1E3050" className="icon" />
-        }
+        <FontAwesomeIcon icon={icon} color="#1E3050" className="icon" />
       </div>
       <div className="finalize d-flex align-items-end justify-content-center">
-        <p>Finalizar</p>
-        <p><FontAwesomeIcon icon={faCheck} /></p>
+        <div className="d-flex" onClick={redirectToPage}>
+          <p>{action}</p>
+          <p><FontAwesomeIcon icon={faCheck} /></p>
+        </div>
       </div>
     </>
   );

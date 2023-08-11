@@ -55,7 +55,7 @@ const DoctorSecondPage = () => {
           </div>
         </div>
         <div className="col-12 col-md-4 d-flex flex-column justify-content-center align-items-center pt-3 pt-md-0">
-          <FinishingSide type={"doctor"} />
+          <FinishingSide icon="fa-solid fa-user-doctor" path="/aguarda-confirmacao" action="Finalizar" />
         </div>
       </div>
     </div>
