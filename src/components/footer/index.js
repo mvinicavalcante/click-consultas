@@ -4,6 +4,20 @@ import Facebook from "../../assets/facebook.svg";
 import Twitter from "../../assets/twitter.svg";
 
 const Footer = () => {
+  function clickApp(app) {
+    if (app === "Instagram") {
+      alert("Instagram");
+      return;
+    }
+    if (app === "Facebook") {
+      alert("Facebook");
+      return;
+    } else {
+      alert("Twitter");
+      return;
+    }
+  }
+
   return (
     <footer className="footer">
       <div className="container">
@@ -25,9 +39,27 @@ const Footer = () => {
           <div className="col-md-4 p-2 d-flex align-items-center">
             <ul>
               <li className="li-footer">
-                <img src={Instagram} width={25} />{" "}
-                <img src={Facebook} width={15} />{" "}
-                <img src={Twitter} width={30} />
+                <label className="icons">
+                  <img
+                    src={Instagram}
+                    onClick={() => clickApp("Instagram")}
+                    width={25}
+                  />{" "}
+                </label>
+                <label className="icons">
+                  <img
+                    src={Facebook}
+                    onClick={() => clickApp("Facebook")}
+                    width={15}
+                  />{" "}
+                </label>
+                <label className="icons">
+                  <img
+                    src={Twitter}
+                    onClick={() => clickApp("Twitter")}
+                    width={30}
+                  />
+                </label>
               </li>
             </ul>
           </div>
