@@ -7,6 +7,7 @@ const FormBoxLogin = () => {
   const [senha, setSenha] = useState("");
 
   function logarUsuario() {
+    const isRegister = true;
     if (!email.includes("@")) {
       alert("Digite um e-mail válido!");
       return;
@@ -15,6 +16,8 @@ const FormBoxLogin = () => {
       alert("Os campos não podem ser vazios!");
       return;
     }
+    if (!isRegister) window.location.href = "/cadastro";
+    window.location.href = "/principal";
     alert(email + "\n" + senha);
     return;
   }

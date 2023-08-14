@@ -4,12 +4,76 @@ header {
   font-size: 24px;
   color: #00bf63;
   padding: 1rem;
+  border-bottom: 1px solid #00bf63;
+  position: relative;
 }
 
 header p {
   color: #00bf63;
 }
 
-.profile * {
+.balance {
+  color: gray;
+  font-weight: bold;
+}
+
+.balance * {
   cursor: pointer;
+}
+
+.view-logout {
+  padding: 13px;
+  justify-content: center;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 99;
+  box-shadow: 1em;
+  top: 10vh;
+  right: 5vw;
+  background-color: #00bf63;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.menu-mobile {
+  display: none;
+z-index: 99;
+  height: 100vh;
+  width: 100vw;
+  background-color: #00bf63;
+  color: white;
+  position: absolute;
+  top: 0;
+}
+
+.header-mobile {
+  display: none;
+  align-items: center;
+  font-size: 24px;
+  color: #00bf63;
+  padding: 1rem;
+  border-bottom: 1px solid #00bf63;
+  position: relative;
+}
+
+.lista-mobile {
+  list-style: none;
+}
+
+.li-menu-mobile {
+  border-top: 1px solid white;
+}
+
+.label-menu-mobile {
+  font-size: 26px;
+}
+
+@media screen and (max-width: 500px) {
+  .header-desktop {
+    display: none;
+  }
+  .header-mobile, .menu-mobile {
+    display: block;
+  }
 }
