@@ -12,7 +12,7 @@ const Main = () => {
           Digite a especialidade médica desejada
         </label>
         <SearchInput />
-        <a href="#" className="favorites">
+        <a href="/#" className="favorites">
           Visualizar favoritos
         </a>
       </div>

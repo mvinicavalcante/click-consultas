@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
+import MenuItem from "../../components/menuItem";
 
 import "./styles.css"
-import MenuItem from "../../components/menuItem";
 
 const Profile = () => {
   return (

@@ -4,20 +4,6 @@ import Facebook from "../../assets/facebook.svg";
 import Twitter from "../../assets/twitter.svg";
 
 const Footer = () => {
-  function clickApp(app) {
-    if (app === "Instagram") {
-      alert("Instagram");
-      return;
-    }
-    if (app === "Facebook") {
-      alert("Facebook");
-      return;
-    } else {
-      alert("Twitter");
-      return;
-    }
-  }
-
   return (
     <footer className="footer">
       <div className="container">
@@ -42,22 +28,22 @@ const Footer = () => {
                 <label className="icons">
                   <img
                     src={Instagram}
-                    onClick={() => clickApp("Instagram")}
                     width={25}
+                    alt="Instagram"
                   />{" "}
                 </label>
                 <label className="icons">
                   <img
                     src={Facebook}
-                    onClick={() => clickApp("Facebook")}
                     width={15}
+                    alt="Facebook"
                   />{" "}
                 </label>
                 <label className="icons">
                   <img
                     src={Twitter}
-                    onClick={() => clickApp("Twitter")}
                     width={30}
+                    alt="Twitter"
                   />
                 </label>
               </li>
@@ -65,7 +51,7 @@ const Footer = () => {
           </div>
         </div>
         <p className="p-footer">
-          Click Consultas© Todos os direitos reservados - 2023
+          © 2023 Click Consultas - Todos os direitos reservados 
         </p>
       </div>
     </footer>

@@ -11,6 +11,7 @@ import DoctorSecondPage from "./pages/register/doctorSecond";
 import WaitingPage from "./pages/register/waiting";
 import Main from "./pages/main";
 import Profile from "./pages/profile";
+import Wallet from "./pages/profile/wallet";
 
 function App() {
   return (
@@ -19,14 +20,22 @@ function App() {
         <Routes>
           <Route element={<Navigate to='/login' />} path="/" />
           <Route element={<Login />} path="/login" />
+
           <Route element={<Register />} path="/cadastro" />
           <Route element={<PatientFirstPage />} path="/cadastro/paciente" />
           <Route element={<PatientSecondPage />} path="/cadastro/paciente/plano" />
           <Route element={<DoctorFirstPage />} path="/cadastro/medico" />
           <Route element={<DoctorSecondPage />} path="/cadastro/medico/profissional" />
           <Route element={<WaitingPage />} path="/aguarda-confirmacao" />
+          
           <Route element={<Main />} path="/principal" />
           <Route element={<Profile />} path="/perfil" />
+          <Route element={<Wallet />} path="/carteira" />
+          <Route path="/carteira/deposito" />
+          <Route path="/carteira/saque" />
+          <Route path="/carteira/saque/conta-destino" />
+          <Route path="/historico" />
+
         </Routes>
       </BrowserRouter>
     </>
