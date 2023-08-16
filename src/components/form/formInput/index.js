@@ -73,6 +73,17 @@ const FormInput = ({ label, type, placeholder, value, onChange, classNameGroup, 
             value={value}
             onChange={onChange}
           />
+        ) : type === "pixType" ? (
+          <select onChange={onChange} className="form-select">
+            <option selected disabled>
+              Selecione o tipo da chave pix
+            </option>
+            <option value={"cpf"}>CPF</option>
+            <option value={"cnpj"}>CNPJ</option>
+            <option value={"email"}>E-mail</option>
+            <option value={"celular"}>Número de celular</option>
+            <option value={"aleatoria"}>Chave aleatória</option>
+          </select>
         ) : (
           <input
             className="form-input"

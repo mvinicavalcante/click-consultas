@@ -6,10 +6,10 @@ import CustomButton from "../../../components/customButton";
 import "./styles.css"
 
 const Wallet = () => {
-  const [balance, setBalance] = useState(true);
+  const [balanceVisibility, setBalanceVisibility] = useState(true);
 
   function toggleBalanceVisibility() {
-    setBalance((prevState) => !prevState);
+    setBalanceVisibility((prevState) => !prevState);
   }
 
   return (
@@ -28,7 +28,7 @@ const Wallet = () => {
               <div className="col-6 d-flex flex-column">
                 <h2 className="text-center">
                   Saldo:
-                  {balance ?
+                  {balanceVisibility ?
                     <FontAwesomeIcon
                       icon={faEyeSlash}
                       onClick={toggleBalanceVisibility}
@@ -45,7 +45,7 @@ const Wallet = () => {
                   }
                 </h2>
                 <h2 className="text-center mt-4">
-                  {balance ?
+                  {balanceVisibility ?
                     "R$ 1.000" : "R$ - - - -"
                   }
                 </h2>

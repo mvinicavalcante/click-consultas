@@ -12,6 +12,9 @@ import WaitingPage from "./pages/register/waiting";
 import Main from "./pages/main";
 import Profile from "./pages/profile";
 import Wallet from "./pages/profile/wallet";
+import Deposit from "./pages/profile/wallet/deposit";
+import Withdraw from "./pages/profile/wallet/withdraw";
+import NewAccount from "./pages/profile/wallet/withdraw/newAccount";
 
 function App() {
   return (
@@ -31,9 +34,9 @@ function App() {
           <Route element={<Main />} path="/principal" />
           <Route element={<Profile />} path="/perfil" />
           <Route element={<Wallet />} path="/carteira" />
-          <Route path="/carteira/deposito" />
-          <Route path="/carteira/saque" />
-          <Route path="/carteira/saque/conta-destino" />
+          <Route element={<Deposit />} path="/carteira/deposito" />
+          <Route element={<Withdraw />} path="/carteira/saque" />
+          <Route element={<NewAccount />} path="/carteira/saque/conta-destino" />
           <Route path="/historico" />
 
         </Routes>
