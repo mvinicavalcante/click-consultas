@@ -1,3 +1,5 @@
+import "./styles.css";
+
 import FinishingSide from "../../../../components/finishingSide";
 import BoxContent from "../../../../components/boxContent";
 
@@ -33,7 +35,7 @@ const ProfileProfessional = () => {
   ];
 
   return (
-    <div className="row h-100">
+    <div className="row h-100" id="row-principal">
       <div className="profile-edit-container col-logo col-12 col-md-8 d-flex justify-content-center align-items-center">
         <h1>Dados profissionais</h1>
         <div className="px-0 px-md-3 g-0 g-md-5 justify-content-center align-items-center flex-column">
@@ -57,7 +59,10 @@ const ProfileProfessional = () => {
           </div>
         </div>
       </div>
-      <div className="col-12 col-md-4 d-flex flex-column justify-content-center align-items-center">
+      <div
+        className="col-12 col-md-4 d-flex flex-column justify-content-center align-items-center"
+        id="icon"
+      >
         <FinishingSide
           icon="fa-solid fa-user-pen"
           path="/principal"
