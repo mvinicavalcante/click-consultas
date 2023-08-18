@@ -2,7 +2,20 @@ import React, { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./styles.css";
 
-const FormInput = ({ label, type, placeholder, value, onChange, classNameGroup, disabled }) => {
+const FormInput = ({
+  id,
+  label,
+  type,
+  placeholder,
+  value,
+  onChange,
+  classNameGroup,
+  disabled,
+  pattern,
+  min,
+  max,
+  valueSelect,
+}) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -13,17 +26,17 @@ const FormInput = ({ label, type, placeholder, value, onChange, classNameGroup, 
     <div className={`form-group ${classNameGroup} d-flex flex-column`}>
       <label className="form-label">{label}</label>
       <>
-        {type === "password" &&
+        {type === "password" && (
           <div className="position-relative d-flex justify-content-end">
             <i onClick={togglePasswordVisibility} className="view-password">
-              {showPassword ?
+              {showPassword ? (
                 <FaEyeSlash id="eye-slash" color="#00bf63" />
-                :
+              ) : (
                 <FaEye id="eye" color="#00bf63" />
-              }
+              )}
             </i>
           </div>
-        }
+        )}
         {type === "sex" ? (
           <select onChange={onChange} className="form-select">
             <option className="option-disabled" selected disabled>
@@ -33,9 +46,22 @@ const FormInput = ({ label, type, placeholder, value, onChange, classNameGroup, 
             <option value={"m"}>Masculino</option>
             <option value={"n"}>Prefiro não informar</option>
           </select>
+        ) : type === "date" ? (
+          <input
+            onChange={onChange}
+            className="form-input"
+            min={min}
+            max={max}
+            type="date"
+          />
         ) : type === "state" ? (
-          <select onChange={onChange} className="form-select">
-            <option className="option-disabled" selected disabled>
+          <select
+            defaultValue={valueSelect}
+            onChange={onChange}
+            className="form-select"
+            value={valueSelect}
+          >
+            <option value={""} className="option-disabled" selected disabled>
               -- Selecione o seu estado --
             </option>
             <option value={"AC"}>Acre (AC)</option>
@@ -92,6 +118,7 @@ const FormInput = ({ label, type, placeholder, value, onChange, classNameGroup, 
             value={value}
             onChange={onChange}
             disabled={disabled}
+            pattern={pattern}
           />
         )}
       </>

@@ -1,0 +1,49 @@
+.profile-edit-container {
+  height: 100vh;
+  flex-direction: column;
+}
+
+h1 {
+  color: aliceblue;
+  margin-bottom: 45px;
+}
+
+.edit-container {
+  display: flex;
+}
+
+.edit-nav {
+  text-align: center;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.nav-item {
+  cursor: pointer;
+  background-color: transparent;
+  color: aliceblue;
+  padding: 10px;
+  border-radius: 13px;
+  margin: 8px;
+}
+
+.active {
+  background-color: aliceblue;
+  color: #00bf63;
+}
+
+.user-data {
+  color: aliceblue;
+  margin-top: 20px;
+}
+
+#date::placeholder {
+  color: gray;
+}
+
+@media screen and (max-width: 500px) {
+  .profile-edit-container {
+    padding: 40px;
+    height: 100%;
+  }
+}
