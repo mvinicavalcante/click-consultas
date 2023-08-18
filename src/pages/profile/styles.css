@@ -1,13 +1,3 @@
 h2 {
   color: white;
 }
-
-#box {
-  margin: 0;
-}
-
-@media screen and (max-width: 900px) {
-  #box {
-    padding: 0;
-  }
-}

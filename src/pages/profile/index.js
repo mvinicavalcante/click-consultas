@@ -19,7 +19,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="container-fluid vh-100 vw-100 overflow-auto">
+    <div className="container-fluid vw-100 overflow-auto">
       <div className="row vh-100">
         <div className="col-12 col-lg-4 d-flex justify-content-center align-items-center">
           <FontAwesomeIcon icon={faUser} size="8x" color="#1E3050" />
@@ -30,11 +30,8 @@ const Profile = () => {
             <div className="col-12 pt-5">
               <h2 className="text-center">Meu Perfil</h2>
             </div>
-            <div
-              className="col-12 gy-4 gy-md-0 gx-5 row align-items-center"
-              id="box"
-            >
-              <div className="col-6 col-md-3 col-lg-4 col-xl-3">
+            <div className="col-12 m-0 gy-4 gy-md-0 gx-5 row align-items-end align-items-xl-center justify-content-center">
+              <div className="col-6 col-md-3 col-lg-6 col-xl-3">
                 {userDefault.tipo === "medico" ? (
                   <MenuItem
                     title="Editar Perfil"
@@ -49,21 +46,21 @@ const Profile = () => {
                   />
                 )}
               </div>
-              <div className="col-6 col-md-3 col-lg-4 col-xl-3">
+              <div className="col-6 col-md-3 col-lg-6 col-xl-3">
                 <MenuItem
                   title="Carteira"
                   icon="fa-solid fa-wallet"
                   path="/perfil/carteira"
                 />
               </div>
-              <div className="col-6 col-md-3 col-lg-4 col-xl-3">
+              <div className="col-6 col-md-3 col-lg-6 col-xl-3">
                 <MenuItem
                   title="Histórico"
                   icon="fa-solid fa-clock-rotate-left"
                   path="/perfil/historico"
                 />
               </div>
-              <div className="col-6 col-md-3 col-lg-4 col-xl-3">
+              <div className="col-6 col-md-3 col-lg-6 col-xl-3">
                 <MenuItem
                   title="Sair"
                   icon="fa-solid fa-right-from-bracket"

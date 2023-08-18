@@ -9,19 +9,16 @@ import { useState } from "react";
 const AddRowModal = (props) => {
   const [numeroCrm, setNumeroCrm] = useState();
   const [ufCrm, setUfCrm] = useState();
-  const [statusCrm, setStatusCrm] = useState();
 
   const [nomeEspecialidade, setNomeEspecialidade] = useState();
   const [nrqeEspecialidade, setNrqeEspecialidade] = useState();
-  const [statusEspecialidade, setStatusEspecialidade] = useState();
 
   function salvar() {
     if (props.type === "crm") {
       const newCrm = {
         id: props.content.length + 1,
         numero: numeroCrm,
-        uf: ufCrm,
-        status: statusCrm,
+        uf: ufCrm
       };
       props.content.push(newCrm);
       props.onHide();
@@ -29,8 +26,7 @@ const AddRowModal = (props) => {
       const newEspecialidade = {
         id: props.content.length + 1,
         nome: nomeEspecialidade,
-        nrqe: nrqeEspecialidade,
-        status: statusEspecialidade,
+        nrqe: nrqeEspecialidade
       };
       props.content.push(newEspecialidade);
       props.onHide();
@@ -72,24 +68,13 @@ const AddRowModal = (props) => {
                 />
               </div>
             </div>
-            <div className="row">
-              <div className="col-md-6">
-                <FormInput
-                  label="Status"
-                  type="text"
-                  name="status"
-                  placeholder="Digite o status"
-                  onChange={(e) => setStatusCrm(e.target.value)}
-                />
-              </div>
-            </div>
           </div>
         ) : (
           <div className="body">
             <div className="row">
               <div className="col-md-6">
                 <FormInput
-                  label="Nome"
+                  label="Especialidade"
                   type="text"
                   name="name"
                   placeholder="Digite o nome"
@@ -98,22 +83,11 @@ const AddRowModal = (props) => {
               </div>
               <div className="col-md-6">
                 <FormInput
-                  label="NRQE"
+                  label="Nº RQE"
                   type="number"
                   name="nrqe"
                   placeholder="Digite o nome"
                   onChange={(e) => setNrqeEspecialidade(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-6">
-                <FormInput
-                  label="Status"
-                  type="text"
-                  name="name"
-                  placeholder="Digite o status"
-                  onChange={(e) => setStatusEspecialidade(e.target.value)}
                 />
               </div>
             </div>

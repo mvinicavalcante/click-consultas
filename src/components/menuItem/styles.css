@@ -1,7 +1,6 @@
 .item-group {
   background-color: white;
   cursor: pointer;
-  height: 250px;
 }
 
 .item-title {
@@ -14,13 +13,6 @@
 }
 
 @media screen and (max-width: 1400px) {
-  .item-group {
-    background-color: white;
-    cursor: pointer;
-    height: 200px;
-    margin-bottom: 40px;
-  }
-
   .item-title {
     font-size: 18px;
   }
@@ -28,4 +20,5 @@
   .item-icon {
     font-size: 5em;
   }
+  
 }

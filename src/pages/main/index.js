@@ -1,20 +1,17 @@
 import "./styles.css";
-import Footer from "../../components/footer";
+
 import Header from "../../components/header";
-import SearchInput from "../../components/searchInput";
+import CustomButton from "../../components/customButton";
+import Footer from "../../components/footer";
 
 const Main = () => {
   return (
     <>
       <Header />
       <div className="main">
-        <label className="page-title">
-          Digite a especialidade médica desejada
-        </label>
-        <SearchInput />
-        <a href="/#" className="favorites">
-          Visualizar favoritos
-        </a>
+        <CustomButton action="Agendar" path="/principal/busca" bgColor="green" />
+        <CustomButton action="Agendamentos" bgColor="green" />
+        <CustomButton action="Suporte" bgColor="green" />
       </div>
       <Footer />
     </>

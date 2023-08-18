@@ -35,18 +35,20 @@ const ProfileProfessional = () => {
   ];
 
   return (
-    <div className="row h-100" id="row-principal">
-      <div className="profile-edit-container col-logo col-12 col-md-8 d-flex justify-content-center align-items-center">
-        <h1>Dados profissionais</h1>
-        <div className="px-0 px-md-3 g-0 g-md-5 justify-content-center align-items-center flex-column">
-          <div className="body-edit">
-            <div className="row">
-              <div className="col-md-6">
+    <div className="container-fluid vw-100 overflow-auto">
+      <div className="row vh-100">
+        <div className="col-logo col-12 col-md-8">
+          <div className="row h-75">
+            <div className="col-12 pt-5">
+              <h2 className="text-center">Dados Profissionais</h2>
+            </div>
+            <div className="row justify-content-evenly m-0">
+              <div className="col-8 col-md-6 col-lg-5 col-xl-4 my-5 my-md-0">
                 <div className="user-data">
                   <BoxContent title={"CRM"} type={"crm"} content={arrayCrm} />
                 </div>
               </div>
-              <div className="col-md-6">
+              <div className="col-8 col-md-6 col-lg-5 col-xl-4 mb-5 mb-md-0">
                 <div className="user-data">
                   <BoxContent
                     title={"Especialidades"}
@@ -58,16 +60,13 @@ const ProfileProfessional = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div
-        className="col-12 col-md-4 d-flex flex-column justify-content-center align-items-center"
-        id="icon"
-      >
-        <FinishingSide
-          icon="fa-solid fa-user-pen"
-          path="/principal"
-          action="Finalizar"
-        />
+        <div className="col-12 col-md-4 pt-4 pt-md-0">
+          <FinishingSide
+            icon="fa-solid fa-user-plus"
+            path="/principal"
+            action="Finalizar"
+          />
+        </div>
       </div>
     </div>
   );

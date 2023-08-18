@@ -20,6 +20,7 @@ import NewAccount from "./pages/profile/wallet/withdraw/newAccount";
 import ProfileEdit from "./pages/profile/edit/profileEdit";
 import ProfileChoose from "./pages/profile/edit/profileChoose";
 import ProfileProfessional from "./pages/profile/edit/profileProfessional";
+import MainSearch from "./pages/main/search";
 
 function App() {
   useEffect(() => {
@@ -55,18 +56,13 @@ function App() {
 
           <Route element={<Register />} path="/cadastro" />
           <Route element={<PatientFirstPage />} path="/cadastro/paciente" />
-          <Route
-            element={<PatientSecondPage />}
-            path="/cadastro/paciente/plano"
-          />
+          <Route element={<PatientSecondPage />} path="/cadastro/paciente/plano" />
           <Route element={<DoctorFirstPage />} path="/cadastro/medico" />
-          <Route
-            element={<DoctorSecondPage />}
-            path="/cadastro/medico/profissional"
-          />
+          <Route element={<DoctorSecondPage />} path="/cadastro/medico/profissional" />
           <Route element={<WaitingPage />} path="/aguarda-confirmacao" />
 
           <Route element={<Main />} path="/principal" />
+          <Route element={<MainSearch />} path="/principal/busca" />
 
           {/* ---  Rotas de PERFIL  --- */}
           <Route element={<Profile />} path="/perfil" />
@@ -76,10 +72,7 @@ function App() {
           <Route element={<NewAccount />} path="/carteira/saque/conta-destino" />
           <Route element={<ProfileEdit />} path="/perfil/editar" />
           <Route element={<ProfileChoose />} path="/perfil/escolher-perfis" />
-          <Route
-            element={<ProfileProfessional />}
-            path="/perfil/editar-profissional"
-          />
+          <Route element={<ProfileProfessional />} path="/perfil/editar-profissional" />
           <Route element={<Wallet />} path="/perfil/carteira" />
 
           <Route path="/carteira/deposito" />

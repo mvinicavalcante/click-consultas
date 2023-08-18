@@ -16,7 +16,7 @@ const BoxContent = ({ title, type, content }) => {
 
   return (
     <div className="box-content-container">
-      <h3>{title}</h3>
+      <h3 className="pb-2">{title}</h3>
       <div className="box-content">
         <div className="box-header flex-row">
           <button className="btn-add" onClick={() => setModalShow(true)}>
