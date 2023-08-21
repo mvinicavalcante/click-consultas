@@ -6,7 +6,7 @@ import Footer from "../../components/footer";
 
 const Main = () => {
   const userDefault = {
-    tipo: "medico",
+    tipo: "paciente",
     nome: "João da Silva",
     cpf: "000.000.000-00",
     dataNascimento: "01/01/2000",
@@ -22,9 +22,17 @@ const Main = () => {
     <>
       <Header />
       <div className="main">
-        <ul className="main-itens">
-          {userDefault.tipo === "medico" ? (
-            <>
+        {userDefault.tipo === "medico" ? (
+          <>
+            <ul className="main-itens">
+              <li className="main-item">
+                <CustomButton action="Minhas agendas" bgColor="green" />
+              </li>
+              <li className="main-item">
+                <CustomButton action="Meus endereços" bgColor="green" />
+              </li>
+            </ul>
+            <ul className="main-itens">
               <li className="main-item">
                 <CustomButton
                   action="Agendamentos"
@@ -35,31 +43,29 @@ const Main = () => {
               <li className="main-item">
                 <CustomButton action="Suporte" bgColor="green" />
               </li>
-              <li className="main-item">
-                <CustomButton action="Agendas" bgColor="green" />
-              </li>
-              <li className="main-item">
-                <CustomButton action="Endereços" bgColor="green" />
-              </li>
-            </>
-          ) : (
-            <>
-              <li className="main-item">
-                <CustomButton
-                  action="Agendar"
-                  path="/principal/busca"
-                  bgColor="green"
-                />
-              </li>
-              <li className="main-item">
-                <CustomButton action="Agendamentos" bgColor="green" />
-              </li>
-              <li className="main-item">
-                <CustomButton action="Suporte" bgColor="green" />
-              </li>
-            </>
-          )}
-        </ul>
+            </ul>
+          </>
+        ) : (
+          <>
+            <li className="main-item">
+              <CustomButton
+                action="Agendar consulta"
+                path="/principal/busca"
+                bgColor="green"
+              />
+            </li>
+            <li className="main-item">
+              <CustomButton
+                action="Agendamentos"
+                path="/principal/busca"
+                bgColor="green"
+              />
+            </li>
+            <li className="main-item">
+              <CustomButton action="Suporte" bgColor="green" />
+            </li>
+          </>
+        )}
       </div>
       <Footer />
     </>

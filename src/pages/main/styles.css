@@ -20,24 +20,26 @@
 
 .main-itens {
   display: flex;
+  flex-direction: column;
+  margin: 0;
 }
 
 .main-item {
-  margin-right: 30px;
+  margin: 20px 30px;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 992px) {
   .page-title {
     font-size: 20px;
     padding-bottom: 20px;
   }
 
-  .main-itens {
+  .main {
     flex-direction: column;
   }
-
+  
   .main-item {
-    margin-right: 0;
-    margin-top: 20px;
+    margin: 15px 0px;
   }
+
 }
