@@ -1,5 +1,7 @@
 .main {
+  display: flex;
   text-align: center;
+  justify-content: center;
   margin-top: 10%;
 }
 
@@ -16,9 +18,26 @@
   text-decoration: underline;
 }
 
-@media screen and (max-width: 400px) {
+.main-itens {
+  display: flex;
+}
+
+.main-item {
+  margin-right: 30px;
+}
+
+@media screen and (max-width: 500px) {
   .page-title {
     font-size: 20px;
     padding-bottom: 20px;
+  }
+
+  .main-itens {
+    flex-direction: column;
+  }
+
+  .main-item {
+    margin-right: 0;
+    margin-top: 20px;
   }
 }

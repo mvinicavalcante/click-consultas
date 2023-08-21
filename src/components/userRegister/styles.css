@@ -7,3 +7,13 @@
   cursor: pointer;
   color: white;
 }
+
+#content-container {
+  min-height: 100%;
+}
+
+@media screen and (max-width: 500px) {
+  #container {
+    padding-right: 0;
+  }
+}
