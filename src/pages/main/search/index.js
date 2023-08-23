@@ -1,3 +1,5 @@
+import './styles.css'
+
 import Header from "../../../components/header";
 import SearchInput from "../../../components/searchInput";
 import Footer from "../../../components/footer";

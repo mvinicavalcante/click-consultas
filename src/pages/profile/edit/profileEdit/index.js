@@ -36,7 +36,7 @@ const ProfileEdit = () => {
   }
 
   return (
-    <div className="container-fluid vw-100 overflow-auto">
+    <div id="container" className="container-fluid vw-100 overflow-auto">
       <div className="row vh-100">
         <div className="col-logo col-12 col-md-8">
           <div className="row h-75">
@@ -61,7 +61,10 @@ const ProfileEdit = () => {
                 </span>
               </nav>
               <div className="col-12">
-                <div className="row justify-content-center gx-5">
+                <div
+                  className="row justify-content-center"
+                  id="content-container"
+                >
                   {actionView === "dados" ? (
                     <>
                       <div className="col-8 col-lg-5 col-xl-4">
@@ -101,10 +104,7 @@ const ProfileEdit = () => {
                             max={"31-12-2300"}
                             type={"date"}
                           />
-                          <FormInput
-                            label={"Sexo"}
-                            type={"sex"}
-                          />
+                          <FormInput label={"Sexo"} type={"sex"} />
                           <FormInput
                             id={"email"}
                             label={"Email"}
@@ -131,7 +131,10 @@ const ProfileEdit = () => {
                       </div>
                       <div className="col-8 col-lg-5 col-xl-4">
                         <div className="user-data mt-4">
-                          <FormInput label={"Confirmar senha"} type={"password"} />
+                          <FormInput
+                            label={"Confirmar senha"}
+                            type={"password"}
+                          />
                         </div>
                       </div>
                     </>

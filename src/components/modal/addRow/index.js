@@ -18,7 +18,7 @@ const AddRowModal = (props) => {
       const newCrm = {
         id: props.content.length + 1,
         numero: numeroCrm,
-        uf: ufCrm
+        uf: ufCrm,
       };
       props.content.push(newCrm);
       props.onHide();
@@ -26,7 +26,7 @@ const AddRowModal = (props) => {
       const newEspecialidade = {
         id: props.content.length + 1,
         nome: nomeEspecialidade,
-        nrqe: nrqeEspecialidade
+        nrqe: nrqeEspecialidade,
       };
       props.content.push(newEspecialidade);
       props.onHide();
@@ -34,7 +34,12 @@ const AddRowModal = (props) => {
   }
 
   return (
-    <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter">
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter" className="title-modal">
           {props.type === "crm" ? (
