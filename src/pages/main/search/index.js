@@ -1,4 +1,4 @@
-import './styles.css'
+import "./styles.css";
 
 import Header from "../../../components/header";
 import SearchInput from "../../../components/searchInput";
@@ -8,14 +8,11 @@ const MainSearch = () => {
   return (
     <>
       <Header />
-      <div className="main">
+      <div className="main d-flex flex-column">
         <label className="page-title">
           Digite a especialidade médica desejada
         </label>
         <SearchInput />
-        <a href="/#" className="favorites">
-          Visualizar favoritos
-        </a>
       </div>
       <Footer />
     </>
