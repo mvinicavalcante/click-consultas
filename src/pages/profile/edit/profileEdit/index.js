@@ -9,7 +9,7 @@ const ProfileEdit = () => {
 
   //Simulando um objeto(usuário) retornado de uma requisição
   const userDefault = {
-    tipo: "medico",
+    tipo: "paciente",
     nome: "João da Silva",
     cpf: "000.000.000-00",
     dataNascimento: "01/01/2000",
