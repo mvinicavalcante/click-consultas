@@ -21,6 +21,9 @@ import ProfileEdit from "./pages/profile/edit/profileEdit";
 import ProfileChoose from "./pages/profile/edit/profileChoose";
 import ProfileProfessional from "./pages/profile/edit/profileProfessional";
 import MainSearch from "./pages/main/search";
+import SchedulePage from "./pages/main/schedule";
+import ScheduleCreator from "./pages/main/schedule/addSchedule";
+import ScheduleUpdate from "./pages/main/schedule/updateSchedule";
 
 function App() {
   useEffect(() => {
@@ -63,6 +66,9 @@ function App() {
 
           <Route element={<Main />} path="/principal" />
           <Route element={<MainSearch />} path="/principal/busca" />
+          <Route element={<SchedulePage />} path="/principal/agendas" />
+          <Route element={<ScheduleCreator />} path="/principal/agendas/criar" />
+          <Route element={<ScheduleUpdate />} path="/principal/agendas/atualizar" />
 
           {/* ---  Rotas de PERFIL  --- */}
           <Route element={<Profile />} path="/perfil" />

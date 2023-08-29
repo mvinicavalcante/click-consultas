@@ -18,7 +18,7 @@ const MainSearch = () => {
       }
     };
     fetchData();
-  }, [0]);
+  });
 
   console.log(medicos);
 

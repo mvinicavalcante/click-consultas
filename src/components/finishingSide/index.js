@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faUserDoctor, faUserPlus, faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faUserDoctor, faUserPlus, faCheck, faBookMedical } from "@fortawesome/free-solid-svg-icons";
 
 import "./styles.css";
 
-library.add(faUserDoctor, faUserPlus, faCheck);
+library.add(faUserDoctor, faUserPlus, faCheck, faBookMedical);
 
 const FinishingSide = ({ icon, path, action }) => {
   function redirectToPage() {

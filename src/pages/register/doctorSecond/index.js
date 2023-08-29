@@ -23,6 +23,7 @@ const DoctorSecondPage = () => {
               />
               <FormInput
                 label={"Especialidade"}
+                type={"specialty"}
                 onChange={(e) => setSpeciality(e.target.value)}
                 value={speciality}
               />
@@ -37,6 +38,7 @@ const DoctorSecondPage = () => {
             <div className="col-8 col-md-6">
               <FormInput
                 label={"UF"}
+                type={"state"}
                 onChange={(e) => setCrmUf(e.target.value)}
                 value={crmUf}
               />
