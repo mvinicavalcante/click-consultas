@@ -3,24 +3,18 @@ import Header from "../../../components/header";
 import SearchInput from "../../../components/searchInput";
 import Footer from "../../../components/footer";
 import { useEffect, useState } from "react";
-import api from "../../../services/api";
+import UserService from "../../../services/UserService";
 
 const MainSearch = () => {
   const [medicos, setMedicos] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await api.get("medico/3");
-        setMedicos(response.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchData();
+    UserService.getById(3)
+      .then(response => setMedicos(response.data))
+      .catch((e) => {
+        console.error(e);
+      });
   });
-
-  console.log(medicos);
 
   return (
     <>

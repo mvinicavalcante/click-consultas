@@ -15,6 +15,7 @@ const FormInput = ({
   min,
   max,
   valueSelect,
+  required
 }) => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -38,7 +39,7 @@ const FormInput = ({
           </div>
         )}
         {type === "sex" ? (
-          <select onChange={onChange} className="form-select">
+          <select onChange={onChange} className="form-select" required={true ?? required}>
             <option className="option-disabled" selected disabled>
               -- Selecione o seu sexo --
             </option>
@@ -53,6 +54,7 @@ const FormInput = ({
             min={min}
             max={max}
             type="date"
+            required={true ?? required}
           />
         ) : type === "state" ? (
           <select
@@ -60,8 +62,9 @@ const FormInput = ({
             onChange={onChange}
             className="form-select"
             value={valueSelect}
+            required={true ?? required}
           >
-            <option value={""} className="option-disabled" selected disabled>
+            <option className="option-disabled" selected disabled>
               -- Selecione o seu estado --
             </option>
             <option value={"AC"}>Acre (AC)</option>
@@ -98,6 +101,7 @@ const FormInput = ({
             type={type}
             value={value}
             onChange={onChange}
+            required={true ?? required}
           />
         ) : type === "specialty" ? (
           <select
@@ -105,6 +109,7 @@ const FormInput = ({
             onChange={onChange}
             className="form-select"
             value={valueSelect}
+            required={true ?? required}
           >
             <option value={""} className="option-disabled" selected disabled>
               -- Selecione a especialidade --
@@ -167,7 +172,7 @@ const FormInput = ({
 
           </select>
         ): type === "pixType" ? (
-          <select onChange={onChange} className="form-select">
+          <select onChange={onChange} className="form-select" required={true ?? required}>
             <option selected disabled>
               Selecione o tipo da chave pix
             </option>
@@ -199,6 +204,7 @@ const FormInput = ({
             onChange={onChange}
             disabled={disabled}
             pattern={pattern}
+            required={true ?? required}
           />
         )}
       </>

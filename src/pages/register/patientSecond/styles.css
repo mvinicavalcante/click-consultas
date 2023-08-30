@@ -1,3 +1,11 @@
 .no-plan {
   color: white;
 }
+
+.finish-button {
+  border: none;
+}
+
+.finish-button:hover {
+  background-color: transparent;
+}

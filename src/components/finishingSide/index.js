@@ -6,18 +6,19 @@ import "./styles.css";
 
 library.add(faUserDoctor, faUserPlus, faCheck, faBookMedical);
 
-const FinishingSide = ({ icon, path, action }) => {
-  function redirectToPage() {
-    window.location.href = path;
-  }
+function activateButton() {
+  let button = document.getElementById("submit-button"); 
+  button.click();
+}
 
+const FinishingSide = ({ icon, action }) => {
   return (
     <>
       <div className="user-icon d-flex align-items-end justify-content-center">
         <FontAwesomeIcon icon={icon} color="#1E3050" className="icon" />
       </div>
       <div className="finalize d-flex align-items-end justify-content-center">
-        <div className="d-flex" onClick={redirectToPage}>
+        <div className="d-flex" onClick={activateButton}>
           <p>{action}</p>
           <p><FontAwesomeIcon icon={faCheck} /></p>
         </div>
@@ -25,6 +26,5 @@ const FinishingSide = ({ icon, path, action }) => {
     </>
   );
 };
-
 
 export default FinishingSide;
