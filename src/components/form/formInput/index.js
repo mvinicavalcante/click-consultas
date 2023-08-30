@@ -190,6 +190,13 @@ const FormInput = ({
             <option value={"Sábado"}>Sabado</option>
             <option value={"Domingo"}>Domingo</option>
           </select>
+        ) : type === "time" ? (
+          <input type="time"
+            className="form-input"
+            timeformat="24h"
+            value={value}
+            onChange={onChange}>
+            </input>
         ) : (
           <input
             className="form-input"

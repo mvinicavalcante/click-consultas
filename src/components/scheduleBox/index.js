@@ -1,14 +1,22 @@
+import React, { useState }  from "react";
 import "./styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 
+import ShowModal from "../modalSchedule/show";
+
 const ScheduleBox = ({ id, onDelete, content }) => {
+
+  const [currentContent] = useState(content);
+  const [modalShow, setModalShow] = useState(false);
 
   return (
     <div className="schedule-box-container"> 
       <div className="box-content flex-row col-md-10 mb-0" >
         <div className="box-title">
+          <button className="expand" onClick={() => setModalShow(true)}>
           <h3>{content.especialidade}</h3>
+          </button>
         </div>
         <div className="box-details">
           <p className="box-details">
@@ -39,6 +47,12 @@ const ScheduleBox = ({ id, onDelete, content }) => {
           </button>
         </div>
       </div>
+      <ShowModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        content={currentContent}
+        schedule = {content}
+      />
     </div>
   );
 };
