@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faUserDoctor, faUserPlus, faCheck, faBookMedical } from "@fortawesome/free-solid-svg-icons";
+import { faUserDoctor, faUserPlus, faCheck, faBookMedical, faHouseMedical } from "@fortawesome/free-solid-svg-icons";
 
 import "./styles.css";
 
-library.add(faUserDoctor, faUserPlus, faCheck, faBookMedical);
+library.add(faUserDoctor, faUserPlus, faCheck, faBookMedical, faHouseMedical);
 
 function activateButton() {
   let button = document.getElementById("submit-button"); 

@@ -22,6 +22,9 @@ import ProfileEdit from "./pages/profile/edit/profileEdit";
 import ProfileChoose from "./pages/profile/edit/profileChoose";
 import ProfileProfessional from "./pages/profile/edit/profileProfessional";
 import MainSearch from "./pages/main/search";
+import MainAddress from "./pages/main/address";
+import AddressCreator from "./pages/main/address/addAddress"
+import AddressUpdate from "./pages/main/address/updateAddress";
 import SchedulePage from "./pages/main/schedule";
 import ScheduleCreator from "./pages/main/schedule/addSchedule";
 import ScheduleUpdate from "./pages/main/schedule/updateSchedule";
@@ -67,6 +70,9 @@ function App() {
 
           <Route element={<Main />} path="/principal" />
           <Route element={<MainSearch />} path="/principal/busca" />
+          <Route element={<MainAddress />} path="/principal/enderecos" />
+          <Route element={<AddressCreator />} path="/principal/enderecos/criar" />
+          <Route element={<AddressUpdate />} path="/principal/enderecos/atualizar" />
           <Route element={<SchedulePage />} path="/principal/agendas" />
           <Route element={<ScheduleCreator />} path="/principal/agendas/criar" />
           <Route element={<ScheduleUpdate />} path="/principal/agendas/atualizar" />

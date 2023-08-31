@@ -33,7 +33,12 @@ const Main = () => {
                 bgColor="green" />
               </li>
               <li className="main-item">
-                <CustomButton className ="main-button" action="Meus endereços" bgColor="green" />
+                <CustomButton 
+                  className ="main-button" 
+                  action="Meus endereços" 
+                  path="/principal/enderecos"
+                  bgColor="green" 
+                />
               </li>
             </ul>
             <ul className="main-itens">
