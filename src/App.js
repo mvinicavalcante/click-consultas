@@ -13,6 +13,7 @@ import DoctorSecondPage from "./pages/register/doctorSecond";
 import WaitingPage from "./pages/register/waiting";
 import Main from "./pages/main";
 import Profile from "./pages/profile";
+import History from "./pages/profile/history";
 import Wallet from "./pages/profile/wallet";
 import Deposit from "./pages/profile/wallet/deposit";
 import Withdraw from "./pages/profile/wallet/withdraw";
@@ -80,11 +81,11 @@ function App() {
           <Route element={<ProfileChoose />} path="/perfil/escolher-perfis" />
           <Route element={<ProfileProfessional />} path="/perfil/editar-profissional" />
           <Route element={<Wallet />} path="/perfil/carteira" />
+          <Route element={<History />} path="/perfil/historico" />
 
           <Route path="/carteira/deposito" />
           <Route path="/carteira/saque" />
           <Route path="/carteira/saque/conta-destino" />
-          <Route path="/historico" />
         </Routes>
       </BrowserRouter>
     </>

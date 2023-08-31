@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUserPlus,
-  faUserDoctor,
-  faArrowRight,
-} from "@fortawesome/free-solid-svg-icons";
+import { faUserPlus, faUserDoctor, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 import "./styles.css";
 import FormInput from "../form/formInput";
+import PatientService from "../../services/PatientService";
+import DoctorService from "../../services/DoctorService";
 
 const UserRegister = ({ type }) => {
   const [name, setName] = useState("");
@@ -36,17 +34,29 @@ const UserRegister = ({ type }) => {
     user.estado = state;
   }
 
-  function redirectToPage() {
-    if (password !== passwordConfirm) return alert("Senhas não são idênticas");
+  function formSubmit(e) {
+    e.preventDefault();
 
-    if (type === "patient") window.location.href = "/cadastro/paciente/plano";
-    else window.location.href = "/cadastro/medico/profissional";
+    if (type === "patient") {
+      PatientService.registerPatient(user)
+        .then(response => {
+          sessionStorage.setItem("userId", response.data.id)
+        })
+        .catch((e) => {
+          console.error(e.response.data);
+        });
+    }
 
-    var alertList = document.querySelectorAll(".alert");
-    alertList.forEach(function (alert) {
-      //new bootstrap.Alert(alert);
-    });
-    console.log(user);
+    else {
+      DoctorService.registerDoctor(user)
+        .then(response => {
+          sessionStorage.setItem("userId", response.data.id)
+          window.location.href = "/cadastro/medico/profissional";
+        })
+        .catch((e) => {
+          console.error(e.response.data);
+        });
+    }
   }
 
   return (
@@ -77,7 +87,7 @@ const UserRegister = ({ type }) => {
           id="content-container"
           className="col-logo col-12 col-md-8 d-flex justify-content-center align-items-center"
         >
-          <div className="row px-0 px-md-3 g-0 g-md-5 justify-content-center align-items-center">
+          <form onSubmit={formSubmit} className="row px-0 px-md-3 g-0 g-md-5 justify-content-center align-items-center" id="form">
             <div className="col-8 col-md-6 pt-3 pt-md-0">
               <FormInput
                 label={"Nome"}
@@ -145,16 +155,14 @@ const UserRegister = ({ type }) => {
               />
             </div>
 
-            <div
-              onClick={redirectToPage}
-              className="next d-flex align-items-center justify-content-center justify-content-md-end"
+            <button
+              type="submit"
+              className="finish-button next d-flex align-items-center justify-content-center justify-content-md-end"
             >
-              <p>Próximo</p>
-              <p>
-                <FontAwesomeIcon icon={faArrowRight} />
-              </p>
-            </div>
-          </div>
+              <p> Próximo </p>
+              <p> <FontAwesomeIcon icon={faArrowRight} /> </p>
+            </button>
+          </form>
         </div>
       </div>
     </div>
