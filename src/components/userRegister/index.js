@@ -41,6 +41,7 @@ const UserRegister = ({ type }) => {
       PatientService.registerPatient(user)
         .then(response => {
           sessionStorage.setItem("userId", response.data.id)
+          window.location.href = "/cadastro/paciente/plano"
         })
         .catch((e) => {
           console.error(e.response.data);

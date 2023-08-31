@@ -32,7 +32,7 @@ function App() {
     style.innerHTML = `
       /* Webkit browsers (e.g., Chrome, Safari) */
       ::-webkit-scrollbar {
-        width: 10px;
+        width: 0px;
       }
 
       ::-webkit-scrollbar-thumb {
