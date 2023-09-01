@@ -1,29 +1,36 @@
-import React, { useState } from "react";
-import FormInput from "../formInput";
 import "./styles.css";
+import React, { useState } from "react";
+import { toast } from "react-toastify";
+import FormInput from "../formInput";
+import PatientService from "../../../services/PatientService";
+import DoctorService from "../../../services/DoctorService";
 
 const FormBoxLogin = () => {
   const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
+  const [password, setPassword] = useState("");
 
-  function logarUsuario() {
-    const isRegister = true;
-    if (!email.includes("@")) {
-      alert("Digite um e-mail válido!");
-      return;
-    }
-    if (email === "" || senha === "") {
-      alert("Os campos não podem ser vazios!");
-      return;
-    }
-    if (!isRegister) window.location.href = "/cadastro";
-    window.location.href = "/principal";
-    alert(email + "\n" + senha);
-    return;
+  function login(e) {
+    e.preventDefault();
+
+    PatientService.login({ email, senha: password })
+      .then(e => {
+        sessionStorage.setItem("patientId", e.data.id);
+        window.location.href = "/principal";
+      })
+      .catch((e) => { });
+
+    DoctorService.login({ email, senha: password })
+      .then(e => {
+        sessionStorage.setItem("doctorId", e.data.id);
+        window.location.href = "/principal";
+      })
+      .catch((e) => {
+        toast.error(e.response.data)
+      });
   }
 
   return (
-    <div className="form-box p-4">
+    <form onSubmit={login} className="form-box p-4">
       <FormInput
         label={"E-mail"}
         type={"email"}
@@ -36,11 +43,10 @@ const FormBoxLogin = () => {
         label={"Senha"}
         type={"password"}
         placeholder={"Senha"}
-        value={senha}
-        onChange={(e) => setSenha(e.target.value)}
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
         classNameGroup={"pt-4 m-0"}
       />
-
       <div className="text-end mt-2">
         <a href="redefine-senha" className="forgot-password">
           Esqueci minha senha
@@ -48,7 +54,7 @@ const FormBoxLogin = () => {
       </div>
 
       <div className="text-center mt-5">
-        <button className="form-button" onClick={logarUsuario}>
+        <button className="form-button" type="submit">
           Entrar
         </button>
         <p className="mt-3">
@@ -58,7 +64,7 @@ const FormBoxLogin = () => {
           </a>
         </p>
       </div>
-    </div>
+    </form>
   );
 };
 

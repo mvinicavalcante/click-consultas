@@ -1,25 +1,56 @@
 import { useState } from "react";
 import FormInput from "../../../components/form/formInput";
 import FinishingSide from "../../../components/finishingSide";
+import DoctorService from "../../../services/DoctorService";
 
 const DoctorSecondPage = () => {
-  const [crm, setCrm] = useState();
-  const [crmUf, setCrmUf] = useState();
-  const [speciality, setSpeciality] = useState();
-  const [specialityRQE, setSpecialityRQE] = useState();
-  const [profilePhoto, setProfilePhoto] = useState();
-  const [identificationPhoto, setIdentificationPhoto] = useState();
+  const [crmNumber, setCrmNumber] = useState("");
+  const [crmUf, setCrmUf] = useState("");
+  const [speciality, setSpeciality] = useState("");
+  const [specialityRQE, setSpecialityRQE] = useState("");
+  const [profilePhoto, setProfilePhoto] = useState("");
+  const [identificationPhoto, setIdentificationPhoto] = useState("");
+
+  const doctorId = sessionStorage.userId;
+
+  const crm = {
+    numero: crmNumber,
+    uf: crmUf
+  };
+
+  const especialidade = {
+    nome: speciality,
+    numeroRQE: specialityRQE
+  };
+
+  function formSubmit(e) {
+    e.preventDefault();
+
+    DoctorService.registerCRM(doctorId, crm)
+      .then()
+      .catch((e) => {
+        console.error(e.response.data);
+      });
+
+    DoctorService.registerSpeciality(doctorId, especialidade)
+      .then()
+      .catch((e) => {
+        console.error(e.response.data);
+      });
+
+    window.location.href = "/aguarda-confirmacao";
+  }
 
   return (
     <div className="container-fluid vh-100 vw-100 overflow-auto">
       <div className="row vh-100">
         <div className="col-logo col-12 col-md-8 d-flex justify-content-center align-items-center">
-          <div className="row px-0 px-md-3 g-0 g-md-5 justify-content-center align-items-center">
+          <form onSubmit={formSubmit} className="row px-0 px-md-3 g-0 g-md-5 justify-content-center align-items-center">
             <div className="col-8 col-md-6 pt-3 pt-md-0">
               <FormInput
                 label={"CRM"}
-                onChange={(e) => setCrm(e.target.value)}
-                value={crm}
+                onChange={(e) => setCrmNumber(e.target.value)}
+                value={crmNumber}
               />
               <FormInput
                 label={"Especialidade"}
@@ -32,6 +63,7 @@ const DoctorSecondPage = () => {
                 type={"file"}
                 onChange={(e) => setProfilePhoto(e.target.value)}
                 value={profilePhoto}
+                required={false}
               />
             </div>
 
@@ -52,12 +84,14 @@ const DoctorSecondPage = () => {
                 type={"file"}
                 onChange={(e) => setIdentificationPhoto(e.target.value)}
                 value={identificationPhoto}
+                required={false}
               />
             </div>
-          </div>
+            <button type="submit" id="submit-button" />
+          </form>
         </div>
         <div className="col-12 col-md-4 d-flex flex-column justify-content-center align-items-center pt-3 pt-md-0">
-          <FinishingSide icon="fa-solid fa-user-doctor" path="/aguarda-confirmacao" action="Finalizar" />
+          <FinishingSide icon="fa-solid fa-user-doctor" action="Finalizar" />
         </div>
       </div>
     </div>

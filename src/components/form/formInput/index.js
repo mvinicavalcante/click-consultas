@@ -39,7 +39,7 @@ const FormInput = ({
           </div>
         )}
         {type === "sex" ? (
-          <select onChange={onChange} className="form-select" required={true ?? required}>
+          <select onChange={onChange} className="form-select" required={required ?? true}>
             <option className="option-disabled" selected disabled>
               -- Selecione o seu sexo --
             </option>
@@ -54,7 +54,7 @@ const FormInput = ({
             min={min}
             max={max}
             type="date"
-            required={true ?? required}
+            required={required ?? true}
           />
         ) : type === "state" ? (
           <select
@@ -62,9 +62,9 @@ const FormInput = ({
             onChange={onChange}
             className="form-select"
             value={valueSelect}
-            required={true ?? required}
+            required={required ?? true}
           >
-            <option className="option-disabled" selected disabled>
+            <option value={""} className="option-disabled" selected disabled>
               -- Selecione o seu estado --
             </option>
             <option value={"AC"}>Acre (AC)</option>
@@ -101,7 +101,7 @@ const FormInput = ({
             type={type}
             value={value}
             onChange={onChange}
-            required={true ?? required}
+            required={required ?? true}
           />
         ) : type === "specialty" ? (
           <select
@@ -109,7 +109,7 @@ const FormInput = ({
             onChange={onChange}
             className="form-select"
             value={valueSelect}
-            required={true ?? required}
+            required={required ?? true}
           >
             <option value={""} className="option-disabled" selected disabled>
               -- Selecione a especialidade --
@@ -171,8 +171,8 @@ const FormInput = ({
             <option value={"Urologia"}>Urologia</option>
 
           </select>
-        ): type === "pixType" ? (
-          <select onChange={onChange} className="form-select" required={true ?? required}>
+        ) : type === "pixType" ? (
+          <select onChange={onChange} className="form-select" required={required ?? true}>
             <option selected disabled>
               Selecione o tipo da chave pix
             </option>
@@ -183,7 +183,7 @@ const FormInput = ({
             <option value={"aleatoria"}>Chave aleatória</option>
           </select>
         ) : type === "diaSemana" ? (
-          <select onChange={onChange} className="form-select">
+          <select onChange={onChange} className="form-select" required={required ?? true}>
             <option selected disabled>
               Selecione o dia da semana
             </option>
@@ -200,8 +200,10 @@ const FormInput = ({
             className="form-input"
             timeformat="24h"
             value={value}
-            onChange={onChange}>
-            </input>
+            onChange={onChange}
+            required={required ?? true}
+          >
+          </input>
         ) : (
           <input
             className="form-input"
@@ -211,7 +213,7 @@ const FormInput = ({
             onChange={onChange}
             disabled={disabled}
             pattern={pattern}
-            required={true ?? required}
+            required={required ?? true}
           />
         )}
       </>

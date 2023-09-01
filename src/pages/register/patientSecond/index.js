@@ -19,7 +19,7 @@ const PatientSecondPage = () => {
     e.preventDefault();
 
     if (!noHealthPlanChecked) {
-      PatientService.registerHealthPlan(sessionStorage.getItem("userId"), plan)
+      PatientService.registerHealthPlan(sessionStorage.userId, plan)
         .then(response =>
           window.location.href = ("/principal")
         )

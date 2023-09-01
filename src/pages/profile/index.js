@@ -64,7 +64,7 @@ const Profile = () => {
                 <MenuItem
                   title="Sair"
                   icon="fa-solid fa-right-from-bracket"
-                  path="/login"
+                  path="/sair"
                 />
               </div>
             </div>

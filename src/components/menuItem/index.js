@@ -13,6 +13,8 @@ library.add(faUserPen, faWallet, faClockRotateLeft, faRightFromBracket);
 
 const MenuItem = ({ title, icon, path }) => {
   function redirectToPage() {
+    if(path === "/sair")
+      sessionStorage.clear();
     window.location.href = path;
   }
 

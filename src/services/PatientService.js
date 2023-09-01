@@ -2,6 +2,10 @@ import api from "./api";
 
 const PatientService = {
   
+  login(data) {
+    return api.post("/paciente/login", data);
+  },
+
   getById(id) {
     return api.get("/paciente/" + id);
   },

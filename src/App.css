@@ -26,6 +26,6 @@ h2 {
   color: white !important;
 }
 
-button[type="submit"] {
+#submit-button {
   display: none;
 }

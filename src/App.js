@@ -1,8 +1,10 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import 'react-toastify/dist/ReactToastify.css';
 
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useEffect } from "react";
+import { Slide, ToastContainer } from "react-toastify";
 
 import Login from "./pages/login";
 import Register from "./pages/register";
@@ -13,7 +15,6 @@ import DoctorSecondPage from "./pages/register/doctorSecond";
 import WaitingPage from "./pages/register/waiting";
 import Main from "./pages/main";
 import Profile from "./pages/profile";
-import History from "./pages/profile/history";
 import Wallet from "./pages/profile/wallet";
 import Deposit from "./pages/profile/wallet/deposit";
 import Withdraw from "./pages/profile/wallet/withdraw";
@@ -53,10 +54,24 @@ function App() {
   }, []);
   return (
     <>
+      <ToastContainer
+        position="top-right"
+        autoClose={2500}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        transition={Slide}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
+
       <BrowserRouter>
         <Routes>
           <Route element={<Navigate to="/login" />} path="/" />
           <Route element={<Login />} path="/login" />
+          <Route element={<Login />} path="/sair" />
 
           <Route element={<Register />} path="/cadastro" />
           <Route element={<PatientFirstPage />} path="/cadastro/paciente" />
@@ -81,7 +96,7 @@ function App() {
           <Route element={<ProfileChoose />} path="/perfil/escolher-perfis" />
           <Route element={<ProfileProfessional />} path="/perfil/editar-profissional" />
           <Route element={<Wallet />} path="/perfil/carteira" />
-          <Route element={<History />} path="/perfil/historico" />
+          <Route path="/perfil/historico" />
 
           <Route path="/carteira/deposito" />
           <Route path="/carteira/saque" />
