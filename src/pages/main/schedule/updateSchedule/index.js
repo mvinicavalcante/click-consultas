@@ -1,4 +1,4 @@
-import ScheduleDetails from "../../../../components/scheduleDetails";
+import ScheduleDetails from "../../../../components/schedule/scheduleDetails";
 
 const ScheduleUpdate= () => {
   return (

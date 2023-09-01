@@ -2,7 +2,7 @@ import "./styles.css";
 
 import Modal from "react-bootstrap/Modal";
 
-const ShowModalAddress = (props) => {
+const ShowAddressModal = (props) => {
 
   return (
     <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter">
@@ -45,4 +45,4 @@ const ShowModalAddress = (props) => {
   );
 };
 
-export default ShowModalAddress;
+export default ShowAddressModal;

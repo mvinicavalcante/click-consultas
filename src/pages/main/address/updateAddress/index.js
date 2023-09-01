@@ -1,8 +1,8 @@
-import AddressDetails from "../../../../components/addressDetails";
+import AddressDetails from "../../../../components/adress/addressDetails";
 
 const AddressUpdate = () => {
     return (
-      <AddressDetails type="Finalizar" />
+      <AddressDetails type="Atualizar" />
     );
   };
   

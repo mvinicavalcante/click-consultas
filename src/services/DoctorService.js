@@ -40,6 +40,26 @@ const DoctorService = {
 
   deleteSpecialty(doctorId, specialtyId) {
     return api.delete(`/medico/${doctorId}/especialidade/${specialtyId}`);
+  },
+
+  getAllAddressByDoctorId(doctorId) {
+    return api.get(`/medico/${doctorId}/endereco`);
+  },
+
+  getAddressById(doctorId, addressId) {
+    return api.get(`/medico/${doctorId}/endereco/${addressId}`);
+  },
+
+  registerAdress(doctorId, adress) {
+    return api.post(`/medico/${doctorId}/endereco`, adress);
+  },
+
+  patchAdress(doctorId, addressId, adress) {
+    return api.patch(`/medico/${doctorId}/endereco/${addressId}`, adress);
+  },
+
+  deleteAddress(doctorId, addressId) {
+    return api.delete(`/medico/${doctorId}/endereco/${addressId}`);
   }
 
 }

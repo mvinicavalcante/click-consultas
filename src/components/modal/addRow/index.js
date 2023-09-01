@@ -30,7 +30,7 @@ const AddRowModal = (props) => {
       DoctorService.registerCRM(doctorId, crm)
         .then(response => {
           props.content.push(response.data[response.data.length - 1]);
-          window.location.reload();
+          toast.success("CRM adicionado com sucesso.");
         })
         .catch((e) => {
           toast.error(e.response.data);
@@ -40,7 +40,7 @@ const AddRowModal = (props) => {
       DoctorService.registerSpecialty(doctorId, especialidade)
         .then(response => {
           props.content.push(response.data[response.data.length - 1]);
-          window.location.reload();
+          toast.success("Especialidade adicionada com sucesso.");
         })
         .catch((e) => {
           toast.error(e.response.data);

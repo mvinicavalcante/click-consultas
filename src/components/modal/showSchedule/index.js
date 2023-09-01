@@ -2,7 +2,7 @@ import "./styles.css";
 
 import Modal from "react-bootstrap/Modal";
 
-const ShowModal = (props) => {
+const ShowScheduleModal = (props) => {
 
   return (
     <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter">
@@ -45,4 +45,4 @@ const ShowModal = (props) => {
   );
 };
 
-export default ShowModal;
+export default ShowScheduleModal;

@@ -1,27 +1,35 @@
-import React, { useState } from "react";
 import "./styles.css";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
-
+import { toast } from "react-toastify";
 import AddRowModal from "../modal/addRow";
 import DoctorService from "../../services/DoctorService";
 
 const BoxContent = ({ title, type, content }) => {
-  const [currentContent, setCurrentContent] = useState(content);
+  const [currentContent, setCurrentContent] = useState([]);
   const [modalShow, setModalShow] = useState(false);
   const doctorId = sessionStorage.doctorId;
+
+  useEffect(() => {
+    setCurrentContent(content)
+  }, [content]);
 
   function deleteRow(type, itemId) {
     if (type === "crm") {
       DoctorService.deleteCRM(doctorId, itemId)
-        .then()
+        .then(e => {
+          toast.success(e.data);
+        })
         .catch((e) => {
           console.error(e.response.data);
         });
     }
     else if (type === "speciality") {
       DoctorService.deleteSpecialty(doctorId, itemId)
-        .then()
+        .then(e => {
+          toast.success(e.data);
+        })
         .catch((e) => {
           console.error(e.response.data);
         });

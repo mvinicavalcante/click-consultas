@@ -1,12 +1,11 @@
 import "./styles.css";
 
+import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-
 import FormInput from "../../form/formInput";
-import { useState } from "react";
 
-const AddRowModal = (props) => {
+const AddRowHorarioModal = (props) => {
   const [diaSemana, setDiaSemana] = useState();
   const [horaInicio, setHoraInicio] = useState();
   const [horaFim, setHoraFim] = useState();
@@ -73,4 +72,4 @@ const AddRowModal = (props) => {
   );
 };
 
-export default AddRowModal;
+export default AddRowHorarioModal;

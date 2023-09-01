@@ -1,7 +1,7 @@
 import { useState } from "react";
-import FormInput from "../form/formInput";
-import FinishingSide from "../finishingSide";
-import TimeBox from "../timeBox";
+import FormInput from "../../form/formInput";
+import FinishingSide from "../../finishingSide";
+import TimeBox from "../../timeBox";
 
 const ScheduleDetails = ({type}) => {
   const [especialidade, setEspecialidade] = useState();

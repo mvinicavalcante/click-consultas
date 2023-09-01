@@ -1,30 +1,33 @@
 import "./styles.css";
-
 import BoxContent from "../../../../components/boxContent";
 import DoctorService from "../../../../services/DoctorService";
 import { faUserPen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-const doctorId = sessionStorage.doctorId;
-let crms, specialtys;
-
-await DoctorService.getAllCRMByDoctorId(doctorId)
-  .then(response => {
-    crms = response.data
-  })
-  .catch((e) => {
-    console.error(e.response.data);
-  });
-
-await DoctorService.getAllSpecialtysByDoctorId(doctorId)
-  .then(response => {
-    specialtys = response.data
-  })
-  .catch((e) => {
-    console.error(e.response.data);
-  });
+import { useEffect, useState } from "react";
 
 const ProfileProfessional = () => {
+  const [crms, setCrms] = useState([]);
+  const [specialtys, setSpecialtys] = useState([]);
+  const doctorId = sessionStorage.doctorId;
+
+  useEffect(() => {
+    DoctorService.getAllCRMByDoctorId(doctorId)
+      .then(e => {
+        setCrms(e.data)
+      })
+      .catch((e) => {
+        console.error(e.response.data);
+      });
+
+    DoctorService.getAllSpecialtysByDoctorId(doctorId)
+      .then(e => {
+        setSpecialtys(e.data)
+      })
+      .catch((e) => {
+        console.error(e.response.data);
+      });
+  }, [doctorId]);
+
   return (
     <div className="container-fluid vw-100 overflow-auto">
       <div className="row vh-100">

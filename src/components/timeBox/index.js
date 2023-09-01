@@ -1,9 +1,8 @@
-import React, { useState }  from "react";
 import "./styles.css";
+import React, { useState }  from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
-
-import AddRowModal from "../modalHorario/addRow";
+import AddRowModalHorario from "../modal/addRowHorario";
 
 const TimeBox = ({ content }) => {
 
@@ -62,7 +61,7 @@ const TimeBox = ({ content }) => {
           </div>
         ))}
       </div>
-      <AddRowModal
+      <AddRowModalHorario
         show={modalShow}
         onHide={() => setModalShow(false)}
         content={currentContent}
