@@ -2,6 +2,7 @@ import { useState } from "react";
 import FormInput from "../../../components/form/formInput";
 import FinishingSide from "../../../components/finishingSide";
 import DoctorService from "../../../services/DoctorService";
+import { toast } from "react-toastify";
 
 const DoctorSecondPage = () => {
   const [crmNumber, setCrmNumber] = useState("");
@@ -11,7 +12,7 @@ const DoctorSecondPage = () => {
   const [profilePhoto, setProfilePhoto] = useState("");
   const [identificationPhoto, setIdentificationPhoto] = useState("");
 
-  const doctorId = sessionStorage.userId;
+  const doctorId = sessionStorage.doctorId;
 
   const crm = {
     numero: crmNumber,
@@ -29,13 +30,13 @@ const DoctorSecondPage = () => {
     DoctorService.registerCRM(doctorId, crm)
       .then()
       .catch((e) => {
-        console.error(e.response.data);
+        toast.error(e.response.data);
       });
 
-    DoctorService.registerSpeciality(doctorId, especialidade)
+    DoctorService.registerSpecialty(doctorId, especialidade)
       .then()
       .catch((e) => {
-        console.error(e.response.data);
+        toast.error(e.response.data);
       });
 
     window.location.href = "/aguarda-confirmacao";

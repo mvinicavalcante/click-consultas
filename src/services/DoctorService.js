@@ -15,7 +15,7 @@ const DoctorService = {
   },
 
   patchDoctor(id, doctor) {
-    return api.patch("/medico" + id, doctor);
+    return api.patch("/medico/" + id, doctor);
   },
 
   getAllCRMByDoctorId(doctorId) {

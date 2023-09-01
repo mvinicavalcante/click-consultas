@@ -17,6 +17,11 @@ const CustomButton = ({ className, action, path, bgColor }) => {
       color: "white",
       backgroundColor: "#05DA73"
      };
+  if (bgColor === "gray")
+    buttonStyle = {
+      color: "white",
+      backgroundColor: "#A9A9A9"
+  };
 
   return (
     <button className={`${className} custom-button rounded-5`} onClick={redirectToPage} style={buttonStyle}>

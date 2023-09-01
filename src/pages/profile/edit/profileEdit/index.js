@@ -1,25 +1,87 @@
 import "./styles.css";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import FormInput from "../../../../components/form/formInput";
 import FinishingSide from "../../../../components/finishingSide";
+import UserService from "../../../../services/UserService";
+import PatientService from "../../../../services/PatientService";
+import DoctorService from "../../../../services/DoctorService";
 
 const ProfileEdit = () => {
-  const [actionView, setActionView] = useState("dados"); // Set default action
+  const [actionView, setActionView] = useState("dados");
+  const [name, setName] = useState("");
+  const [cpf, setCpf] = useState("");
+  const [telephone, setTelephone] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [birthdate, setBirthdate] = useState("");
+  const [sex, setSex] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
 
-  //Simulando um objeto(usuário) retornado de uma requisição
-  const userDefault = {
-    tipo: "paciente",
-    nome: "João da Silva",
-    cpf: "000.000.000-00",
-    dataNascimento: "01/01/2000",
-    sexo: "Masculino",
-    email: "teste@ufape.com.br",
-    telefone: "(00) 00000-0000",
-    cidade: "Garanhuns",
-    estado: "Pernambuco",
-    senha: "123456",
-  };
+  useEffect(() => {
+    UserService.getById(sessionStorage.patientId ?? sessionStorage.doctorId)
+      .then(response => {
+        setName(response.data.nome)
+        setCpf(response.data.cpf)
+        setTelephone(response.data.telefone)
+        setCity(response.data.cidade)
+        setState(response.data.estado)
+        setBirthdate(response.data.dataNascimento)
+        setSex(response.data.sexo)
+        setEmail(response.data.email)
+      })
+      .catch((e) => {
+        toast.error(e.response.data);
+      });
+  }, []);
+
+  const user = {
+    nome: name,
+    dataNascimento: birthdate,
+    sexo: sex,
+    telefone: telephone
+  }
+  
+  function patchUser(e) {
+    e.preventDefault();
+
+    if (actionView === "senha") {
+      if (password !== passwordConfirm)
+        return toast.error("As senhas não são idênticas.");
+
+      UserService.patchPassword(sessionStorage.patientId ?? sessionStorage.doctorId, password)
+        .then(e => {
+          toast.success("Senha atualizada com sucesso.");
+        })
+        .catch((e) => {
+          toast.error(e.response.data);
+        });
+    }
+
+    else if (actionView === "dados") {
+      if (sessionStorage.patientId) {
+        PatientService.patchPatient(sessionStorage.patientId, { ...user, cidade: city, estado: state })
+          .then(e => {
+            toast.success("Dados atualizados com sucesso.");
+          })
+          .catch((e) => {
+            toast.error(e.response.data);
+          });
+      }
+      else if (sessionStorage.doctorId) {
+        DoctorService.patchDoctor(sessionStorage.doctorId, user)
+          .then(e => {
+            toast.success("Dados atualizados com sucesso.");
+          })
+          .catch((e) => {
+            toast.error(e.response.data);
+          });
+      }
+    }
+  }
 
   function navAction(action) {
     const dados = document.getElementById("dados");
@@ -60,7 +122,7 @@ const ProfileEdit = () => {
                   Senha
                 </span>
               </nav>
-              <div className="col-12">
+              <form onSubmit={patchUser} className="col-12">
                 <div
                   className="row justify-content-center"
                   id="content-container"
@@ -71,26 +133,30 @@ const ProfileEdit = () => {
                         <div className="user-data mt-4">
                           <FormInput
                             label={"Nome"}
-                            placeholder={userDefault.nome}
                             type={"text"}
+                            value={name}
+                            onInput={(e) => setName(e.target.value)}
                           />
                           <FormInput
                             label={"CPF"}
-                            placeholder={userDefault.cpf}
                             type={"text"}
+                            disabled={true}
+                            value={cpf}
                           />
                           <FormInput
                             id={"phone"}
                             label={"Telefone"}
-                            placeholder={userDefault.telefone}
-                            pattern={"[0-9]{3}-[0-9]{3}"}
                             type={"tel"}
+                            maxlength={12}
+                            value={telephone}
+                            onInput={(e) => setTelephone(e.target.value)}
                           />
-                          {userDefault.tipo === "paciente" && (
+                          {sessionStorage.patientId && (
                             <FormInput
                               id={"cidade"}
                               label={"Cidade"}
-                              placeholder={userDefault.cidade}
+                              value={city}
+                              onInput={(e) => setCity(e.target.value)}
                             />
                           )}
                         </div>
@@ -99,24 +165,32 @@ const ProfileEdit = () => {
                         <div className="user-data mt-0 mt-lg-4">
                           <FormInput
                             label={"Data de nascimento"}
-                            placeholder={userDefault.dataNascimento}
-                            min={"01-01-1800"}
-                            max={"31-12-2300"}
+                            min={"1900-01-01"}
+                            max={"2300-01-01"}
                             type={"date"}
+                            value={birthdate}
+                            onChange={(e) => setBirthdate(e.target.value)}
                           />
-                          <FormInput label={"Sexo"} type={"sex"} />
+                          <FormInput
+                            label={"Sexo"}
+                            type={"sex"}
+                            value={sex}
+                            onChange={(e) => setSex(e.target.value)}
+                          />
                           <FormInput
                             id={"email"}
                             label={"Email"}
-                            placeholder={userDefault.email}
                             type={"mail"}
+                            value={email}
+                            disabled={true}
                           />
-                          {userDefault.tipo === "paciente" && (
+                          {sessionStorage.patientId && (
                             <FormInput
                               id={"estado"}
                               label={"Estado"}
-                              placeholder={userDefault.estado}
-                              type={"text"}
+                              type={"state"}
+                              value={state}
+                              onChange={(e) => setState(e.target.value)}
                             />
                           )}
                         </div>
@@ -126,7 +200,12 @@ const ProfileEdit = () => {
                     <>
                       <div className="col-8 col-lg-5 col-xl-4">
                         <div className="user-data mt-4">
-                          <FormInput label={"Senha"} type={"password"} />
+                          <FormInput
+                            label={"Senha"}
+                            type={"password"}
+                            value={password}
+                            onInput={(e) => setPassword(e.target.value)}
+                          />
                         </div>
                       </div>
                       <div className="col-8 col-lg-5 col-xl-4">
@@ -134,20 +213,22 @@ const ProfileEdit = () => {
                           <FormInput
                             label={"Confirmar senha"}
                             type={"password"}
+                            value={passwordConfirm}
+                            onInput={(e) => setPasswordConfirm(e.target.value)}
                           />
                         </div>
                       </div>
                     </>
                   )}
                 </div>
-              </div>
+                <button type="submit" id="submit-button" />
+              </form>
             </div>
           </div>
         </div>
         <div className="col-12 col-md-4 pt-4 pt-md-0">
           <FinishingSide
             icon="fa-solid fa-user-plus"
-            path="/principal"
             action="Finalizar"
           />
         </div>

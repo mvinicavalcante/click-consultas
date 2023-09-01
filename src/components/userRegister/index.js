@@ -1,8 +1,7 @@
+import "./styles.css";
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus, faUserDoctor, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-
-import "./styles.css";
 import FormInput from "../form/formInput";
 import PatientService from "../../services/PatientService";
 import DoctorService from "../../services/DoctorService";
@@ -93,31 +92,31 @@ const UserRegister = ({ type }) => {
               <FormInput
                 label={"Nome"}
                 type={"name"}
-                onChange={(e) => setName(e.target.value)}
                 value={name}
+                onChange={(e) => setName(e.target.value)}
               />
               <FormInput
                 label={"CPF"}
-                onChange={(e) => setCpf(e.target.value)}
                 value={cpf}
+                onChange={(e) => setCpf(e.target.value)}
               />
               <FormInput
                 label={"Telefone"}
-                onChange={(e) => setTelephone(e.target.value)}
                 value={telephone}
+                onChange={(e) => setTelephone(e.target.value)}
               />
               {type === "patient" && (
                 <FormInput
                   label={"Cidade"}
-                  onChange={(e) => setCity(e.target.value)}
                   value={city}
+                  onChange={(e) => setCity(e.target.value)}
                 />
               )}
               <FormInput
                 label={"Senha"}
                 type={"password"}
-                onChange={(e) => setPassword(e.target.value)}
                 value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
 
@@ -125,34 +124,34 @@ const UserRegister = ({ type }) => {
               <FormInput
                 label={"Data de Nascimento"}
                 type={"date"}
-                onChange={(e) => setBirthdate(e.target.value)}
                 value={birthdate}
+                onChange={(e) => setBirthdate(e.target.value)}
               />
               <FormInput
                 label={"Sexo"}
                 type={"sex"}
-                onChange={(e) => setSex(e.target.value)}
                 value={sex}
+                onChange={(e) => setSex(e.target.value)}
               />
               <FormInput
                 label={"Email"}
-                type={"email"}
-                onChange={(e) => setEmail(e.target.value)}
+                type={"mail"}
                 value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
               {type === "patient" && (
                 <FormInput
                   label={"Estado"}
                   type={"state"}
+                  valueSelect={state}
                   onChange={(e) => setState(e.target.value)}
-                  value={state}
                 />
               )}
               <FormInput
                 label={"Confirmar senha"}
                 type={"password"}
-                onChange={(e) => setPasswordConfirm(e.target.value)}
                 value={passwordConfirm}
+                onChange={(e) => setPasswordConfirm(e.target.value)}
               />
             </div>
 

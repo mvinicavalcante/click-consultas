@@ -15,6 +15,8 @@ const FormInput = ({
   min,
   max,
   valueSelect,
+  onInput,
+  maxLength,
   required
 }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -39,8 +41,8 @@ const FormInput = ({
           </div>
         )}
         {type === "sex" ? (
-          <select onChange={onChange} className="form-select" required={required ?? true}>
-            <option className="option-disabled" selected disabled>
+          <select onChange={onChange} defaultValue={valueSelect} className="form-select" required={required ?? true}>
+            <option className="option-disabled" selected={valueSelect ? false : true} disabled>
               -- Selecione o seu sexo --
             </option>
             <option value={"f"}>Feminino</option>
@@ -58,13 +60,12 @@ const FormInput = ({
           />
         ) : type === "state" ? (
           <select
-            defaultValue={valueSelect}
             onChange={onChange}
+            defaultValue={valueSelect}
             className="form-select"
-            value={valueSelect}
             required={required ?? true}
           >
-            <option value={""} className="option-disabled" selected disabled>
+            <option value={""} className="option-disabled" selected={valueSelect ? false : true} disabled>
               -- Selecione o seu estado --
             </option>
             <option value={"AC"}>Acre (AC)</option>
@@ -214,6 +215,8 @@ const FormInput = ({
             disabled={disabled}
             pattern={pattern}
             required={required ?? true}
+            onInput={onInput}
+            maxLength={maxLength}
           />
         )}
       </>

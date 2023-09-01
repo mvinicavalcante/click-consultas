@@ -15,7 +15,7 @@ const PatientService = {
   },
 
   patchPatient(id, patient) {
-    return api.patch("/paciente" + id, patient);
+    return api.patch("/paciente/" + id, patient);
   },
 
   registerHealthPlan(patientId, plan) {
