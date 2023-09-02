@@ -229,7 +229,7 @@ const ProfileEdit = () => {
         <div className="col-12 col-md-4 pt-4 pt-md-0">
           <FinishingSide
             icon="fa-solid fa-user-plus"
-            action="Finalizar"
+            action="Editar"
           />
         </div>
       </div>

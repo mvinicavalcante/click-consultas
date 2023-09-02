@@ -70,19 +70,15 @@ function App() {
 
           {/* ---  Rotas de PERFIL  --- */}
           <Route element={<Profile />} path="/perfil" />
-          <Route element={<Wallet />} path="/carteira" />
-          <Route element={<Deposit />} path="/carteira/deposito" />
-          <Route element={<Withdraw />} path="/carteira/saque" />
-          <Route element={<NewAccount />} path="/carteira/saque/conta-destino" />
+          <Route element={<Wallet />} path="/perfil/carteira" />
+          <Route element={<Deposit />} path="/perfil/carteira/deposito" />
+          <Route element={<Withdraw />} path="/perfil/carteira/saque" />
+          <Route element={<NewAccount />} path="/perfil/carteira/saque/conta-destino" />
           <Route element={<ProfileEdit />} path="/perfil/editar" />
           <Route element={<ProfileChoose />} path="/perfil/escolher-perfis" />
           <Route element={<ProfileProfessional />} path="/perfil/editar-profissional" />
-          <Route element={<Wallet />} path="/perfil/carteira" />
           <Route element={<History />} path="/perfil/historico" />
 
-          <Route path="/carteira/deposito" />
-          <Route path="/carteira/saque" />
-          <Route path="/carteira/saque/conta-destino" />
         </Routes>
       </BrowserRouter>
     </>

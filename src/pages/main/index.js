@@ -5,24 +5,11 @@ import CustomButton from "../../components/customButton";
 import Footer from "../../components/footer";
 
 const Main = () => {
-  const userDefault = {
-    tipo: "medico",
-    nome: "João da Silva",
-    cpf: "000.000.000-00",
-    dataNascimento: "01/01/2000",
-    sexo: "Masculino",
-    email: "teste@ufape.com.br",
-    telefone: "(00) 00000-0000",
-    cidade: "Garanhuns",
-    estado: "Pernambuco",
-    senha: "123456",
-  };
-
   return (
     <div className="p-0 overflow-hidden">
       <Header />
       <div className="main">
-        {userDefault.tipo === "medico" ? (
+        {sessionStorage.doctorId ? (
           <>
             <ul className="main-itens">
               <li className="main-item">

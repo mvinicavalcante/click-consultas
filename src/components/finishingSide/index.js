@@ -6,7 +6,7 @@ import "./styles.css";
 
 library.add(faUserDoctor, faUserPlus, faCheck, faBookMedical, faHouseMedical);
 
-function activateButton() {
+function activateFormButtonInParentComponent() {
   let button = document.getElementById("submit-button"); 
   button.click();
 }
@@ -18,7 +18,7 @@ const FinishingSide = ({ icon, action }) => {
         <FontAwesomeIcon icon={icon} color="#1E3050" className="icon" />
       </div>
       <div className="finalize d-flex align-items-end justify-content-center">
-        <div className="d-flex" onClick={activateButton}>
+        <div className="d-flex" onClick={activateFormButtonInParentComponent}>
           <p>{action}</p>
           <p><FontAwesomeIcon icon={faCheck} /></p>
         </div>

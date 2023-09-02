@@ -34,9 +34,7 @@ const BoxContent = ({ title, type, content }) => {
           console.error(e.response.data);
         });
     }
-
-    const updatedContent = currentContent.filter((item) => item.id !== itemId);
-    setCurrentContent(updatedContent);
+    setCurrentContent(currentContent.filter((item) => item.id !== itemId));
   }
 
   return (
@@ -93,6 +91,7 @@ const BoxContent = ({ title, type, content }) => {
         onHide={() => setModalShow(false)}
         type={type}
         content={currentContent}
+        updateContent={setCurrentContent}
       />
     </div>
   );

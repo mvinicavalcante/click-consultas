@@ -1,10 +1,31 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 import FinishingSide from "../../../../../components/finishingSide";
 import FormInput from "../../../../../components/form/formInput";
+import UserService from "../../../../../services/UserService";
 
 const NewAccount = () => {
   const [pixType, setPixType] = useState();
-  const [pix, setPix] = useState();
+  const [pixKey, setPixKey] = useState();
+
+  const pix = {
+    chave: pixKey,
+    tipo: pixType
+  }
+
+  function formSubmit(e) {
+    e.preventDefault();
+    UserService.registerPix(sessionStorage.patientId ?? sessionStorage.doctorId, pix)
+      .then(e => {
+        toast.success("Pix adicionado com sucesso.")
+        setTimeout(() => {
+          window.location.href = "/perfil/carteira/saque"
+        }, 1500);
+      })
+      .catch(e => {
+        toast.error(e.response.data)
+      });
+  }
 
   return (
     <div className="container-fluid vh-100 vw-100 overflow-auto">
@@ -14,7 +35,7 @@ const NewAccount = () => {
             <div className="col-12 pt-5">
               <h2 className="text-center">Conta Destino</h2>
             </div>
-            <div className="mt-5 mt-md-0 col-12 d-flex flex-column justify-content-center align-items-center">
+            <form onSubmit={formSubmit} className="mt-5 mt-md-0 col-12 d-flex flex-column justify-content-center align-items-center">
               <div className="col-7 col-lg-6 col-xl-4 mb-4">
                 <FormInput
                   label="Tipo da Chave"
@@ -26,15 +47,16 @@ const NewAccount = () => {
               <div className="col-7 col-lg-6 col-xl-4">
                 <FormInput
                   label="Pix"
-                  onChange={(e) => setPix(e.target.value)}
-                  value={pix}
+                  onChange={(e) => setPixKey(e.target.value)}
+                  value={pixKey}
                 />
               </div>
-            </div>
+              <button type="submit" id="submit-button" />
+            </form>
           </div>
         </div>
         <div className="col-12 col-md-4 d-flex flex-column justify-content-center align-items-center">
-          <FinishingSide icon="fa-solid fa-wallet" action="Adicionar" path="/carteira/saque" />
+          <FinishingSide icon="fa-solid fa-wallet" action="Adicionar" />
         </div>
       </div>
     </div>

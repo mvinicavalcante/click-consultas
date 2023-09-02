@@ -1,12 +1,22 @@
-import { useState } from "react";
+import "./styles.css"
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWallet, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import CustomButton from "../../../components/customButton";
-
-import "./styles.css"
+import UserService from "../../../services/UserService";
 
 const Wallet = () => {
   const [balanceVisibility, setBalanceVisibility] = useState(true);
+  const [carteira, setCarteira] = useState();
+
+  useEffect(() => {
+    UserService.getWalletById(sessionStorage.doctorId ?? sessionStorage.patientId)
+      .then(e => {
+        setCarteira(e.data);
+      })
+      .catch(e => {
+      });
+  }, []);
 
   function toggleBalanceVisibility() {
     setBalanceVisibility((prevState) => !prevState);
@@ -46,17 +56,17 @@ const Wallet = () => {
                 </h2>
                 <h2 className="text-center mt-4">
                   {balanceVisibility ?
-                    "R$ 1.000" : "R$ - - - -"
+                    `R$ ${carteira?.saldo.toLocaleString('pt-br', { minimumFractionDigits: 2 })}` : "R$ - - - -"
                   }
                 </h2>
               </div>
             </div>
             <div className="col-12 row justify-content-center align-items-center">
               <div className="col-4 d-flex justify-content-center">
-                <CustomButton action="Sacar" path="/carteira/saque" />
+                <CustomButton action="Sacar" path="/perfil/carteira/saque" />
               </div>
               <div className="col-4 d-flex justify-content-center" >
-                <CustomButton action="Depositar" path="/carteira/deposito" />
+                <CustomButton action="Depositar" path="/perfil/carteira/deposito" />
               </div>
             </div>
           </div>

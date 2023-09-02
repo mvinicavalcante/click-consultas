@@ -56,7 +56,13 @@ const MainAddress = () => {
               </div>
               <div className="address-details">
                 <div className="add-schedule col-12 mt-3 text-left">
-                  <button onClick={() => window.location.href = "/principal/enderecos/criar"} className="add-address">
+                  <button
+                    onClick={() => {
+                      window.location.href = "/principal/enderecos/criar";
+                      sessionStorage.removeItem("addressId");
+                    }}
+                    className="add-address"
+                  >
                     <FontAwesomeIcon
                       icon={faPlus}
                       color="white"

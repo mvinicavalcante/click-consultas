@@ -23,26 +23,26 @@ const AddRowModal = (props) => {
     numeroRQE: specialtyRQE
   };
 
-  function save(e) {
+  function formSubmit(e) {
     e.preventDefault();
-    
+
     if (props.type === "crm") {
       DoctorService.registerCRM(doctorId, crm)
-        .then(response => {
-          props.content.push(response.data[response.data.length - 1]);
+        .then(e => {
           toast.success("CRM adicionado com sucesso.");
+          props.updateContent(e.data);
         })
-        .catch((e) => {
+        .catch(e => {
           toast.error(e.response.data);
         });
     }
     else if (props.type === "speciality") {
       DoctorService.registerSpecialty(doctorId, especialidade)
-        .then(response => {
-          props.content.push(response.data[response.data.length - 1]);
+        .then(e => {
           toast.success("Especialidade adicionada com sucesso.");
+          props.updateContent(e.data);
         })
-        .catch((e) => {
+        .catch(e => {
           toast.error(e.response.data);
         });
     }
@@ -56,7 +56,7 @@ const AddRowModal = (props) => {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Form onSubmit={save}>
+      <Form onSubmit={formSubmit}>
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter" className="title-modal">
             {props.type === "crm" ? (
