@@ -1,9 +1,7 @@
+import "./styles.css";
 import React from "react";
 import Logo from "../../assets/logo.png";
-
 import PictureBox from "../../components/pictureBox";
-
-import "./styles.css";
 
 const Register = () => {
   return (

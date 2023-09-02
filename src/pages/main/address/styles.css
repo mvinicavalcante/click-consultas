@@ -1,0 +1,23 @@
+.add-address {
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.add-address:hover {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.address-details {
+    margin-top: 6em;
+    margin-left: 4em;
+}
+
+@media screen and (max-width: 992px) {
+    .schedule-details {
+        margin-top: 4em;
+    }
+}

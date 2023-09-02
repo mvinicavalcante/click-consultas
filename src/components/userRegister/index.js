@@ -1,13 +1,10 @@
+import "./styles.css";
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUserPlus,
-  faUserDoctor,
-  faArrowRight,
-} from "@fortawesome/free-solid-svg-icons";
-
-import "./styles.css";
+import { faUserPlus, faUserDoctor, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import FormInput from "../form/formInput";
+import PatientService from "../../services/PatientService";
+import DoctorService from "../../services/DoctorService";
 
 const UserRegister = ({ type }) => {
   const [name, setName] = useState("");
@@ -36,17 +33,30 @@ const UserRegister = ({ type }) => {
     user.estado = state;
   }
 
-  function redirectToPage() {
-    if (password !== passwordConfirm) return alert("Senhas não são idênticas");
+  function formSubmit(e) {
+    e.preventDefault();
 
-    if (type === "patient") window.location.href = "/cadastro/paciente/plano";
-    else window.location.href = "/cadastro/medico/profissional";
+    if (type === "patient") {
+      PatientService.registerPatient(user)
+        .then(response => {
+          sessionStorage.setItem("patientId", response.data.id);
+          window.location.href = "/cadastro/paciente/plano";
+        })
+        .catch((e) => {
+          console.error(e.response.data);
+        });
+    }
 
-    var alertList = document.querySelectorAll(".alert");
-    alertList.forEach(function (alert) {
-      //new bootstrap.Alert(alert);
-    });
-    console.log(user);
+    else {
+      DoctorService.registerDoctor(user)
+        .then(response => {
+          sessionStorage.setItem("doctorId", response.data.id)
+          window.location.href = "/cadastro/medico/profissional";
+        })
+        .catch((e) => {
+          console.error(e.response.data);
+        });
+    }
   }
 
   return (
@@ -77,36 +87,36 @@ const UserRegister = ({ type }) => {
           id="content-container"
           className="col-logo col-12 col-md-8 d-flex justify-content-center align-items-center"
         >
-          <div className="row px-0 px-md-3 g-0 g-md-5 justify-content-center align-items-center">
+          <form onSubmit={formSubmit} className="row px-0 px-md-3 g-0 g-md-5 justify-content-center align-items-center" id="form">
             <div className="col-8 col-md-6 pt-3 pt-md-0">
               <FormInput
                 label={"Nome"}
                 type={"name"}
-                onChange={(e) => setName(e.target.value)}
                 value={name}
+                onChange={(e) => setName(e.target.value)}
               />
               <FormInput
                 label={"CPF"}
-                onChange={(e) => setCpf(e.target.value)}
                 value={cpf}
+                onChange={(e) => setCpf(e.target.value)}
               />
               <FormInput
                 label={"Telefone"}
-                onChange={(e) => setTelephone(e.target.value)}
                 value={telephone}
+                onChange={(e) => setTelephone(e.target.value)}
               />
               {type === "patient" && (
                 <FormInput
                   label={"Cidade"}
-                  onChange={(e) => setCity(e.target.value)}
                   value={city}
+                  onChange={(e) => setCity(e.target.value)}
                 />
               )}
               <FormInput
                 label={"Senha"}
                 type={"password"}
-                onChange={(e) => setPassword(e.target.value)}
                 value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
 
@@ -114,47 +124,45 @@ const UserRegister = ({ type }) => {
               <FormInput
                 label={"Data de Nascimento"}
                 type={"date"}
-                onChange={(e) => setBirthdate(e.target.value)}
                 value={birthdate}
+                onChange={(e) => setBirthdate(e.target.value)}
               />
               <FormInput
                 label={"Sexo"}
                 type={"sex"}
-                onChange={(e) => setSex(e.target.value)}
                 value={sex}
+                onChange={(e) => setSex(e.target.value)}
               />
               <FormInput
                 label={"Email"}
-                type={"email"}
-                onChange={(e) => setEmail(e.target.value)}
+                type={"mail"}
                 value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
               {type === "patient" && (
                 <FormInput
                   label={"Estado"}
                   type={"state"}
+                  valueSelect={state}
                   onChange={(e) => setState(e.target.value)}
-                  value={state}
                 />
               )}
               <FormInput
                 label={"Confirmar senha"}
                 type={"password"}
-                onChange={(e) => setPasswordConfirm(e.target.value)}
                 value={passwordConfirm}
+                onChange={(e) => setPasswordConfirm(e.target.value)}
               />
             </div>
 
-            <div
-              onClick={redirectToPage}
-              className="next d-flex align-items-center justify-content-center justify-content-md-end"
+            <button
+              type="submit"
+              className="finish-button next d-flex align-items-center justify-content-center justify-content-md-end"
             >
-              <p>Próximo</p>
-              <p>
-                <FontAwesomeIcon icon={faArrowRight} />
-              </p>
-            </div>
-          </div>
+              <p> Próximo </p>
+              <p> <FontAwesomeIcon icon={faArrowRight} /> </p>
+            </button>
+          </form>
         </div>
       </div>
     </div>

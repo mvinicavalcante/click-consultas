@@ -28,6 +28,11 @@
   margin: 20px 30px;
 }
 
+.main-button{
+  width: 380px;
+  height: 70px;
+}
+
 @media screen and (max-width: 992px) {
   .page-title {
     font-size: 20px;
@@ -41,5 +46,13 @@
   .main-item {
     margin: 15px 0px;
   }
+}
+
+@media screen and (min-width: 2030px) {
+  .main-button{
+    width: 450px;
+    height: 80px;
+    font-size: 32px;
+ }
 
 }

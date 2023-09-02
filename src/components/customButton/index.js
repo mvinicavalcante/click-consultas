@@ -1,8 +1,9 @@
 import "./styles.css";
 
-const CustomButton = ({ action, path, bgColor }) => {
+const CustomButton = ({ className, action, path, bgColor, type }) => {
   function redirectToPage() {
-    window.location.href = path;
+    if (path)
+      window.location.href = path;
   }
 
   let buttonStyle;
@@ -11,10 +12,20 @@ const CustomButton = ({ action, path, bgColor }) => {
     buttonStyle = {
       color: "white",
       backgroundColor: "#00BF63"
+    }
+  if (bgColor === "light green")
+    buttonStyle = {
+      color: "white",
+      backgroundColor: "#05DA73"
+    };
+  if (bgColor === "gray")
+    buttonStyle = {
+      color: "white",
+      backgroundColor: "#A9A9A9"
     };
 
   return (
-    <button className="custom-button rounded-5" onClick={redirectToPage} style={buttonStyle}>
+    <button className={`${className} custom-button rounded-5`} onClick={redirectToPage} style={buttonStyle} type={type}>
       {action}
     </button>
   );

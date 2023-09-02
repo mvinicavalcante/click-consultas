@@ -1,23 +1,26 @@
+import "./styles.css";
 import clickConsultas from "../../assets/clickConsultas.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCircleUser,
-  faBars,
-  faXmark,
-} from "@fortawesome/free-solid-svg-icons";
-
-import "./styles.css";
-import { useState } from "react";
+import { faCircleUser, faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
+import UserService from "../../services/UserService";
 
 const Header = () => {
   const [viewMenuMobile, setViewMenuMobile] = useState(false);
+  const [carteira, setCarteira] = useState();
+
+  useEffect(() => {
+    UserService.getWalletById(sessionStorage.doctorId ?? sessionStorage.patientId)
+      .then(e => {
+        setCarteira(e.data);
+      })
+      .catch(e => {
+      });
+  }, []);
 
   function redirectToPage(action) {
-    if (action === "meu-perfil") window.location.href = "/perfil";
-    else {
-      //removeItem(token)
-      window.location.href = "/login";
-    }
+    if (action === "meu-perfil")
+      window.location.href = "/perfil";
   }
 
   return (
@@ -37,7 +40,7 @@ const Header = () => {
               id="balance-value"
               className="col-4 col-lg-4 d-flex justify-content-center balance"
             >
-              R$ 1.000
+              {`R$ ${carteira?.saldo.toLocaleString('pt-br', { minimumFractionDigits: 2 })}`}
             </div>
             <div
               id="meu-perfil"

@@ -1,0 +1,19 @@
+.body-modal {
+    background-color: #00bf63;
+  }
+  
+  .title-modal {
+    color: #00bf63;
+  }
+  
+  .body {
+    color: #00bf63;
+  }
+
+  .info-output{
+    background-color: white;
+    padding: 1vh;
+    padding-bottom: 2vh;
+    justify-content: center;
+    border-radius: 16px;
+  }

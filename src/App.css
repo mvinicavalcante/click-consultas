@@ -25,3 +25,7 @@ p {
 h2 {
   color: white !important;
 }
+
+#submit-button {
+  display: none;
+}
