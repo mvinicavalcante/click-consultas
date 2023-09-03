@@ -1,12 +1,34 @@
 import "./styles.css";
 import { FaSearch } from "react-icons/fa";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import DoctorService from "../../services/DoctorService";
 
 const SearchInput = () => {
   const [search, setSearch] = useState("");
+  const [medicos, setMedicos] = useState([]);
 
-  function buscar() {
-    alert(search);
+  const navigate = useNavigate();
+
+  async function buscar(e) {
+    e.preventDefault();
+    if (search) {
+      try {
+        const response = await DoctorService.getAllDoctorsForSpecialty(search);
+        setMedicos((prevMedicos) => {
+          const updatedMedicos = [...prevMedicos, ...response.data];
+          navigate(
+            `/principal/listarMedicos/${JSON.stringify(updatedMedicos)}`
+          );
+          return updatedMedicos;
+        });
+      } catch (error) {
+        toast.error(error.response.data);
+      }
+    } else {
+      toast.error("Pesquisa está vazia");
+    }
   }
 
   return (

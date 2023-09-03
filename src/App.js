@@ -1,6 +1,6 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Slide, ToastContainer } from "react-toastify";
@@ -24,11 +24,12 @@ import ProfileChoose from "./pages/profile/edit/profileChoose";
 import ProfileProfessional from "./pages/profile/edit/profileProfessional";
 import MainSearch from "./pages/main/search";
 import MainAddress from "./pages/main/address";
-import AddressCreator from "./pages/main/address/addAddress"
+import AddressCreator from "./pages/main/address/addAddress";
 import AddressUpdate from "./pages/main/address/updateAddress";
 import SchedulePage from "./pages/main/schedule";
 import ScheduleCreator from "./pages/main/schedule/addSchedule";
 import ScheduleUpdate from "./pages/main/schedule/updateSchedule";
+import SearchedList from "./pages/main/searchedList";
 
 function App() {
   return (
@@ -54,31 +55,58 @@ function App() {
 
           <Route element={<Register />} path="/cadastro" />
           <Route element={<PatientFirstPage />} path="/cadastro/paciente" />
-          <Route element={<PatientSecondPage />} path="/cadastro/paciente/plano" />
+          <Route
+            element={<PatientSecondPage />}
+            path="/cadastro/paciente/plano"
+          />
           <Route element={<DoctorFirstPage />} path="/cadastro/medico" />
-          <Route element={<DoctorSecondPage />} path="/cadastro/medico/profissional" />
+          <Route
+            element={<DoctorSecondPage />}
+            path="/cadastro/medico/profissional"
+          />
           <Route element={<WaitingPage />} path="/aguarda-confirmacao" />
 
           <Route element={<Main />} path="/principal" />
           <Route element={<MainSearch />} path="/principal/busca" />
+          <Route
+            element={<SearchedList />}
+            path="/principal/listarMedicos/:medicos"
+          />
           <Route element={<MainAddress />} path="/principal/enderecos" />
-          <Route element={<AddressCreator />} path="/principal/enderecos/criar" />
-          <Route element={<AddressUpdate />} path="/principal/enderecos/atualizar" />
+          <Route
+            element={<AddressCreator />}
+            path="/principal/enderecos/criar"
+          />
+          <Route
+            element={<AddressUpdate />}
+            path="/principal/enderecos/atualizar"
+          />
           <Route element={<SchedulePage />} path="/principal/agendas" />
-          <Route element={<ScheduleCreator />} path="/principal/agendas/criar" />
-          <Route element={<ScheduleUpdate />} path="/principal/agendas/atualizar" />
+          <Route
+            element={<ScheduleCreator />}
+            path="/principal/agendas/criar"
+          />
+          <Route
+            element={<ScheduleUpdate />}
+            path="/principal/agendas/atualizar"
+          />
 
           {/* ---  Rotas de PERFIL  --- */}
           <Route element={<Profile />} path="/perfil" />
           <Route element={<Wallet />} path="/perfil/carteira" />
           <Route element={<Deposit />} path="/perfil/carteira/deposito" />
           <Route element={<Withdraw />} path="/perfil/carteira/saque" />
-          <Route element={<NewAccount />} path="/perfil/carteira/saque/conta-destino" />
+          <Route
+            element={<NewAccount />}
+            path="/perfil/carteira/saque/conta-destino"
+          />
           <Route element={<ProfileEdit />} path="/perfil/editar" />
           <Route element={<ProfileChoose />} path="/perfil/escolher-perfis" />
-          <Route element={<ProfileProfessional />} path="/perfil/editar-profissional" />
+          <Route
+            element={<ProfileProfessional />}
+            path="/perfil/editar-profissional"
+          />
           <Route element={<History />} path="/perfil/historico" />
-
         </Routes>
       </BrowserRouter>
     </>

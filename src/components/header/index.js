@@ -1,7 +1,11 @@
 import "./styles.css";
 import clickConsultas from "../../assets/clickConsultas.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleUser, faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCircleUser,
+  faBars,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import UserService from "../../services/UserService";
 
@@ -10,17 +14,17 @@ const Header = () => {
   const [carteira, setCarteira] = useState();
 
   useEffect(() => {
-    UserService.getWalletById(sessionStorage.doctorId ?? sessionStorage.patientId)
-      .then(e => {
+    UserService.getWalletById(
+      sessionStorage.doctorId ?? sessionStorage.patientId
+    )
+      .then((e) => {
         setCarteira(e.data);
       })
-      .catch(e => {
-      });
+      .catch((e) => {});
   }, []);
 
   function redirectToPage(action) {
-    if (action === "meu-perfil")
-      window.location.href = "/perfil";
+    if (action === "meu-perfil") window.location.href = "/perfil";
   }
 
   return (
@@ -40,7 +44,9 @@ const Header = () => {
               id="balance-value"
               className="col-4 col-lg-4 d-flex justify-content-center balance"
             >
-              {`R$ ${carteira?.saldo.toLocaleString('pt-br', { minimumFractionDigits: 2 })}`}
+              {`R$ ${carteira?.saldo.toLocaleString("pt-br", {
+                minimumFractionDigits: 2,
+              })}`}
             </div>
             <div
               id="meu-perfil"
@@ -70,7 +76,9 @@ const Header = () => {
               id="balance-value"
               className="col-4 col-lg-4 d-flex justify-content-center balance"
             >
-              R$ 1.000
+              {`R$ ${carteira?.saldo.toLocaleString("pt-br", {
+                minimumFractionDigits: 2,
+              })}`}
             </div>
             <div className="col-3 col-lg-4">
               <img

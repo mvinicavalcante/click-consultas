@@ -13,19 +13,21 @@ const FormBoxLogin = () => {
     e.preventDefault();
 
     PatientService.login({ email, senha: password })
-      .then(e => {
+      .then((e) => {
         sessionStorage.setItem("patientId", e.data.id);
         window.location.href = "/principal";
       })
-      .catch((e) => { });
+      .catch((e) => {});
 
     DoctorService.login({ email, senha: password })
-      .then(e => {
+      .then((e) => {
         sessionStorage.setItem("doctorId", e.data.id);
         window.location.href = "/principal";
       })
       .catch((e) => {
-        toast.error(e.response.data)
+        setTimeout(() => {
+          toast.error(e.response.data);
+        }, 500);
       });
   }
 

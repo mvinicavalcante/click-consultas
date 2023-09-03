@@ -1,7 +1,6 @@
 import api from "./api";
 
 const DoctorService = {
-
   login(data) {
     return api.post("/medico/login", data);
   },
@@ -34,6 +33,10 @@ const DoctorService = {
     return api.get(`/medico/${doctorId}/especialidade`);
   },
 
+  getAllDoctorsForSpecialty(specialty) {
+    return api.post("/medico/buscarMedicos", specialty);
+  },
+
   registerSpecialty(doctorId, specialty) {
     return api.post(`/medico/${doctorId}/especialidade`, specialty);
   },
@@ -60,8 +63,7 @@ const DoctorService = {
 
   deleteAddress(doctorId, addressId) {
     return api.delete(`/medico/${doctorId}/endereco/${addressId}`);
-  }
-
-}
+  },
+};
 
 export default DoctorService;
