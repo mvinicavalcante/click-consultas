@@ -1,0 +1,45 @@
+.pix-label{
+    color: white;
+    font-size: 2em;
+    margin: 0;
+}
+.pix-details{
+    background-color: white;
+    border-radius: 20px;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5em;
+}
+
+.pix-text{
+    color: #00bf63;
+    margin-top: 8px;
+}
+
+.pix-details-button{
+    text-align: right;
+}
+
+.pix-add-button{
+    margin-top: 1em;
+}
+
+@media screen and (max-width: 1000px) {
+    .pix-labels{
+        display: none;
+    }
+    .pix-text{
+        margin-top: 1em;
+        width: auto;
+    }
+    .pix-details{
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .pix-details-button{
+        text-align: center;
+    }
+}

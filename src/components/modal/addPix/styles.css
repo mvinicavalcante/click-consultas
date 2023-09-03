@@ -1,0 +1,11 @@
+@media screen and (max-width: 1000px) {
+    .pix-form-container{
+        display: grid;
+    }
+    .pix-form{
+        width: auto;
+    }
+    .pix-form-button{
+        display: grid;
+    }
+}

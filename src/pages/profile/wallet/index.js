@@ -4,10 +4,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWallet, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import CustomButton from "../../../components/customButton";
 import UserService from "../../../services/UserService";
+import ShowPix from "../../../components/modal/showPix";
 
 const Wallet = () => {
   const [balanceVisibility, setBalanceVisibility] = useState(true);
+  const [modalShow, setModalShow] = useState(false);
   const [carteira, setCarteira] = useState();
+  const [pix, setPix] = useState();
 
   useEffect(() => {
     UserService.getWalletById(sessionStorage.doctorId ?? sessionStorage.patientId)
@@ -17,6 +20,15 @@ const Wallet = () => {
       .catch(e => {
       });
   }, []);
+
+  useEffect(() => {
+    UserService.getAllPixByUserId(sessionStorage.doctorId ?? sessionStorage.patientId)
+      .then(e => {
+        setPix(e.data);
+      })
+      .catch(e => {
+      });
+    }, []);
 
   function toggleBalanceVisibility() {
     setBalanceVisibility((prevState) => !prevState);
@@ -62,6 +74,10 @@ const Wallet = () => {
               </div>
             </div>
             <div className="col-12 row justify-content-center align-items-center">
+              <div className="col-8 d-flex justify-content-center">
+                  <button className="custom-button rounded-5" onClick={() => setModalShow(true)}> Visualizar Chaves Pix</button>
+              </div>
+            <div className="col-12 row justify-content-center align-items-center">
               <div className="col-4 d-flex justify-content-center">
                 <CustomButton action="Sacar" path="/perfil/carteira/saque" />
               </div>
@@ -69,9 +85,15 @@ const Wallet = () => {
                 <CustomButton action="Depositar" path="/perfil/carteira/deposito" />
               </div>
             </div>
+            </div>
           </div>
         </div>
       </div>
+      <ShowPix
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        content={pix}
+      />
     </div>
   );
 };
