@@ -1,9 +1,12 @@
 import "./styles.css";
+import { useNavigate } from "react-router-dom";
 
 const CustomButton = ({ className, action, path, bgColor, type }) => {
+  const navigate = useNavigate();
+
   function redirectToPage() {
     if (path)
-      window.location.href = path;
+      navigate(path);
   }
 
   let buttonStyle;

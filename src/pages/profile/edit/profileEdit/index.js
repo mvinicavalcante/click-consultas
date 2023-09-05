@@ -7,6 +7,7 @@ import FinishingSide from "../../../../components/finishingSide";
 import UserService from "../../../../services/UserService";
 import PatientService from "../../../../services/PatientService";
 import DoctorService from "../../../../services/DoctorService";
+import BackIcon from "../../../../components/backIcon";
 
 const ProfileEdit = () => {
   const [actionView, setActionView] = useState("dados");
@@ -44,7 +45,7 @@ const ProfileEdit = () => {
     sexo: sex,
     telefone: telephone
   }
-  
+
   function patchUser(e) {
     e.preventDefault();
 
@@ -100,7 +101,8 @@ const ProfileEdit = () => {
   return (
     <div id="container" className="container-fluid vw-100 overflow-auto">
       <div className="row vh-100">
-        <div className="col-logo col-12 col-md-8">
+        <div className="col-logo col-12 col-md-8 position-relative">
+          <BackIcon color="white" />
           <div className="row h-75">
             <div className="col-12 pt-5">
               <h2 className="text-center">Editar perfil</h2>

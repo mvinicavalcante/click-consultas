@@ -1,5 +1,6 @@
 import "./styles.css";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import FormInput from "../formInput";
 import PatientService from "../../../services/PatientService";
@@ -8,6 +9,7 @@ import DoctorService from "../../../services/DoctorService";
 const FormBoxLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   function login(e) {
     e.preventDefault();
@@ -15,17 +17,17 @@ const FormBoxLogin = () => {
     PatientService.login({ email, senha: password })
       .then(e => {
         sessionStorage.setItem("patientId", e.data.id);
-        window.location.href = "/principal";
-      })
-      .catch((e) => { });
-
-    DoctorService.login({ email, senha: password })
-      .then(e => {
-        sessionStorage.setItem("doctorId", e.data.id);
-        window.location.href = "/principal";
+        navigate("/principal");
       })
       .catch((e) => {
-        toast.error(e.response.data)
+        DoctorService.login({ email, senha: password })
+          .then(e => {
+            sessionStorage.setItem("doctorId", e.data.id);
+            navigate("/principal");
+          })
+          .catch((e) => {
+            toast.error(e.response.data)
+          });
       });
   }
 

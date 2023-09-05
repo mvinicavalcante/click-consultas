@@ -4,7 +4,7 @@ import UserHistory from "../../../components/userHistory";
 const History = () => {
 
   const userDefault = {
-    tipo: "medico",
+    tipo: "paciente",
     nome: "João da Silva",
     cpf: "000.000.000-00",
     dataNascimento: "01/01/2000",
@@ -18,54 +18,54 @@ const History = () => {
 
   const [arrayHistory] = useState([
     {
-      id:1,
-      medico:{
-        nome:"Reginaldo Silvestre",
-        especialidade:"Cardiologia"
+      id: 1,
+      medico: {
+        nome: "Reginaldo Silvestre",
+        especialidade: "Cardiologia"
       },
-      paciente:{
-        nome:"Matheus Araujo"
+      paciente: {
+        nome: "Matheus Araujo"
       },
       data: "25/05/2023",
       hora: "14:50",
       endereco: {
-        cidade:"Garanhuns",
-        estado:"Pernambuco",
-        cep:"12345-365",
-        bairro:"Boa Vista",
-        logradouro:"Av Bom Pastor",
+        cidade: "Garanhuns",
+        estado: "Pernambuco",
+        cep: "12345-365",
+        bairro: "Boa Vista",
+        logradouro: "Av Bom Pastor",
         numero: "n/a"
       },
-      valor:"149,00",
-      status:"avaliado"
+      valor: "149,00",
+      status: "avaliado"
     },
     {
-      id:2,
-      medico:{
-        nome:"Reginaldo Silvestre",
-        especialidade:"Neurologia"
+      id: 2,
+      medico: {
+        nome: "Reginaldo Silvestre",
+        especialidade: "Neurologia"
       },
-      paciente:{
-        nome:"Josefa Rodrigues"
+      paciente: {
+        nome: "Josefa Rodrigues"
       },
       data: "28/05/2023",
       hora: "15:50",
       endereco: {
-        cidade:"Garanhuns",
-        estado:"Pernambuco",
-        cep:"12345-365",
-        bairro:"Parque Fenix",
-        logradouro:"Av. Cristovão Colombo",
+        cidade: "Garanhuns",
+        estado: "Pernambuco",
+        cep: "12345-365",
+        bairro: "Parque Fenix",
+        logradouro: "Av. Cristovão Colombo",
         numero: "1438"
       },
-      valor:"215,00",
-      status:"disponivel"
+      valor: "215,00",
+      status: "disponivel"
     }
   ])
 
-    return (
-        <UserHistory type={userDefault.tipo} content={arrayHistory} />
-    )
-  };
+  return (
+    <UserHistory type={userDefault.tipo} content={arrayHistory} />
+  )
+};
 
 export default History;

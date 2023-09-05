@@ -1,5 +1,6 @@
 import "./styles.css";
 import React, { useState }  from "react";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 import ShowScheduleModal from "../../modal/showSchedule";
@@ -8,6 +9,7 @@ const ScheduleBox = ({ id, onDelete, content }) => {
 
   const [currentContent] = useState(content);
   const [modalShow, setModalShow] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="schedule-box-container"> 
@@ -26,7 +28,7 @@ const ScheduleBox = ({ id, onDelete, content }) => {
         </div>
         <div className="box-buttons">
           <hr/>
-          <button className="update" onClick={() => window.location.href="/principal/agendas/atualizar"}>
+          <button className="update" onClick={() => navigate("/principal/agendas/atualizar")}>
             <FontAwesomeIcon
               icon={faPenToSquare}
               color="#00bf63"

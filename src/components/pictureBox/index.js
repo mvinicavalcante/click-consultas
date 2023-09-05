@@ -1,14 +1,17 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserDoctor, faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 import "./styles.css";
 
 const PictureBox = ({ type }) => {
+  const navigate = useNavigate();
+
   function redirectToPage() {
     if (type === "medico") {
-      window.location.href = "/cadastro/medico";
+      navigate("/cadastro/medico");
     } else {
-      window.location.href = "/cadastro/paciente";
+      navigate("/cadastro/paciente");
     }
   }
 

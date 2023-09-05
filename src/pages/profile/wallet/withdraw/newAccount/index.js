@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import FinishingSide from "../../../../../components/finishingSide";
 import FormInput from "../../../../../components/form/formInput";
 import UserService from "../../../../../services/UserService";
+import BackIcon from "../../../../../components/backIcon";
 
 const NewAccount = () => {
   const [pixType, setPixType] = useState();
@@ -31,6 +32,7 @@ const NewAccount = () => {
     <div className="container-fluid vh-100 vw-100 overflow-auto">
       <div className="row vh-100">
         <div className="col-logo col-12 col-md-8">
+          <BackIcon color="white" />
           <div className="row h-75">
             <div className="col-12 pt-5">
               <h2 className="text-center">Conta Destino</h2>
