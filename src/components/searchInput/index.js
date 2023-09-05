@@ -31,6 +31,12 @@ const SearchInput = () => {
     }
   }
 
+  const handleKeyUp = (e) => {
+    if (e.keyCode === 13) {
+      buscar(e);
+    }
+  };
+
   return (
     <div className="d-flex input-container">
       <div className="search-wrapper">
@@ -39,6 +45,7 @@ const SearchInput = () => {
           type="text"
           placeholder="Pesquisar"
           value={search}
+          onKeyUp={handleKeyUp}
           onChange={(e) => setSearch(e.target.value)}
         />
         <button onClick={buscar} className="searchButton" type="submit">
