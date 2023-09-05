@@ -1,5 +1,6 @@
 import "./styles.css";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 import ShowAddressModal from "../../modal/showAddress";
@@ -7,6 +8,7 @@ import ShowAddressModal from "../../modal/showAddress";
 const AddressBox = ({ id, onDelete, content }) => {
   const [currentContent] = useState(content);
   const [modalShow, setModalShow] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="address-box-container">
@@ -26,7 +28,7 @@ const AddressBox = ({ id, onDelete, content }) => {
           <button
             className="update"
             onClick={() => {
-              window.location.href = "/principal/enderecos/atualizar"
+              navigate("/principal/enderecos/atualizar");
               sessionStorage.setItem("addressId", id);
             }}
           >

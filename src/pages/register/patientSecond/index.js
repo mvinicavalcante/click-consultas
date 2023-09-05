@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import FormInput from "../../../components/form/formInput";
 import PatientService from "../../../services/PatientService";
 import FinishingSide from "../../../components/finishingSide";
@@ -9,6 +10,7 @@ const PatientSecondPage = () => {
   const [institute, setInstitute] = useState("");
   const [number, setNumber] = useState("");
   const [noHealthPlanChecked, setNoHealthPlanChecked] = useState(false);
+  const navigate = useNavigate();
 
   const plan = {
     operadora: institute,
@@ -21,14 +23,14 @@ const PatientSecondPage = () => {
     if (!noHealthPlanChecked) {
       PatientService.registerHealthPlan(sessionStorage.userId, plan)
         .then(response =>
-          window.location.href = ("/principal")
+          navigate("/principal")
         )
         .catch((e) => {
           console.error(e.response.data);
         });
     }
     else
-      window.location.href = ("/principal");
+      navigate("/principal");
   }
 
   const handleNoHealthPlanChange = () => {

@@ -1,17 +1,15 @@
 import "./styles.css";
 import clickConsultas from "../../assets/clickConsultas.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCircleUser,
-  faBars,
-  faXmark,
-} from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleUser, faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import UserService from "../../services/UserService";
 
 const Header = () => {
   const [viewMenuMobile, setViewMenuMobile] = useState(false);
   const [carteira, setCarteira] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
     UserService.getWalletById(
@@ -24,7 +22,8 @@ const Header = () => {
   }, []);
 
   function redirectToPage(action) {
-    if (action === "meu-perfil") window.location.href = "/perfil";
+    if (action === "meu-perfil")
+      navigate("/perfil");
   }
 
   return (

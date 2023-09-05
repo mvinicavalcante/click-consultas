@@ -4,6 +4,7 @@ import DoctorService from "../../../../services/DoctorService";
 import { faUserPen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
+import BackIcon from "../../../../components/backIcon";
 
 const ProfileProfessional = () => {
   const [crms, setCrms] = useState([]);
@@ -32,6 +33,7 @@ const ProfileProfessional = () => {
     <div className="container-fluid vw-100 overflow-auto">
       <div className="row vh-100">
         <div className="col-logo col-12 col-md-8">
+          <BackIcon color="white" />
           <div className="row h-75">
             <div className="col-12 pt-5">
               <h2 className="text-center">Dados Profissionais</h2>

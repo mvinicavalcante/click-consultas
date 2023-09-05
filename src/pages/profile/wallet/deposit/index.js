@@ -5,6 +5,7 @@ import FormInput from "../../../../components/form/formInput";
 import CustomButton from "../../../../components/customButton";
 import DepositService from "../../../../services/DepositService";
 import { toast } from "react-toastify";
+import BackIcon from "../../../../components/backIcon";
 
 const Deposit = () => {
   const [value, setValue] = useState();
@@ -28,6 +29,7 @@ const Deposit = () => {
     <div className="container-fluid vh-100 vw-100 overflow-auto">
       <div className="row vh-100">
         <form onSubmit={submitForm} className="col-logo col-12 col-md-8">
+          <BackIcon color="white" />
           <div className="row h-75">
             <div className="col-12 pt-5">
               <h2 className="text-center">Depósito</h2>

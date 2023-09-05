@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import FormInput from "../../../components/form/formInput";
 import FinishingSide from "../../../components/finishingSide";
 import DoctorService from "../../../services/DoctorService";
@@ -11,8 +12,8 @@ const DoctorSecondPage = () => {
   const [specialityRQE, setSpecialityRQE] = useState("");
   const [profilePhoto, setProfilePhoto] = useState("");
   const [identificationPhoto, setIdentificationPhoto] = useState("");
-
   const doctorId = sessionStorage.doctorId;
+  const navigate = useNavigate();
 
   const crm = {
     numero: crmNumber,
@@ -39,7 +40,7 @@ const DoctorSecondPage = () => {
         toast.error(e.response.data);
       });
 
-    window.location.href = "/aguarda-confirmacao";
+    navigate("/aguarda-confirmacao");
   }
 
   return (

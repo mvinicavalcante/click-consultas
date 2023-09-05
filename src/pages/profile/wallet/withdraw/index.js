@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import FinishingSide from "../../../../components/finishingSide";
 import CustomButton from "../../../../components/customButton";
 import FormInput from "../../../../components/form/formInput";
 import UserService from "../../../../services/UserService";
 import WithdrawService from "../../../../services/WithdrawService";
 import { toast } from "react-toastify";
+import BackIcon from "../../../../components/backIcon";
 
 const Withdraw = () => {
   const [account, setAccount] = useState();
   const [value, setValue] = useState();
   const [pixs, setPixs] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     UserService.getAllPixByUserId(sessionStorage.patientId ?? sessionStorage.doctorId)
@@ -32,7 +35,7 @@ const Withdraw = () => {
       .then(e => {
         toast.success("Saque realizado com sucesso");
         setTimeout(() => {
-          window.location.href = "/perfil/carteira"
+          navigate("/perfil/carteira")
         }, 1500);
       })
       .catch(e => {
@@ -44,6 +47,7 @@ const Withdraw = () => {
     <div className="container-fluid vh-100 vw-100 overflow-auto">
       <div className="row vh-100">
         <div className="col-logo col-12 col-md-8">
+          <BackIcon color="white" />
           <div className="row h-75">
             <div className="col-12 pt-5 mb-5 mb-md-0">
               <h2 className="text-center">Saque</h2>

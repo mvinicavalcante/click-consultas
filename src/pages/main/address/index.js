@@ -1,14 +1,17 @@
 import "./styles.css";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouseMedical, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 import AddressBox from "../../../components/adress/addressBox";
 import DoctorService from "../../../services/DoctorService";
+import BackIcon from "../../../components/backIcon";
 
 const MainAddress = () => {
   const [arrayEnderecos, setArrayEnderecos] = useState([]);
   const doctorId = sessionStorage.doctorId;
+  const navigate = useNavigate();
 
   useEffect(() => {
     DoctorService.getAllAddressByDoctorId(doctorId)
@@ -16,7 +19,6 @@ const MainAddress = () => {
         setArrayEnderecos(e.data)
       })
       .catch(e => {
-        toast.error(e.response.data);
       });
   });
 
@@ -38,15 +40,14 @@ const MainAddress = () => {
       <div className="address">
         <div className="container-fluid vh-100 vw-100 justify-content-center align-items-center">
           <div id="content" className="overflow-auto row vh-100">
-            <div className="col-12 col-md-4 d-flex justify-content-center align-items-center">
-              <div className="col-12 col-md-6 my-3 m-md-0 d-flex justify-content-center">
-                <FontAwesomeIcon
-                  icon={faHouseMedical}
-                  color="#1E3050"
-                  size="8x"
-                  className="icon"
-                />
-              </div>
+            <div className="col-12 col-lg-4 d-flex justify-content-center align-items-center position-relative">
+              <BackIcon />
+              <FontAwesomeIcon
+                icon={faHouseMedical}
+                color="#1E3050"
+                size="8x"
+                className="icon"
+              />
             </div>
             <div className="col-logo col-12 col-lg-8">
               <div className="col-12 pt-5">
@@ -58,7 +59,7 @@ const MainAddress = () => {
                 <div className="add-schedule col-12 mt-3 text-left">
                   <button
                     onClick={() => {
-                      window.location.href = "/principal/enderecos/criar";
+                      navigate("/principal/enderecos/criar");
                       sessionStorage.removeItem("addressId");
                     }}
                     className="add-address"

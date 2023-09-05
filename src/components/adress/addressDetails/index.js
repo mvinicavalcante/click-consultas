@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import FormInput from "../../form/formInput";
 import FinishingSide from "../../finishingSide";
@@ -15,6 +16,7 @@ const AddressDetails = ({ type }) => {
   const [apelido, setApelido] = useState();
   const doctorId = sessionStorage.doctorId;
   const addressId = sessionStorage.addressId;
+  const navigate = useNavigate();
 
   const address = {
     cep,
@@ -53,7 +55,7 @@ const AddressDetails = ({ type }) => {
       .then(e => {
         toast.success("Endereço adicionado com sucesso.");
         setTimeout(() => {
-          window.location.href = "/principal/enderecos"
+          navigate("/principal/enderecos");
         }, 1500);
       })
       .catch(e => {
@@ -67,7 +69,7 @@ const AddressDetails = ({ type }) => {
       .then(e => {
         toast.success("Endereço atualizado com sucesso.");
         setTimeout(() => {
-          window.location.href = "/principal/enderecos"
+          navigate("/principal/enderecos");
         }, 1500);
         sessionStorage.removeItem("addressId");
       })
