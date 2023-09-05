@@ -74,10 +74,9 @@ const ShowPix = (props) => {
             </div>
             <AddPixModal 
               show={modalShow}
-              onHide={() => setModalShow(false)}
+              onHide={() => {setModalShow(false); toggleBlur()}}
               content={currentContent}
               updateContent={setCurrentContent}
-              action={toggleBlur}
             />
           </div>
       </Modal.Body>
