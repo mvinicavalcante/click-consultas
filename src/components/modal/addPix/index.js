@@ -32,7 +32,7 @@ const AddPixModal=(props) => {
     return(
         <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter">
         <Form onSubmit={formSubmit}>
-            <Modal.Header closeButton onClick={props.action}>
+            <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-vcenter" className="title-modal">
                 <h3>Adicionar Chave Pix</h3>
             </Modal.Title>
@@ -61,7 +61,7 @@ const AddPixModal=(props) => {
                             />
                         </div>
                         <div className="pix-form pix-form-button col mt-2 pt-1">
-                            <Button variant="success" type="submit" onClick={props.action}>
+                            <Button variant="success" type="submit">
                                 Adicionar
                             </Button>
                         </div>
