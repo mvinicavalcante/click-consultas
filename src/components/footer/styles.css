@@ -1,7 +1,7 @@
 .footer {
   background-color: #00bf63;
   color: white;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   overflow: auto;
@@ -27,8 +27,8 @@
   margin-left: 10px;
 }
 
-@media screen and (max-width: 992px){
-  .footer{
+@media screen and (max-width: 992px) {
+  .footer {
     position: relative;
   }
 }
