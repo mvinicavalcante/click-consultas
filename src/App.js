@@ -104,6 +104,9 @@ function App() {
             path="/perfil/editar-profissional"
           />
           <Route element={<History />} path="/perfil/historico" />
+
+          {/* ---  Rotas de CONSULTA  --- */}
+          <Route element={<Profile />} path="/consulta" />
         </Routes>
       </BrowserRouter>
     </>

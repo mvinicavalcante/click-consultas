@@ -2,7 +2,7 @@ import Header from "../../../components/header";
 import Footer from "../../../components/footer";
 import BoxDoctor from "../../../components/boxDoctor";
 import { useEffect, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SearchedList = () => {
   const [parsedMedicos, setParsedMedicos] = useState([]);
