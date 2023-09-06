@@ -68,10 +68,7 @@ function App() {
 
           <Route element={<Main />} path="/principal" />
           <Route element={<MainSearch />} path="/principal/busca" />
-          <Route
-            element={<SearchedList />}
-            path="/principal/listarMedicos/:medicos"
-          />
+          <Route element={<SearchedList />} path="/principal/listarMedicos" />
           <Route element={<MainAddress />} path="/principal/enderecos" />
           <Route
             element={<AddressCreator />}

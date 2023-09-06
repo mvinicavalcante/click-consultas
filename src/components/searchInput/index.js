@@ -7,8 +7,6 @@ import DoctorService from "../../services/DoctorService";
 
 const SearchInput = () => {
   const [search, setSearch] = useState("");
-  const [medicos, setMedicos] = useState([]);
-
   const navigate = useNavigate();
 
   async function buscar(e) {
@@ -16,13 +14,11 @@ const SearchInput = () => {
     if (search) {
       try {
         const response = await DoctorService.getAllDoctorsForSpecialty(search);
-        setMedicos((prevMedicos) => {
-          const updatedMedicos = [...prevMedicos, ...response.data];
-          navigate(
-            `/principal/listarMedicos/${JSON.stringify(updatedMedicos)}`
-          );
-          return updatedMedicos;
-        });
+        const medicos = response.data;
+
+        sessionStorage.setItem("medicos", JSON.stringify(medicos));
+
+        navigate("/principal/listarMedicos");
       } catch (error) {
         toast.error(error.response.data);
       }
