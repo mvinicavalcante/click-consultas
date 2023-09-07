@@ -33,7 +33,7 @@ const Main = () => {
                 <CustomButton
                   className ="main-button"
                   action="Agendamentos"
-                  path="/principal/busca"
+                  path="/principal/agendamentos"
                   bgColor="green"
                 />
               </li>
@@ -56,7 +56,7 @@ const Main = () => {
               <CustomButton
                 className ="main-button"
                 action="Agendamentos"
-                path="/principal/busca"
+                path="/principal/agendamentos"
                 bgColor="green"
               />
             </li>

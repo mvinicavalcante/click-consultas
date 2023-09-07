@@ -1,0 +1,40 @@
+.scheduling {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 3%;
+  }
+
+.scheduling-title {
+    color: #00bf63;
+}
+
+
+  
+  
+@media screen and (max-width: 992px) {
+    .page-title {
+        font-size: 20px;
+        padding-bottom: 20px;
+    }
+
+    .main {
+        flex-direction: column;
+    }
+
+    .main-item {
+        margin: 15px 0px;
+    }
+
+    .scheduling {
+        justify-content: center;
+    }
+}
+  
+@media screen and (min-width: 2030px) {
+    .main-button{
+        width: 450px;
+        height: 80px;
+        font-size: 32px;
+    }
+
+}

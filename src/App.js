@@ -30,6 +30,8 @@ import SchedulePage from "./pages/main/schedule";
 import ScheduleCreator from "./pages/main/schedule/addSchedule";
 import ScheduleUpdate from "./pages/main/schedule/updateSchedule";
 import SearchedList from "./pages/main/searchedList";
+import MainSheduling from "./pages/main/scheduling";
+import SchedulingDetails from "./pages/main/scheduling/schedulingDetails"
 
 function App() {
   return (
@@ -87,6 +89,8 @@ function App() {
             element={<ScheduleUpdate />}
             path="/principal/agendas/atualizar"
           />
+          <Route element={<MainSheduling />} path="/principal/agendamentos" />
+          <Route element={<SchedulingDetails />} path="/principal/agendamentos/visualizar" />
 
           {/* ---  Rotas de PERFIL  --- */}
           <Route element={<Profile />} path="/perfil" />
