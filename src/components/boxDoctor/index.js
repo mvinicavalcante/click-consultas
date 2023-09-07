@@ -18,7 +18,9 @@ const BoxDoctor = ({ doctorKey, name, address, speciality, crm, avatar }) => {
           <div className="col-md-6 infos">
             <h1 className="doctor-name mb-1">{name}</h1>
             <h5 className="speciality">
-              {speciality.map((speciality) => speciality)}
+              {speciality.map((speciality) => {
+                return <label>{speciality}</label>;
+              })}
             </h5>
             <div className="address">
               {address.map((info) => {

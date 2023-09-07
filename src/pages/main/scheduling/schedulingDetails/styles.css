@@ -1,5 +1,6 @@
 .scheduling {
     display: flex;
+    min-height: 65vh;
     justify-content: flex-start;
     margin-top: 3%;
   }

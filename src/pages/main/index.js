@@ -14,31 +14,29 @@ const Main = () => {
             <ul className="main-itens">
               <li className="main-item">
                 <CustomButton
-                className ="main-button"
-                action="Minhas agendas"
-                path="/principal/agendas"
-                bgColor="green" />
+                  className="main-button"
+                  action="Minhas agendas"
+                  path="/principal/agendas"
+                  bgColor="green"
+                />
               </li>
               <li className="main-item">
-                <CustomButton 
-                  className ="main-button" 
-                  action="Meus endereços" 
+                <CustomButton
+                  className="main-button"
+                  action="Meus endereços"
                   path="/principal/enderecos"
-                  bgColor="green" 
+                  bgColor="green"
                 />
               </li>
             </ul>
             <ul className="main-itens">
               <li className="main-item">
                 <CustomButton
-                  className ="main-button"
+                  className="main-button"
                   action="Agendamentos"
                   path="/principal/agendamentos"
                   bgColor="green"
                 />
-              </li>
-              <li className="main-item">
-                <CustomButton className ="main-button" action="Suporte" bgColor="green" />
               </li>
             </ul>
           </>
@@ -46,7 +44,7 @@ const Main = () => {
           <>
             <li className="main-item">
               <CustomButton
-                className ="main-button"
+                className="main-button"
                 action="Agendar consulta"
                 path="/principal/busca"
                 bgColor="green"
@@ -54,14 +52,11 @@ const Main = () => {
             </li>
             <li className="main-item">
               <CustomButton
-                className ="main-button"
+                className="main-button"
                 action="Agendamentos"
                 path="/principal/agendamentos"
                 bgColor="green"
               />
-            </li>
-            <li className="main-item">
-              <CustomButton className ="main-button" action="Suporte" bgColor="green" />
             </li>
           </>
         )}

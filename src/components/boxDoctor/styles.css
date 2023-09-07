@@ -14,7 +14,8 @@
   font-style: italic;
 }
 
-.address {
+.address,
+.speciality {
   display: flex;
   flex-direction: column;
 }

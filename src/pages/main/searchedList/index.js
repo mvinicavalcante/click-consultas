@@ -25,7 +25,7 @@ const SearchedList = () => {
   return (
     <>
       <Header />
-      <div className="container-fluid">
+      <div className="container-fluid searched-list-container">
         <div className="container pt-0 d-flex flex-column">
           {parsedMedicos.map((medico) => {
             return (
@@ -39,15 +39,17 @@ const SearchedList = () => {
                   addressArray.push(info);
                   return endereco.cidade + ", " + endereco.estado;
                 })}
-                speciality={medico.especialidades.map(
-                  (especialidade) => especialidade.nome
-                )}
+                speciality={medico.especialidades.map((especialidade) => {
+                  const specialityArray = [];
+                  specialityArray.push(especialidade.nome);
+                  return especialidade.nome;
+                })}
                 crm={medico.crm}
               />
             );
           })}
         </div>
-        <div className="text-center mt-5">
+        <div className="text-center mt-5 mb-5">
           <button className="btn btn-secondary" onClick={backToSearch}>
             Refazer pesquisa
           </button>

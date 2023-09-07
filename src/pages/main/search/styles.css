@@ -1,4 +1,6 @@
-
+.main {
+  min-height: 70vh;
+}
 
 @media screen and (max-width: 500px) {
   .page-title {
