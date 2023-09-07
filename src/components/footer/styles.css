@@ -1,8 +1,6 @@
 .footer {
   background-color: #00bf63;
   color: white;
-  position: absolute;
-  bottom: 0;
   width: 100%;
   overflow: auto;
 }
