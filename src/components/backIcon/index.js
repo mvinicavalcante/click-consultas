@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
 const BackIcon = ({ color }) => {
@@ -8,7 +8,7 @@ const BackIcon = ({ color }) => {
   return (
     <div onClick={() => navigate("/principal")} className="back-icon" title="Voltar à página principal">
       <FontAwesomeIcon
-        icon={faArrowLeft}
+        icon={faHouse}
         color={color ?? "#1E3050"}
         size="3x"
       />
