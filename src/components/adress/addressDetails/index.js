@@ -41,7 +41,6 @@ const AddressDetails = ({ type }) => {
           setCidade(e.data.cidade);
           setEstado(e.data.estado);
           setApelido(e.data.apelido);
-          console.log(e.data)
         })
         .catch(e => {
           toast.error(e.response.data);

@@ -1,5 +1,5 @@
 import "./styles.css";
-import React, { useState }  from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -12,22 +12,22 @@ const ScheduleBox = ({ id, onDelete, content }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="schedule-box-container"> 
+    <div className="schedule-box-container">
       <div className="box-content flex-row col-md-10 mb-0" >
         <div className="box-title">
           <button className="expand" onClick={() => setModalShow(true)}>
-          <h3>{content.especialidade}</h3>
+            <h3>{content.especialidadeMedica}</h3>
           </button>
         </div>
         <div className="box-details">
           <p className="box-details">
-          {content.local}
-          <br/>
-          {content.valor}
+            {content.locaisConsulta}
+            <br />
+            {content.valorConsulta}
           </p>
         </div>
         <div className="box-buttons">
-          <hr/>
+          <hr />
           <button className="update" onClick={() => navigate("/principal/agendas/atualizar")}>
             <FontAwesomeIcon
               icon={faPenToSquare}
@@ -35,16 +35,16 @@ const ScheduleBox = ({ id, onDelete, content }) => {
               className="icon"
               width={20}
               id="plus-svg"
-              />
+            />
           </button>
-          <button className="trash" onClick={() => {onDelete(id)}} >
+          <button className="trash" onClick={() => { onDelete(id) }} >
             <FontAwesomeIcon
               icon={faTrash}
               color="#00bf63"
               className="icon"
               width={20}
               id="plus-svg"
-              />
+            />
           </button>
         </div>
       </div>
@@ -52,11 +52,11 @@ const ScheduleBox = ({ id, onDelete, content }) => {
         show={modalShow}
         onHide={() => setModalShow(false)}
         content={currentContent}
-        schedule = {content}
+        schedule={content}
       />
     </div>
   );
 };
 
 export default ScheduleBox
-;
+  ;

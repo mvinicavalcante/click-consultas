@@ -57,8 +57,7 @@
 }
 
 .view-button{
-    width: 380px;
-    height: 70px;
+    min-height: 70px;
 }
 
 @media screen and (max-width: 1030px){
