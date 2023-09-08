@@ -11,7 +11,7 @@ const Main = () => {
       <div className="main">
         {sessionStorage.doctorId ? (
           <>
-            <ul className="main-itens">
+            <ul className="main-itens mt-3 mt-lg-0 mb-0">
               <li className="main-item">
                 <CustomButton
                   className="main-button"
@@ -29,7 +29,7 @@ const Main = () => {
                 />
               </li>
             </ul>
-            <ul className="main-itens">
+            <ul className="main-itens ">
               <li className="main-item">
                 <CustomButton
                   className="main-button"
@@ -42,7 +42,7 @@ const Main = () => {
           </>
         ) : (
           <>
-            <li className="main-item">
+            <li className="main-item py-4 pt-lg-0">
               <CustomButton
                 className="main-button"
                 action="Agendar consulta"
@@ -50,7 +50,7 @@ const Main = () => {
                 bgColor="green"
               />
             </li>
-            <li className="main-item">
+            <li className="main-item py-4 pt-lg-0">
               <CustomButton
                 className="main-button"
                 action="Agendamentos"
