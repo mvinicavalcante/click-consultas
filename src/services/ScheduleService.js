@@ -20,6 +20,18 @@ const ScheduleService = {
 
   deleteSchedule(scheduleId) {
     return api.delete("/agenda/" + scheduleId);
+  },
+
+  getAllTimesByScheduleId(scheduleId) {
+    return api.get(`/agenda/${scheduleId}/horarios`);
+  },
+
+  registerTimes(scheduleId, times) {
+    return api.post(`/agenda/${scheduleId}/horarios`, times);
+  },
+
+  deleteTimes(scheduleId) {
+    return api.delete(`/agenda/${scheduleId}/horarios`);
   }
 
 }

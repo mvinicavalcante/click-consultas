@@ -8,21 +8,21 @@ const Footer = () => {
     <footer className="footer">
       <div className="container">
         <div className="row">
-          <div className="col-lg-4 p-2">
+          <div className="col-6 col-lg-4 p-2">
             <ul>
               <li className="li-footer">Página inicial</li>
               <li className="li-footer">Termos do sistema</li>
               <li className="li-footer">Verificação médica</li>
             </ul>
           </div>
-          <div className="col-lg-4 p-2">
+          <div className="col-6 col-lg-4 p-2">
             <ul>
               <li className="li-footer">Quem somos?</li>
               <li className="li-footer">Fale conosco</li>
               <li className="li-footer">Contato: sac@clickconsultas.com</li>
             </ul>
           </div>
-          <div className="col-lg-4 p-2 d-flex align-items-center">
+          <div className="col-12 col-lg-4 p-2 d-flex align-items-center">
             <ul>
               <li className="li-footer">
                 <label className="icons">

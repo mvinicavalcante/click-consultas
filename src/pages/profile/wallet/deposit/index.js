@@ -6,9 +6,11 @@ import CustomButton from "../../../../components/customButton";
 import DepositService from "../../../../services/DepositService";
 import { toast } from "react-toastify";
 import BackIcon from "../../../../components/backIcon";
+import { useNavigate } from "react-router-dom";
 
 const Deposit = () => {
   const [value, setValue] = useState();
+  const navigate = useNavigate();
 
   function submitForm(e) {
     e.preventDefault();
@@ -17,7 +19,7 @@ const Deposit = () => {
       .then(e => {
         toast.success("Depósito realizado com sucesso.");
         setTimeout(() => {
-          window.location.href = "/perfil/carteira"
+          navigate("/perfil/carteira");
         }, 1500);
       })
       .catch(e => {

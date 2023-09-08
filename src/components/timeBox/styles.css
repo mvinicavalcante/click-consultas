@@ -4,6 +4,11 @@
     padding-top: 0.5rem;
 }
 
-.diaSemana{
-    font-weight: bold;
+.time-box-date {
+    background-color: #00bf63;
+    color: white;
+}
+
+.time-box-time {
+    margin-right: 1em;
 }

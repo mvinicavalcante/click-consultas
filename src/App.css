@@ -36,3 +36,20 @@ h2 {
   left: 2.5vw;
   cursor: pointer;
 }
+
+.address-group {
+  background-color: white;
+  color: #00BF63;
+}
+
+.address-group label {
+  color: #00BF63;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

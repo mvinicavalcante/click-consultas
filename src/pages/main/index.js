@@ -61,7 +61,9 @@ const Main = () => {
           </>
         )}
       </div>
-      <Footer />
+      <div className="fixed-bottom">
+        <Footer />
+      </div>
     </div>
   );
 };

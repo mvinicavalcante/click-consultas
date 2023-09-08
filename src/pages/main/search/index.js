@@ -7,13 +7,15 @@ const MainSearch = () => {
   return (
     <>
       <Header />
-      <div className="main d-flex flex-column mt-0 pt-0">
+      <div className="main d-flex flex-column">
         <label className="page-title">
           Digite a especialidade médica desejada
         </label>
         <SearchInput />
       </div>
-      <Footer />
+      <div className="fixed-bottom">
+        <Footer />
+      </div>
     </>
   );
 };

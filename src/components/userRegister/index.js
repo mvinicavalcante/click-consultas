@@ -5,6 +5,7 @@ import { faUserPlus, faUserDoctor, faArrowRight } from "@fortawesome/free-solid-
 import FormInput from "../form/formInput";
 import PatientService from "../../services/PatientService";
 import DoctorService from "../../services/DoctorService";
+import { useNavigate } from "react-router-dom";
 
 const UserRegister = ({ type }) => {
   const [name, setName] = useState("");
@@ -17,6 +18,7 @@ const UserRegister = ({ type }) => {
   const [email, setEmail] = useState("");
   const [state, setState] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
+  const navigate = useNavigate();
 
   const user = {
     nome: name,
@@ -40,7 +42,7 @@ const UserRegister = ({ type }) => {
       PatientService.registerPatient(user)
         .then(response => {
           sessionStorage.setItem("patientId", response.data.id);
-          window.location.href = "/cadastro/paciente/plano";
+          navigate("/cadastro/paciente/plano");
         })
         .catch((e) => {
           console.error(e.response.data);
@@ -51,7 +53,7 @@ const UserRegister = ({ type }) => {
       DoctorService.registerDoctor(user)
         .then(response => {
           sessionStorage.setItem("doctorId", response.data.id)
-          window.location.href = "/cadastro/medico/profissional";
+          navigate("/cadastro/medico/profissional");
         })
         .catch((e) => {
           console.error(e.response.data);

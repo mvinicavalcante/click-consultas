@@ -4,10 +4,12 @@ import FinishingSide from "../../../../../components/finishingSide";
 import FormInput from "../../../../../components/form/formInput";
 import UserService from "../../../../../services/UserService";
 import BackIcon from "../../../../../components/backIcon";
+import { useNavigate } from "react-router-dom";
 
 const NewAccount = () => {
   const [pixType, setPixType] = useState();
   const [pixKey, setPixKey] = useState();
+  const navigate = useNavigate();
 
   const pix = {
     chave: pixKey,
@@ -20,7 +22,7 @@ const NewAccount = () => {
       .then(e => {
         toast.success("Pix adicionado com sucesso.")
         setTimeout(() => {
-          window.location.href = "/perfil/carteira/saque"
+          navigate("/perfil/carteira/saque");
         }, 1500);
       })
       .catch(e => {

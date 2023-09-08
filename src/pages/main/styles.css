@@ -2,12 +2,12 @@
   display: flex;
   text-align: center;
   justify-content: center;
-  margin-top: 20vh;
-  max-height: 10vh;
+  padding: 20vh 0vw;
 }
 
 .main-item {
   margin-right: 40px;
+  margin-top: 30px;
 }
 
 .main-button {
@@ -18,18 +18,11 @@
 @media screen and (max-width: 992px) {
   .main {
     flex-direction: column;
+    padding: 10vh 0vw;
   }
 
   .main-item {
     margin: 15px 0px;
-  }
-}
-
-@media screen and (min-width: 2030px) {
-  .main-button {
-    width: 450px;
-    height: 80px;
-    font-size: 32px;
   }
 }
 

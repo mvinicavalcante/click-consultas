@@ -21,9 +21,9 @@ const ScheduleBox = ({ id, onDelete, content }) => {
         </div>
         <div className="box-details">
           <p className="box-details">
-            {content.locaisConsulta}
+            {content.enderecoMedico.apelido}
             <br />
-            {content.valorConsulta}
+            R$ {content.valorConsulta}
           </p>
         </div>
         <div className="box-buttons">
