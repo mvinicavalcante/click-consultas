@@ -1,7 +1,7 @@
 import "./styles.css";
-import Header from "../../../components/header";
-import Footer from "../../../components/footer";
-import BoxDoctor from "../../../components/boxDoctor";
+import Header from "../../../../components/header";
+import Footer from "../../../../components/footer";
+import BoxDoctor from "../../../../components/boxDoctor";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -11,6 +11,17 @@ const SearchedList = () => {
 
   function backToSearch() {
     navigate("/principal/busca");
+  }
+
+  function goToMakeAppointment(id) {
+    const medicoSelecionado = parsedMedicos.find(
+      (medico) => medico.id === parseInt(id)
+    );
+    sessionStorage.setItem(
+      "medicoSelecionado",
+      JSON.stringify(medicoSelecionado)
+    );
+    navigate("/principal/medico-selecionado");
   }
 
   useEffect(() => {
@@ -45,6 +56,7 @@ const SearchedList = () => {
                   return especialidade.nome;
                 })}
                 crm={medico.crm}
+                onClick={() => goToMakeAppointment(medico.id)}
               />
             );
           })}

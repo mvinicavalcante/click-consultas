@@ -29,9 +29,11 @@ import AddressUpdate from "./pages/main/address/updateAddress";
 import SchedulePage from "./pages/main/schedule";
 import ScheduleCreator from "./pages/main/schedule/addSchedule";
 import ScheduleUpdate from "./pages/main/schedule/updateSchedule";
-import SearchedList from "./pages/main/searchedList";
+import SearchedList from "./pages/main/search/searchedList";
 import MainSheduling from "./pages/main/scheduling";
-import SchedulingDetails from "./pages/main/scheduling/schedulingDetails"
+import SchedulingDetails from "./pages/main/scheduling/schedulingDetails";
+import DoctorSelected from "./pages/main/search/doctorSelected";
+import ConfirmConsultation from "./pages/confirmConsultation";
 
 function App() {
   return (
@@ -90,7 +92,10 @@ function App() {
             path="/principal/agendas/atualizar"
           />
           <Route element={<MainSheduling />} path="/principal/agendamentos" />
-          <Route element={<SchedulingDetails />} path="/principal/agendamentos/visualizar" />
+          <Route
+            element={<SchedulingDetails />}
+            path="/principal/agendamentos/visualizar"
+          />
 
           {/* ---  Rotas de PERFIL  --- */}
           <Route element={<Profile />} path="/perfil" />
@@ -110,7 +115,14 @@ function App() {
           <Route element={<History />} path="/perfil/historico" />
 
           {/* ---  Rotas de CONSULTA  --- */}
-          <Route element={<Profile />} path="/consulta" />
+          <Route
+            element={<DoctorSelected />}
+            path="/principal/medico-selecionado"
+          />
+          <Route
+            element={<ConfirmConsultation />}
+            path="/principal/confirmar-consulta"
+          />
         </Routes>
       </BrowserRouter>
     </>

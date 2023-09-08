@@ -1,0 +1,40 @@
+.info-header-doctor {
+  float: right;
+}
+
+.info-header-doctor {
+  color: #1e3050;
+}
+
+.nav-doctor {
+  border-radius: 13px;
+  background-color: #1e3050;
+  min-height: 5vh;
+  padding: 20px;
+  color: white;
+}
+
+.endereco {
+  font-style: italic;
+  font-weight: 100;
+}
+
+.card-commentary {
+  border: 1px solid white;
+  border-radius: 13px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.card-commentary > p {
+  font-style: italic;
+}
+
+@media screen and (max-width: 500px) {
+  #card-header {
+    text-align: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+  }
+}

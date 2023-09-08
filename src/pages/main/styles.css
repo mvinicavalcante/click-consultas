@@ -5,11 +5,6 @@
   padding: 20vh 0vw;
 }
 
-.main-item {
-  margin-right: 40px;
-  margin-top: 30px;
-}
-
 .main-button {
   width: 380px;
   height: 70px;
@@ -27,10 +22,22 @@
 }
 
 @media screen and (max-width: 500px) {
+  .main {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-top: 10vh;
+    max-height: 10vh;
+  }
+
   .main-button {
     max-width: auto;
     font-size: 12px;
     padding: 10px;
     height: 70px;
+  }
+
+  .main-itens {
+    margin-top: -30px;
   }
 }
