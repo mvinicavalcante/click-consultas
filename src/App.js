@@ -34,6 +34,7 @@ import MainSheduling from "./pages/main/scheduling";
 import SchedulingDetails from "./pages/main/scheduling/schedulingDetails";
 import DoctorSelected from "./pages/main/search/doctorSelected";
 import ConfirmConsultation from "./pages/confirmConsultation";
+import Review from "./pages/profile/history/review";
 
 function App() {
   return (
@@ -113,6 +114,7 @@ function App() {
             path="/perfil/editar-profissional"
           />
           <Route element={<History />} path="/perfil/historico" />
+          <Route element={<Review />} path="/avaliar" />
 
           {/* ---  Rotas de CONSULTA  --- */}
           <Route

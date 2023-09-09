@@ -30,7 +30,7 @@ const UserHistory = ({ type, content }) => {
                 <div className="add-schedule col-12 mt-3 text-left">
                   {content.map((historico, index) => (
                     <div key={index} className="col mb-5">
-                      <HistoryBox content={historico} type={type} />
+                      <HistoryBox content={historico} type={type} action={"/avaliar"}/>
                     </div>
                   ))}
                 </div>

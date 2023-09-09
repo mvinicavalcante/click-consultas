@@ -1,0 +1,92 @@
+.review-box{
+    text-align: center;
+}
+
+.review-box-image{
+    width: 10em;
+}
+
+.review-box-text{
+    color: #00bf63;
+}
+
+.review-star-button-action{
+    border: none;
+}
+
+.review-star-button-action:hover{
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.review-input-box{
+    width: 30vw; 
+    height: 20vh;
+    margin-top: 4vh;
+    border-radius: 20px; 
+    background-color: #00bf63; 
+    border: none;
+    text-align: justify;
+    color: white;
+    padding: 15px; 
+    font-size: 18px;
+    resize: none;
+    overflow: auto;
+}
+
+.review-input-box:focus, input:focus, select:focus {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+} 
+
+.review-input-box::-webkit-scrollbar {
+    display: none;
+}
+
+.review-input-box::placeholder{
+    color:white;
+}
+
+.review-button{
+    margin-top: 10vh;
+}
+
+.review-button-add{
+    background-color: #00bf63;
+    color: white;
+    font-size: 24px;
+    border: none;
+    border-radius: 26px;
+    outline: none;
+    padding: 1vh 5vw;
+    box-shadow: 0px 3px 4px rgba(120, 120, 120, 0.3);  
+}
+
+.review-button-add:hover{
+    background-color: #00bf63;
+    box-shadow: none !important;
+}
+
+@media screen and (max-width: 740px){
+    .review-box{
+        display: grid;
+        flex-direction: column;
+    }
+
+    .review-box-container{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .review-input-box{
+        width: 70vw;
+    }
+
+    .review-button{
+        margin-top: 5vh;
+        margin-bottom: 5vh;
+    }
+    
+}
+

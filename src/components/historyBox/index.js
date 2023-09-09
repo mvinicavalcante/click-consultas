@@ -2,7 +2,7 @@ import "./styles.css";
 import CustomButton from "../customButton"
 
 
-const HistoryBox = ({ content, type }) => {
+const HistoryBox = ({ content, type, action }) => {
   return (
     <>
       <div className="history-box-container" >
@@ -48,7 +48,7 @@ const HistoryBox = ({ content, type }) => {
               <CustomButton
                 className="review-button"
                 action="Avaliar consulta"
-                path="/perfil/historico"
+                path={action}
                 bgColor="light green"
               />
             </div>

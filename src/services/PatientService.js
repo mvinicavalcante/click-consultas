@@ -20,6 +20,10 @@ const PatientService = {
 
   registerHealthPlan(patientId, plan) {
     return api.post(`/paciente/${patientId}/plano`, plan);
+  },
+
+  registerReview(avaliacao){
+    return api.post("/avaliacao", avaliacao);
   }
 
 }
