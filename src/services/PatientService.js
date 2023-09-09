@@ -24,8 +24,11 @@ const PatientService = {
 
   registerReview(avaliacao){
     return api.post("/avaliacao", avaliacao);
-  }
+  },
 
+  getHistory(patientId){
+    return api.get(`/paciente/historico/${patientId}`);
+  }
 }
 
 export default PatientService;

@@ -75,6 +75,10 @@ const DoctorService = {
 
   getAssessmentRecord(doctorId){
     return api.get(`/medico/${doctorId}`);
+  },
+
+  getHistory(doctorId){
+    return api.get(`/medico/historico/${doctorId}`);
   }
 };
 
