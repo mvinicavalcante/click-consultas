@@ -1,31 +1,22 @@
 import "./styles.css";
 import defaultAvatar from "../../assets/doctors/defaultAvatar.png";
-import definedAvatar from "../../assets/doctors/image 11.png";
 
-const BoxDoctor = ({
-  id,
-  doctorKey,
-  name,
-  address,
-  speciality,
-  crm,
-  avatar,
-  onClick,
-}) => {
+const BoxDoctor = ({ id, name, address,speciality, avatar, onClick }) => {
+
   return (
-    <div className="box-doctor" key={doctorKey}>
+    <div className="box-doctor" key={id}>
       <div className="container">
         <div className="row d-flex align-items-center">
           <div className="col-md-2 justify-content-center align-items-center">
             {avatar ? (
-              <img src={definedAvatar} alt={name} className="avatar" />
+              <img src={avatar} width={110} height={120} alt={name} className="avatar rounded-4" />
             ) : (
               <img src={defaultAvatar} alt={name} className="avatar" />
             )}
           </div>
 
-          <div className="col-md-6 infos">
-            <h1 className="doctor-name mb-1">{name}</h1>
+          <div className="col-md-4 infos">
+            <h2 className="doctor-name mb-1">Dr. {name}</h2>
             <h5 className="speciality">
               {speciality.map((specialityItem, index) => {
                 return (
@@ -35,20 +26,30 @@ const BoxDoctor = ({
                 );
               })}
             </h5>
-            <div className="address">
-              {address.map((info, index) => {
-                return <label key={`info-${id}-${index}`}>{info}</label>;
+          </div>
+
+          <div className="col-md-4">
+            <div className="address text-start">
+              {address.length > 0 ?
+                <h4>Endereços:</h4>
+                :
+                <h5>Não possui endereço cadastrado</h5>
+              }
+              {address.map((address, index) => {
+                return <label key={`info-${id}-${index}`}>{address.logradouro}, {address.numero}, {address.cidade}-{address.estado}</label>;
               })}
             </div>
           </div>
 
-          <div className="col-md-4">
+
+          <div className="col-md-2 pt-3">
             <button
               className="btn btn-primary"
               href="/consultas"
               onClick={onClick}
+              disabled={address.length === 0 && true}
             >
-              Agendar Consulta com {name}
+              Agendar Consulta
             </button>
           </div>
         </div>

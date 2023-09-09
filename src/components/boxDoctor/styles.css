@@ -10,18 +10,11 @@
 .infos {
   text-align: left;
 }
-.speciality {
-  font-style: italic;
-}
 
 .address,
 .speciality {
   display: flex;
   flex-direction: column;
-}
-
-.avatar {
-  cursor: pointer;
 }
 
 @media screen and (max-width: 500px) {

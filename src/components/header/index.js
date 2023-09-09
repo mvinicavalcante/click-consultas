@@ -12,19 +12,12 @@ const Header = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    UserService.getWalletById(
-      sessionStorage.doctorId ?? sessionStorage.patientId
-    )
+    UserService.getWalletById(sessionStorage.doctorId ?? sessionStorage.patientId)
       .then((e) => {
         setCarteira(e.data);
       })
-      .catch((e) => {});
+      .catch((e) => { });
   }, []);
-
-  function redirectToPage(action) {
-    if (action === "meu-perfil")
-      navigate("/perfil");
-  }
 
   return (
     <>
@@ -39,21 +32,12 @@ const Header = () => {
                 alt="logo"
               />
             </div>
-            <div
-              id="balance-value"
-              className="col-4 col-lg-4 d-flex justify-content-center balance"
-            >
-              {`R$ ${carteira?.saldo.toLocaleString("pt-br", {
-                minimumFractionDigits: 2,
-              })}`}
+            <div id="balance-value" className="col-4 col-lg-4 d-flex justify-content-center balance">
+              {`R$ ${carteira?.saldo.toLocaleString("pt-br", { minimumFractionDigits: 2 })}`}
             </div>
-            <div
-              id="meu-perfil"
-              onClick={() => redirectToPage("meu-perfil")}
-              className="col-5 col-lg-4 profile d-flex justify-content-lg-end"
-            >
-              <div>
-                <label className="px-3 profile">Meu perfil</label>
+            <div id="meu-perfil" className="col-5 col-lg-4 d-flex justify-content-lg-end">
+              <div className="cursor-pointer" onClick={() => navigate("/perfil")}>
+                <span className="px-3 profile">Meu perfil</span>
                 <FontAwesomeIcon icon={faCircleUser} size="xl" />
               </div>
             </div>
@@ -71,13 +55,8 @@ const Header = () => {
                 size="lg"
               />
             </div>
-            <div
-              id="balance-value"
-              className="col-4 col-lg-4 d-flex justify-content-center balance"
-            >
-              {`R$ ${carteira?.saldo.toLocaleString("pt-br", {
-                minimumFractionDigits: 2,
-              })}`}
+            <div id="balance-value" className="col-4 col-lg-4 d-flex justify-content-center balance">
+              {`R$ ${carteira?.saldo.toLocaleString("pt-br", { minimumFractionDigits: 2 })}`}
             </div>
             <div className="col-3 col-lg-4">
               <img
@@ -103,10 +82,7 @@ const Header = () => {
           </div>
           <div className="mt-5">
             <ul className="list-mobile">
-              <li
-                className="li-menu-mobile"
-                onClick={() => redirectToPage("meu-perfil")}
-              >
+              <li className="li-menu-mobile" onClick={() => navigate("/perfil")}>
                 <label className="p-2 label-menu-mobile">
                   Meu perfil <FontAwesomeIcon icon={faCircleUser} size="md" />
                 </label>

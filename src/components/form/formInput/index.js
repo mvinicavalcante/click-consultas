@@ -103,6 +103,7 @@ const FormInput = ({
             value={value}
             onChange={onChange}
             required={required ?? true}
+            accept="image/*"
           />
         ) : type === "specialty" ? (
           <select

@@ -33,7 +33,7 @@ import SearchedList from "./pages/main/search/searchedList";
 import MainSheduling from "./pages/main/scheduling";
 import SchedulingDetails from "./pages/main/scheduling/schedulingDetails";
 import DoctorSelected from "./pages/main/search/doctorSelected";
-import ConfirmConsultation from "./pages/confirmConsultation";
+import ConfirmConsultation from "./pages/main/confirmConsultation";
 
 function App() {
   return (

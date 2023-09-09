@@ -55,10 +55,6 @@ header p {
   font-size: 26px;
 }
 
-.profile {
-  cursor: pointer;
-}
-
 @media screen and (max-width: 500px) {
   .header-desktop {
     display: none;

@@ -7,10 +7,10 @@ const MainSearch = () => {
   return (
     <>
       <Header />
-      <div className="main d-flex flex-column">
-        <label className="page-title">
+      <div className="main d-flex flex-column ">
+        <h4 className="page-title">
           Digite a especialidade médica desejada
-        </label>
+        </h4>
         <SearchInput />
       </div>
       <div className="fixed-bottom">
