@@ -4,9 +4,11 @@ import Footer from "../../../../components/footer";
 import BoxDoctor from "../../../../components/boxDoctor";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import DoctorService from "../../../../services/DoctorService";
 
 const SearchedList = () => {
   const [parsedMedicos, setParsedMedicos] = useState([]);
+  const [doctorPhotos, setDoctorPhotos] = useState([]);
   const navigate = useNavigate();
 
   function backToSearch() {
@@ -26,10 +28,24 @@ const SearchedList = () => {
 
   useEffect(() => {
     const medicosFromSession = sessionStorage.getItem("medicos");
+    const fetchedDoctorPhotos = {};
 
     if (medicosFromSession) {
       const parsedMedicos = JSON.parse(medicosFromSession);
       setParsedMedicos(parsedMedicos);
+
+      parsedMedicos.map((medico) => {
+        return DoctorService.getProfilePhotoByDoctorId(medico.id)
+          .then((response) => {
+            const contentType = response.headers['content-type'];
+            const arrayBufferView = new Uint8Array(response.data);
+            const blob = new Blob([arrayBufferView], { type: contentType });
+            const photoUrl = URL.createObjectURL(blob);
+            fetchedDoctorPhotos[medico.id] = photoUrl;
+            setDoctorPhotos(fetchedDoctorPhotos);
+          })
+          .catch((e) => { })
+      });
     }
   }, []);
 
@@ -41,21 +57,15 @@ const SearchedList = () => {
           {parsedMedicos.map((medico) => {
             return (
               <BoxDoctor
-                key={medico.id}
                 id={medico.id}
                 name={medico.nome}
-                address={medico.enderecos.map((endereco) => {
-                  const info = endereco.cidade + ", " + endereco.estado;
-                  const addressArray = [];
-                  addressArray.push(info);
-                  return endereco.cidade + ", " + endereco.estado;
-                })}
+                address={medico.enderecos}
                 speciality={medico.especialidades.map((especialidade) => {
                   const specialityArray = [];
                   specialityArray.push(especialidade.nome);
                   return especialidade.nome;
                 })}
-                crm={medico.crm}
+                avatar={doctorPhotos[medico.id]}
                 onClick={() => goToMakeAppointment(medico.id)}
               />
             );

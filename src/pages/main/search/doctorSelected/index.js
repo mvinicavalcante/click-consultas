@@ -6,12 +6,15 @@ import Header from "../../../../components/header";
 import { useEffect, useState } from "react";
 
 import defaultAvatar from "../../../../assets/doctors/defaultAvatar.png";
-import definedAvatar from "../../../../assets/doctors/image 11.png";
 import CustomButton from "../../../../components/customButton";
 import AssessmentService from "../../../../services/AssessmentService";
+import ScheduleService from "../../../../services/ScheduleService";
+import DoctorService from "../../../../services/DoctorService";
 
 const DoctorSelected = () => {
   const [medicoSelecionado, setMedicoSelecionado] = useState();
+  const [agendas, setAgendas] = useState();
+  const [doctorPhoto, setDoctorPhoto] = useState();
   const [viewConsultorios, setViewConsultorios] = useState("consultorios");
   const [listOfReviews, setListOfReviews] = useState([]);
 
@@ -21,6 +24,24 @@ const DoctorSelected = () => {
       const parsedMedico = JSON.parse(medicoFromSession);
       setMedicoSelecionado(parsedMedico);
     }
+
+    ScheduleService.getAllByDoctorId(JSON.parse(medicoFromSession)?.id)
+      .then(e => {
+        setAgendas(e.data)
+      })
+      .catch(e => { })
+
+      DoctorService.getProfilePhotoByDoctorId(JSON.parse(medicoFromSession)?.id)
+      .then((response) => {
+        const contentType = response.headers['content-type'];
+        const arrayBufferView = new Uint8Array(response.data);
+        const blob = new Blob([arrayBufferView], { type: contentType });
+        const photoUrl = URL.createObjectURL(blob);
+        sessionStorage.setItem("fotoMedicoSelecionado", photoUrl);
+        setDoctorPhoto(photoUrl);
+      })
+      .catch((e) => { });
+
   }, []);
 
   async function listarAvaliacoes(id) {
@@ -48,8 +69,6 @@ const DoctorSelected = () => {
     }
   }
 
-  console.log(listOfReviews);
-
   return (
     <>
       <Header />
@@ -62,14 +81,14 @@ const DoctorSelected = () => {
               className="row align-items-center justify-content-between p-5"
             >
               <div className="col-md-5 col-sm-5">
-                {medicoSelecionado.foto ? (
-                  <img src={definedAvatar} alt={medicoSelecionado.nome} />
+                {doctorPhoto ? (
+                  <img src={doctorPhoto ?? defaultAvatar} width={250} className="rounded-5 border border-secondary" alt={medicoSelecionado.nome} />
                 ) : (
                   <img src={defaultAvatar} alt={medicoSelecionado.nome} />
                 )}
               </div>
               <div className="col-md-7 col-sm-7 info-header-doctor">
-                <h1>{medicoSelecionado.nome}</h1>
+                <h1>Dr. {medicoSelecionado.nome}</h1>
                 {medicoSelecionado.especialidades.map((especialidade) => (
                   <h5 className="speciality">{especialidade.nome}</h5>
                 ))}
@@ -86,7 +105,7 @@ const DoctorSelected = () => {
                 <span
                   onClick={() => navAction("consultorios")}
                   id="consultorios"
-                  className="nav-item active"
+                  className="nav-item active text-bold"
                 >
                   Consultórios
                 </span>
@@ -95,23 +114,37 @@ const DoctorSelected = () => {
                     navAction("avaliacoes");
                   }}
                   id="avaliacoes"
-                  className="nav-item"
+                  className="nav-item text-bold"
                 >
                   Avaliações
                 </span>
               </nav>
               <div>
                 {viewConsultorios === "consultorios" ? (
-                  <div className="info">
-                    {medicoSelecionado.enderecos.map((endereco, index) => {
+                  <div className="info mt-3">
+                    {agendas?.map((agenda, index) => {
                       return (
-                        <div className="info-content mb-4" key={index}>
-                          <h3>{endereco.apelido}</h3>
-                          <h5 className="endereco">
-                            {endereco.logradouro}, {endereco.numero},{" "}
-                            {endereco.bairro}, {endereco.cidade},{" "}
-                            {endereco.estado}
-                          </h5>
+                        <div className="info-content mb-4 row border border-white rounded-4 p-3 mx-4" key={index}>
+                          <div className="col-6">
+                            <h3>{agenda.especialidadeMedica}</h3>
+                            <h5 className="endereco ms-2">
+                              <h4>{agenda.enderecoMedico.apelido}</h4>
+                              {agenda.enderecoMedico.logradouro}, {agenda.enderecoMedico.numero},{" "}
+                              {agenda.enderecoMedico.bairro}, {agenda.enderecoMedico.cidade},{" "}
+                              {agenda.enderecoMedico.estado}
+                            </h5>
+                          </div>
+                          <div className="col-6 align-self-center">
+                            <h4>Atendimentos:</h4>
+                            <div className="d-flex align-items-center">
+                              {agenda.horariosDisponiveis?.map((horarios) => {
+                                return (
+                                  <p className="me-4">{new Date(horarios.data).toLocaleDateString('pt-BR')}</p>
+                                );
+                              })}
+                            </div>
+                            <h5>Contato: {agenda.contato}</h5>
+                          </div>
                         </div>
                       );
                     })}

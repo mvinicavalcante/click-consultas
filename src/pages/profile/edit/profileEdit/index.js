@@ -19,6 +19,7 @@ const ProfileEdit = () => {
   const [birthdate, setBirthdate] = useState("");
   const [sex, setSex] = useState("");
   const [email, setEmail] = useState("");
+  const [profilePhoto, setProfilePhoto] = useState(null);
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
 
@@ -45,6 +46,15 @@ const ProfileEdit = () => {
     sexo: sex,
     telefone: telephone
   }
+
+  const handlePhotoInput = (photo) => {
+    if (photo) {
+      const formData = new FormData();
+      formData.append('foto', photo);
+      setProfilePhoto(formData);
+    } else
+      setProfilePhoto(null);
+  };
 
   function patchUser(e) {
     e.preventDefault();
@@ -73,6 +83,15 @@ const ProfileEdit = () => {
           });
       }
       else if (sessionStorage.doctorId) {
+        if (profilePhoto !== null) {
+          DoctorService.registerProfilePhoto(sessionStorage.doctorId, profilePhoto)
+            .then((e) => {
+              console.log(e.data);
+            })
+            .catch((e) => {
+              toast.error(e.response.data);
+            });
+        }
         DoctorService.patchDoctor(sessionStorage.doctorId, user)
           .then(e => {
             toast.success("Dados atualizados com sucesso.");
@@ -152,6 +171,12 @@ const ProfileEdit = () => {
                             maxlength={12}
                             value={telephone}
                             onInput={(e) => setTelephone(e.target.value)}
+                          />
+                          <FormInput
+                            label={"Foto de Perfil"}
+                            type={"file"}
+                            onChange={(e) => handlePhotoInput(e.target.files[0])}
+                            required={false}
                           />
                           {sessionStorage.patientId && (
                             <FormInput

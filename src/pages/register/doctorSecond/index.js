@@ -10,7 +10,7 @@ const DoctorSecondPage = () => {
   const [crmUf, setCrmUf] = useState("");
   const [speciality, setSpeciality] = useState("");
   const [specialityRQE, setSpecialityRQE] = useState("");
-  const [profilePhoto, setProfilePhoto] = useState("");
+  const [profilePhoto, setProfilePhoto] = useState(null);
   const [identificationPhoto, setIdentificationPhoto] = useState("");
   const doctorId = sessionStorage.doctorId;
   const navigate = useNavigate();
@@ -25,8 +25,25 @@ const DoctorSecondPage = () => {
     numeroRQE: specialityRQE
   };
 
+  const handlePhotoInput = (photo) => {
+    if (photo) {
+      const formData = new FormData();
+      formData.append('foto', photo);
+      setProfilePhoto(formData);
+    } else
+      setProfilePhoto(null);
+  };
+
   function formSubmit(e) {
     e.preventDefault();
+
+    if (profilePhoto !== null) {
+      DoctorService.registerProfilePhoto(sessionStorage.doctorId, profilePhoto)
+        .then()
+        .catch((e) => {
+          toast.error(e.response.data);
+        });
+    }
 
     DoctorService.registerCRM(doctorId, crm)
       .then()
@@ -63,8 +80,7 @@ const DoctorSecondPage = () => {
               <FormInput
                 label={"Foto de Perfil"}
                 type={"file"}
-                onChange={(e) => setProfilePhoto(e.target.value)}
-                value={profilePhoto}
+                onChange={(e) => handlePhotoInput(e.target.files[0])}
                 required={false}
               />
             </div>

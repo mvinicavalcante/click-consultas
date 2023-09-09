@@ -13,6 +13,14 @@ const DoctorService = {
     return api.post("/medico", doctor);
   },
 
+  getProfilePhotoByDoctorId(doctorId) {
+    return api.get(`/medico/${doctorId}/foto`, { responseType: 'arraybuffer' });
+  },
+
+  registerProfilePhoto(doctorId, photo) {
+    return api.post(`/medico/${doctorId}/foto`, photo, { headers: { 'content-type': 'multipart/form-data' } });
+  },
+
   patchDoctor(id, doctor) {
     return api.patch("/medico/" + id, doctor);
   },
