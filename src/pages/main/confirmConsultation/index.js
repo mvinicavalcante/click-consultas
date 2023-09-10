@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import CustomButton from "../../../components/customButton";
 import SchedulingService from "../../../services/SchedulingService";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const ConfirmConsultation = () => {
   const [medico, setMedico] = useState();
@@ -15,6 +16,7 @@ const ConfirmConsultation = () => {
   const [indexDataConsulta, setIndexDataConsulta] = useState();
   const [horaConsulta, setHoraConsulta] = useState();
   const [detalhamento, setDetalhamento] = useState();
+  const navigate = useNavigate()
 
   const agendamento = {
     tipoConsulta,
@@ -67,6 +69,7 @@ const ConfirmConsultation = () => {
     SchedulingService.registerScheduling(agendamento)
       .then(e => {
         toast.success("Agendamento realizado com sucesso.");
+        navigate("/principal/agendamentos")
       })
       .catch(e => {
         toast.error(e.response.data)

@@ -6,6 +6,7 @@ import Footer from "../../../../components/footer";
 import CustomButton from "../../../../components/customButton";
 import SchedulingService from "../../../../services/SchedulingService";
 import { toast } from "react-toastify";
+import AppointmentService from "../../../../services/AppointmentService";
 
 const SchedulingDetails = () => {
   const { schedulingId } = useParams();
@@ -35,6 +36,24 @@ const SchedulingDetails = () => {
       })
   }
 
+  const appointment = {
+    paciente: {id: scheduling?.paciente.id},
+    medico: {id: scheduling?.agenda.medico.id},
+    agendamento: {id: schedulingId},
+  }
+
+  function registerAppointment(e) {
+    e.preventDefault();
+    AppointmentService.registerAppointment(appointment)
+    .then(e => {
+      toast.success("Consulta registrada com sucesso.");
+      navigate(`/avaliar/${e.data.id}`);
+    })
+    .catch(e => {
+      toast.error(e.response.data);
+    })
+  }
+
   return (
     <div className="p-0 overflow-hidden">
       <Header />
@@ -46,90 +65,132 @@ const SchedulingDetails = () => {
           {scheduling && (
             <>
               {sessionStorage.doctorId ? (
-                <div className="details">
-                  <h4>{scheduling.paciente.nome}</h4>
+                <div className="details mt-5">
                   <div className="details-column">
                     <div className="detail-column">
                       <div>
-                        <p className="details-text">{scheduling.tipoConsulta}</p>
+                        <h4 className="details-text">Paciente:</h4>
+                        <div>
+                          <p className="details-description mt-2">{scheduling.paciente.nome}</p>
+                        </div>
+                      </div>
+                      <div className="my-4">
+                        <h4 className="details-text">Tipo da consulta:</h4>
+                        <div>
+                          <p className="details-description mt-2">{scheduling.tipoConsulta}</p>
+                        </div>
                       </div>
                       <div>
-                        <p className="details-text">Informações Adicionais:</p>
+                        <h3 className="details-text">Informações Adicionais:</h3>
                         <div>
-                          <p className="details-description">{scheduling.detalhamento}</p>
+                          <p className="details-description mt-2">{scheduling.detalhamento}</p>
                         </div>
                       </div>
                     </div>
-                    <div>
+                    <div className="detail-column">
                       <div>
-                        <p className="details-text">{scheduling.localConsulta.apelido}</p>
+                        <h4 className="details-text">Local da consulta:</h4>
                         <div>
-                          <p className="details-description">{scheduling.agenda.contato}</p>
-                          <p className="details-description">{scheduling.localConsulta.logradouro}, {scheduling.localConsulta.numero}</p>
-                          <p className="details-description">{scheduling.localConsulta.cidade}, {scheduling.localConsulta.estado}</p>
-                          <p className="details-description">{scheduling.horarioAgendado.data}, {scheduling.horarioAgendado.hora}</p>
+                          <h5 className="details-description my-2">{scheduling.localConsulta.apelido}</h5>
                         </div>
                       </div>
-                    </div>
-                    <div>
                       <div>
-                        <p className="details-text">Valor da consulta:</p>
+                        <p className="details-description">{scheduling.localConsulta.logradouro}, {scheduling.localConsulta.numero}</p>
+                        <p className="details-description">{scheduling.localConsulta.cidade}, {scheduling.localConsulta.estado}</p>
+                        <p className="details-description">{scheduling.horarioAgendado.hora}, {scheduling.horarioAgendado.data}</p>
+                        <p className="details-description">Contato: {scheduling.agenda.contato}</p>
+                      </div>
+                    </div>
+                    <div className="detail-column">
+                      <div>
+                        <h4 className="details-text">Valor da consulta:</h4>
                         <div className="details-description">
                           <h4>R$ {scheduling.valorFinalConsulta}</h4>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <form onSubmit={deleteScheduling} className="cancel-button">
-                    <CustomButton
-                      type={"submit"}
-                      action="Cancelar consulta"
-                      bgColor="red"
-                    />
-                  </form>
+                  <div className="d-flex justify-content-center mt-4">
+                    <form onSubmit={registerAppointment} className="cancel-button mx-3">
+                      <CustomButton
+                        type={"submit"}
+                        action="Consulta realizada"
+                        bgColor="light green"
+                      />
+                    </form>
+                    <form onSubmit={deleteScheduling} className="cancel-button mx-3">
+                      <CustomButton
+                        type={"submit"}
+                        action="Cancelar consulta"
+                        bgColor="red"
+                      />
+                    </form>
+                  </div>
                 </div>
               ) : (
-                <div className="details">
-                  <h4>{scheduling.agenda.medico.nome}</h4>
+                <div className="details mt-5">
                   <div className="details-column">
                     <div className="doctor-container">
                       <div>
-                        <p className="details-text">{scheduling.localConsulta.apelido}</p>
+                        <h4 className="details-text">Médico(a):</h4>
                         <div>
-                          <p className="details-description">{scheduling.agenda.contato}</p>
-                          <p className="details-description">{scheduling.localConsulta.logradouro}, {scheduling.localConsulta.numero}</p>
-                          <p className="details-description">{scheduling.localConsulta.cidade}, {scheduling.localConsulta.estado}</p>
-                          <p className="details-description">{scheduling.horarioAgendado.data}, {scheduling.horarioAgendado.hora}</p>
+                          <h5 className="details-description mt-2">Dr(a). {scheduling.agenda.medico.nome}</h5>
                         </div>
                       </div>
                     </div>
                     <div className="detail-column">
                       <div>
-                        <p className="details-text">{scheduling.tipoConsulta}</p>
+                        <h4 className="details-text">Local da consulta:</h4>
+                        <div>
+                          <h5 className="details-description my-2">{scheduling.localConsulta.apelido}</h5>
+                        </div>
                       </div>
                       <div>
-                        <p className="details-text">Informações Adicionais:</p>
+                        <p className="details-description">{scheduling.localConsulta.logradouro}, {scheduling.localConsulta.numero}</p>
+                        <p className="details-description">{scheduling.localConsulta.cidade}, {scheduling.localConsulta.estado}</p>
+                        <p className="details-description">{scheduling.horarioAgendado.hora}, {scheduling.horarioAgendado.data}</p>
+                        <p className="details-description">Contato: {scheduling.agenda.contato}</p>
+                      </div>
+                    </div>
+                    <div className="detail-column">
+                      <div>
+                        <h4 className="details-text">Tipo da consulta:</h4>
                         <div>
-                          <p className="details-description">{scheduling.detalhamento}</p>
+                          <p className="details-description mt-2">{scheduling.tipoConsulta}</p>
+                        </div>
+                      </div>
+                      <div>
+                        <h4 className="details-text mt-4">Informações Adicionais:</h4>
+                        <div>
+                          <p className="details-description mt-2">{scheduling.detalhamento}</p>
                         </div>
                       </div>
                     </div>
                     <div className="detail-column">
                       <div>
-                        <p className="details-text">Valor da consulta:</p>
-                        <div className="details-description">
+                        <h4 className="details-text">Valor da consulta:</h4>
+                        <div className="details-description mt-2">
                           <h4>R$ {scheduling.valorFinalConsulta}</h4>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <form onSubmit={deleteScheduling} className="cancel-button">
-                    <CustomButton
-                      type={"submit"}
-                      action="Cancelar consulta"
-                      bgColor="red"
-                    />
-                  </form>
+                  <div className="d-flex justify-content-center mt-4">
+                    <form onSubmit={registerAppointment} className="cancel-button mx-3">
+                      <CustomButton
+                        type={"submit"}
+                        action="Consulta realizada"
+                        bgColor="light green"
+                      />
+                    </form>
+                    <form onSubmit={deleteScheduling} className="cancel-button mx-3">
+                      <CustomButton
+                        type={"submit"}
+                        action="Cancelar consulta"
+                        bgColor="red"
+                      />
+                    </form>
+                  </div>
                 </div>
               )}
             </>

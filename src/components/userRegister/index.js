@@ -6,6 +6,7 @@ import FormInput from "../form/formInput";
 import PatientService from "../../services/PatientService";
 import DoctorService from "../../services/DoctorService";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const UserRegister = ({ type }) => {
   const [name, setName] = useState("");
@@ -45,7 +46,7 @@ const UserRegister = ({ type }) => {
           navigate("/cadastro/paciente/plano");
         })
         .catch((e) => {
-          console.error(e.response.data);
+          toast.error(e.response.data);
         });
     }
 
@@ -56,7 +57,7 @@ const UserRegister = ({ type }) => {
           navigate("/cadastro/medico/profissional");
         })
         .catch((e) => {
-          console.error(e.response.data);
+          toast.error(e.response.data);
         });
     }
   }

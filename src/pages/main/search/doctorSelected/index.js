@@ -82,7 +82,7 @@ const DoctorSelected = () => {
             >
               <div className="col-md-5 col-sm-5">
                 {doctorPhoto ? (
-                  <img src={doctorPhoto ?? defaultAvatar} width={250} className="rounded-5 border border-secondary" alt={medicoSelecionado.nome} />
+                  <img src={doctorPhoto} width={250} className="rounded-5 border border-secondary" alt={medicoSelecionado.nome} />
                 ) : (
                   <img src={defaultAvatar} alt={medicoSelecionado.nome} />
                 )}

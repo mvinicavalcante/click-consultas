@@ -8,7 +8,7 @@ import SchedulingService from "../../../services/SchedulingService";
 
 const MainSheduling = () => {
   const [agendamentos, setAgendamentos] = useState();
-  const doctorId = sessionStorage.doctorId;
+  const doctorId = sessionStorage.doctorId ?? null;
   const patientId = sessionStorage.patientId ?? null;
 
   useEffect(() => {

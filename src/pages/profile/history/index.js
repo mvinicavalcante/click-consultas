@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import UserHistory from "../../../components/userHistory";
-import DoctorService from "../../../services/DoctorService";
-import PatientService from "../../../services/PatientService";
+import AppointmentService from "../../../services/AppointmentService";
 
 const History = () => {
 
@@ -9,7 +8,7 @@ const History = () => {
   const [arrayHistory, setArrayHistory] = useState()
 
   const userType = () => {
-    if (sessionStorage.doctorId !== null && sessionStorage.doctorId !== undefined) {
+    if (sessionStorage.doctorId) {
       return "medico";
     } else {
       return "paciente";
@@ -17,30 +16,28 @@ const History = () => {
   };
 
   useEffect(() => {
-    if(userType() === "medico"){
-      DoctorService.getHistory(userId)
+    if (userType() === "medico") {
+      AppointmentService.getAllByDoctorId(userId)
         .then(e => {
           setArrayHistory(e.data)
-          console.log(e.data)
         })
         .catch(e => {
           console.error(e.response.data)
         })
     } else {
-      PatientService.getHistory(userId)
-      .then(e => {
-        setArrayHistory(e.data)
-        console.log(e.data)
-      })
-      .catch(e => {
-        console.error(e.response.data)
-      })
+      AppointmentService.getAllByPatientId(userId)
+        .then(e => {
+          setArrayHistory(e.data)
+        })
+        .catch(e => {
+          console.error(e.response.data)
+        })
     }
   }, [userId])
 
   return (
     <>
-    <UserHistory type={userType()} content={arrayHistory} />
+      <UserHistory type={userType()} content={arrayHistory} />
     </>
   )
 };
