@@ -37,9 +37,10 @@
     margin: 0;
 }
 
-.review-button{
+.review-button-history{
     margin-top: 15px;
 }
+
 
 @media screen and (max-width: 1030px){
     .divider{

@@ -162,15 +162,7 @@ const DoctorSelected = () => {
                     </h5>
                     <h5 className="endereco">
                       Média de avaliação:{" "}
-                      {(
-                        listOfReviews.reduce(
-                          (total, review) =>
-                            total + review.registro.totalAvaliacoes,
-                          0
-                        ) /
-                        (listOfReviews.length * 2)
-                      ).toFixed(1)}
-                      /5
+                      {(medicoSelecionado.registroAvaliacao.totalAvaliacoes/medicoSelecionado.registroAvaliacao.numeroAvaliacoes).toFixed(2)}
                     </h5>
                     {listOfReviews.map((review) => (
                       <div className="card-commentary" key={review.id}>

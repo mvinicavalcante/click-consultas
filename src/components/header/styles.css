@@ -12,6 +12,10 @@ header p {
   color: #00bf63;
 }
 
+.logo{
+  cursor: pointer;
+}
+
 .balance {
   color: gray;
   font-weight: bold;

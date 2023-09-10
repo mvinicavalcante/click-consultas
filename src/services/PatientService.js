@@ -20,8 +20,15 @@ const PatientService = {
 
   registerHealthPlan(patientId, plan) {
     return api.post(`/paciente/${patientId}/plano`, plan);
-  }
+  },
 
+  registerReview(avaliacao, patientId, doctorId){
+    return api.post(`/avaliacao/${patientId}/${doctorId}`, avaliacao);
+  },
+
+  getHistory(patientId){
+    return api.get(`/paciente/historico/${patientId}`);
+  }
 }
 
 export default PatientService;

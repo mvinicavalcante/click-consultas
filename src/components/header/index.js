@@ -29,6 +29,7 @@ const Header = () => {
                 src={clickConsultas}
                 className="logo"
                 width={100}
+                onClick={() => navigate("/principal")}
                 alt="logo"
               />
             </div>

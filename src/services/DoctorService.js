@@ -72,6 +72,14 @@ const DoctorService = {
   deleteAddress(doctorId, addressId) {
     return api.delete(`/medico/${doctorId}/endereco/${addressId}`);
   },
+
+  getAssessmentRecord(doctorId){
+    return api.get(`/medico/${doctorId}`);
+  },
+
+  getHistory(doctorId){
+    return api.get(`/medico/historico/${doctorId}`);
+  }
 };
 
 export default DoctorService;

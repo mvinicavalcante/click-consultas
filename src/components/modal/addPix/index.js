@@ -20,7 +20,7 @@ const AddPixModal = (props) => {
     e.preventDefault();
     UserService.registerPix(userId, pix)
       .then(e => {
-        toast.success("CRM adicionado com sucesso.");
+        toast.success("Pix adicionado com sucesso.");
         props.updateContent(e.data);
       })
       .catch(e => {
