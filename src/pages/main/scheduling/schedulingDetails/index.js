@@ -15,43 +15,47 @@ const SchedulingDetails = () => {
 
   useEffect(() => {
     SchedulingService.getById(schedulingId)
-      .then(e => {
-        setScheduling(e.data)
+      .then((e) => {
+        setScheduling(e.data);
       })
-      .catch(e => {
+      .catch((e) => {
         navigate("/principal/agendamentos");
         toast.error("O agendamento não foi encontrado.");
-      })
+      });
   }, [schedulingId, navigate]);
 
   function deleteScheduling(e) {
     e.preventDefault();
     SchedulingService.deleteScheduling(schedulingId)
-      .then(e => {
+      .then((e) => {
         toast.success(e.data);
         navigate(-1);
       })
-      .catch(e => {
-        toast.error(e.response.data)
-      })
+      .catch((e) => {
+        toast.error(e.response.data);
+      });
   }
 
   const appointment = {
-    paciente: {id: scheduling?.paciente.id},
-    medico: {id: scheduling?.agenda.medico.id},
-    agendamento: {id: schedulingId},
-  }
+    paciente: { id: scheduling?.paciente.id },
+    medico: { id: scheduling?.agenda.medico.id },
+    agendamento: { id: schedulingId },
+  };
 
   function registerAppointment(e) {
     e.preventDefault();
     AppointmentService.registerAppointment(appointment)
-    .then(e => {
-      toast.success("Consulta registrada com sucesso.");
-      navigate(`/avaliar/${e.data.id}`);
-    })
-    .catch(e => {
-      toast.error(e.response.data);
-    })
+      .then((e) => {
+        toast.success("Consulta registrada com sucesso.");
+        if (sessionStorage?.doctorId) {
+          navigate("/principal");
+        } else {
+          navigate(`/avaliar/${e.data.id}`);
+        }
+      })
+      .catch((e) => {
+        toast.error(e.response.data);
+      });
   }
 
   return (
@@ -71,19 +75,27 @@ const SchedulingDetails = () => {
                       <div>
                         <h4 className="details-text">Paciente:</h4>
                         <div>
-                          <p className="details-description mt-2">{scheduling.paciente.nome}</p>
+                          <p className="details-description mt-2">
+                            {scheduling.paciente.nome}
+                          </p>
                         </div>
                       </div>
                       <div className="my-4">
                         <h4 className="details-text">Tipo da consulta:</h4>
                         <div>
-                          <p className="details-description mt-2">{scheduling.tipoConsulta}</p>
+                          <p className="details-description mt-2">
+                            {scheduling.tipoConsulta}
+                          </p>
                         </div>
                       </div>
                       <div>
-                        <h3 className="details-text">Informações Adicionais:</h3>
+                        <h3 className="details-text">
+                          Informações Adicionais:
+                        </h3>
                         <div>
-                          <p className="details-description mt-2">{scheduling.detalhamento}</p>
+                          <p className="details-description mt-2">
+                            {scheduling.detalhamento}
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -91,14 +103,27 @@ const SchedulingDetails = () => {
                       <div>
                         <h4 className="details-text">Local da consulta:</h4>
                         <div>
-                          <h5 className="details-description my-2">{scheduling.localConsulta.apelido}</h5>
+                          <h5 className="details-description my-2">
+                            {scheduling.localConsulta.apelido}
+                          </h5>
                         </div>
                       </div>
                       <div>
-                        <p className="details-description">{scheduling.localConsulta.logradouro}, {scheduling.localConsulta.numero}</p>
-                        <p className="details-description">{scheduling.localConsulta.cidade}, {scheduling.localConsulta.estado}</p>
-                        <p className="details-description">{scheduling.horarioAgendado.hora}, {scheduling.horarioAgendado.data}</p>
-                        <p className="details-description">Contato: {scheduling.agenda.contato}</p>
+                        <p className="details-description">
+                          {scheduling.localConsulta.logradouro},{" "}
+                          {scheduling.localConsulta.numero}
+                        </p>
+                        <p className="details-description">
+                          {scheduling.localConsulta.cidade},{" "}
+                          {scheduling.localConsulta.estado}
+                        </p>
+                        <p className="details-description">
+                          {scheduling.horarioAgendado.hora},{" "}
+                          {scheduling.horarioAgendado.data}
+                        </p>
+                        <p className="details-description">
+                          Contato: {scheduling.agenda.contato}
+                        </p>
                       </div>
                     </div>
                     <div className="detail-column">
@@ -111,14 +136,20 @@ const SchedulingDetails = () => {
                     </div>
                   </div>
                   <div className="d-flex justify-content-center mt-4">
-                    <form onSubmit={registerAppointment} className="cancel-button mx-3">
+                    <form
+                      onSubmit={registerAppointment}
+                      className="cancel-button mx-3"
+                    >
                       <CustomButton
                         type={"submit"}
                         action="Consulta realizada"
                         bgColor="light green"
                       />
                     </form>
-                    <form onSubmit={deleteScheduling} className="cancel-button mx-3">
+                    <form
+                      onSubmit={deleteScheduling}
+                      className="cancel-button mx-3"
+                    >
                       <CustomButton
                         type={"submit"}
                         action="Cancelar consulta"
@@ -134,7 +165,9 @@ const SchedulingDetails = () => {
                       <div>
                         <h4 className="details-text">Médico(a):</h4>
                         <div>
-                          <h5 className="details-description mt-2">Dr(a). {scheduling.agenda.medico.nome}</h5>
+                          <h5 className="details-description mt-2">
+                            Dr(a). {scheduling.agenda.medico.nome}
+                          </h5>
                         </div>
                       </div>
                     </div>
@@ -142,27 +175,46 @@ const SchedulingDetails = () => {
                       <div>
                         <h4 className="details-text">Local da consulta:</h4>
                         <div>
-                          <h5 className="details-description my-2">{scheduling.localConsulta.apelido}</h5>
+                          <h5 className="details-description my-2">
+                            {scheduling.localConsulta.apelido}
+                          </h5>
                         </div>
                       </div>
                       <div>
-                        <p className="details-description">{scheduling.localConsulta.logradouro}, {scheduling.localConsulta.numero}</p>
-                        <p className="details-description">{scheduling.localConsulta.cidade}, {scheduling.localConsulta.estado}</p>
-                        <p className="details-description">{scheduling.horarioAgendado.hora}, {scheduling.horarioAgendado.data}</p>
-                        <p className="details-description">Contato: {scheduling.agenda.contato}</p>
+                        <p className="details-description">
+                          {scheduling.localConsulta.logradouro},{" "}
+                          {scheduling.localConsulta.numero}
+                        </p>
+                        <p className="details-description">
+                          {scheduling.localConsulta.cidade},{" "}
+                          {scheduling.localConsulta.estado}
+                        </p>
+                        <p className="details-description">
+                          {scheduling.horarioAgendado.hora},{" "}
+                          {scheduling.horarioAgendado.data}
+                        </p>
+                        <p className="details-description">
+                          Contato: {scheduling.agenda.contato}
+                        </p>
                       </div>
                     </div>
                     <div className="detail-column">
                       <div>
                         <h4 className="details-text">Tipo da consulta:</h4>
                         <div>
-                          <p className="details-description mt-2">{scheduling.tipoConsulta}</p>
+                          <p className="details-description mt-2">
+                            {scheduling.tipoConsulta}
+                          </p>
                         </div>
                       </div>
                       <div>
-                        <h4 className="details-text mt-4">Informações Adicionais:</h4>
+                        <h4 className="details-text mt-4">
+                          Informações Adicionais:
+                        </h4>
                         <div>
-                          <p className="details-description mt-2">{scheduling.detalhamento}</p>
+                          <p className="details-description mt-2">
+                            {scheduling.detalhamento}
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -176,14 +228,20 @@ const SchedulingDetails = () => {
                     </div>
                   </div>
                   <div className="d-flex justify-content-center mt-4">
-                    <form onSubmit={registerAppointment} className="cancel-button mx-3">
+                    <form
+                      onSubmit={registerAppointment}
+                      className="cancel-button mx-3"
+                    >
                       <CustomButton
                         type={"submit"}
                         action="Consulta realizada"
                         bgColor="light green"
                       />
                     </form>
-                    <form onSubmit={deleteScheduling} className="cancel-button mx-3">
+                    <form
+                      onSubmit={deleteScheduling}
+                      className="cancel-button mx-3"
+                    >
                       <CustomButton
                         type={"submit"}
                         action="Cancelar consulta"

@@ -1,4 +1,4 @@
-import "./styles.css"
+import "./styles.css";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWallet, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
@@ -14,21 +14,23 @@ const Wallet = () => {
   const [pix, setPix] = useState();
 
   useEffect(() => {
-    UserService.getWalletById(sessionStorage.doctorId ?? sessionStorage.patientId)
-      .then(e => {
+    UserService.getWalletById(
+      sessionStorage.doctorId ?? sessionStorage.patientId
+    )
+      .then((e) => {
         setCarteira(e.data);
       })
-      .catch(e => {
-      });
+      .catch((e) => {});
   }, []);
 
   useEffect(() => {
-    UserService.getAllPixByUserId(sessionStorage.doctorId ?? sessionStorage.patientId)
-      .then(e => {
+    UserService.getAllPixByUserId(
+      sessionStorage.doctorId ?? sessionStorage.patientId
+    )
+      .then((e) => {
         setPix(e.data);
       })
-      .catch(e => {
-      });
+      .catch((e) => {});
   }, []);
 
   function toggleBalanceVisibility() {
@@ -52,39 +54,50 @@ const Wallet = () => {
               <div className="col-6 d-flex flex-column">
                 <h2 className="text-center">
                   Saldo:
-                  {balanceVisibility ?
+                  {balanceVisibility ? (
                     <FontAwesomeIcon
                       icon={faEyeSlash}
                       onClick={toggleBalanceVisibility}
                       className="balance-icon"
                       size="sm"
                     />
-                    :
+                  ) : (
                     <FontAwesomeIcon
                       icon={faEye}
                       onClick={toggleBalanceVisibility}
                       className="balance-icon"
                       size="sm"
                     />
-                  }
+                  )}
                 </h2>
                 <h2 className="text-center mt-4">
-                  {balanceVisibility ?
-                    `R$ ${carteira?.saldo.toLocaleString('pt-br', { minimumFractionDigits: 2 })}` : "R$ - - - -"
-                  }
+                  {balanceVisibility
+                    ? `R$ ${carteira?.saldo.toLocaleString("pt-br", {
+                        minimumFractionDigits: 2,
+                      })}`
+                    : "R$ - - - -"}
                 </h2>
               </div>
             </div>
             <div className="col-12 row justify-content-center align-items-center">
               <div className="col-8 d-flex justify-content-center">
-                <button className="custom-button rounded-5" onClick={() => setModalShow(true)}> Visualizar Chaves Pix</button>
+                <button
+                  className="custom-button rounded-5"
+                  onClick={() => setModalShow(true)}
+                >
+                  {" "}
+                  Visualizar Chaves Pix
+                </button>
               </div>
               <div className="col-12 row justify-content-center align-items-center">
                 <div className="col-4 d-flex justify-content-center">
                   <CustomButton action="Sacar" path="/perfil/carteira/saque" />
                 </div>
-                <div className="col-4 d-flex justify-content-center" >
-                  <CustomButton action="Depositar" path="/perfil/carteira/deposito" />
+                <div className="col-4 d-flex justify-content-center">
+                  <CustomButton
+                    action="Depositar"
+                    path="/perfil/carteira/deposito"
+                  />
                 </div>
               </div>
             </div>

@@ -26,28 +26,27 @@ const DoctorSelected = () => {
     }
 
     ScheduleService.getAllByDoctorId(JSON.parse(medicoFromSession)?.id)
-      .then(e => {
-        setAgendas(e.data)
+      .then((e) => {
+        setAgendas(e.data);
       })
-      .catch(e => { })
+      .catch((e) => {});
 
     DoctorService.getProfilePhotoByDoctorId(JSON.parse(medicoFromSession)?.id)
       .then((response) => {
-        const contentType = response.headers['content-type'];
+        const contentType = response.headers["content-type"];
         const arrayBufferView = new Uint8Array(response.data);
         const blob = new Blob([arrayBufferView], { type: contentType });
         const photoUrl = URL.createObjectURL(blob);
         sessionStorage.setItem("fotoMedicoSelecionado", photoUrl);
         setDoctorPhoto(photoUrl);
       })
-      .catch((e) => { });
-
+      .catch((e) => {});
   }, []);
 
   async function listarAvaliacoes(id) {
     try {
       const response = await AssessmentService.getAllReviewsByRecordId(id);
-      const data = response.data; // Assumindo que a resposta contém os dados das avaliações
+      const data = response.data;
       setListOfReviews(data);
     } catch (error) {
       console.error("Erro ao buscar avaliações:", error);
@@ -82,7 +81,12 @@ const DoctorSelected = () => {
             >
               <div className="col-md-5 col-sm-5">
                 {doctorPhoto ? (
-                  <img src={doctorPhoto} width={250} className="rounded-5 border border-secondary" alt={medicoSelecionado.nome} />
+                  <img
+                    src={doctorPhoto}
+                    width={250}
+                    className="rounded-5 border border-secondary"
+                    alt={medicoSelecionado.nome}
+                  />
                 ) : (
                   <img src={defaultAvatar} alt={medicoSelecionado.nome} />
                 )}
@@ -119,13 +123,18 @@ const DoctorSelected = () => {
                   <div className="info mt-3">
                     {agendas?.map((agenda, index) => {
                       return (
-                        <div className="info-content mb-4 row border border-white rounded-4 p-3 mx-4" key={index}>
+                        <div
+                          className="info-content mb-4 row border border-white rounded-4 p-3 mx-4"
+                          key={index}
+                        >
                           <div className="col-6 col-lg-5">
                             <h3>{agenda.especialidadeMedica}</h3>
                             <h5 className="endereco ms-2">
                               <h4>{agenda.enderecoMedico.apelido}</h4>
-                              {agenda.enderecoMedico.logradouro}, {agenda.enderecoMedico.numero},{" "}
-                              {agenda.enderecoMedico.bairro}, {agenda.enderecoMedico.cidade},{" "}
+                              {agenda.enderecoMedico.logradouro},{" "}
+                              {agenda.enderecoMedico.numero},{" "}
+                              {agenda.enderecoMedico.bairro},{" "}
+                              {agenda.enderecoMedico.cidade},{" "}
                               {agenda.enderecoMedico.estado}
                             </h5>
                           </div>
@@ -134,7 +143,11 @@ const DoctorSelected = () => {
                             <div className="d-flex">
                               {agenda.horariosDisponiveis?.map((horarios) => {
                                 return (
-                                  <p className="me-4">{new Date(horarios.data).toLocaleDateString('pt-BR')}</p>
+                                  <p className="me-4">
+                                    {new Date(horarios.data).toLocaleDateString(
+                                      "pt-BR"
+                                    )}
+                                  </p>
                                 );
                               })}
                             </div>
@@ -142,7 +155,12 @@ const DoctorSelected = () => {
                           </div>
                           <div
                             className="col-12 col-lg-3 py-2 py-lg-0 text-center align-self-center"
-                            onClick={() => sessionStorage.setItem("agendaSelecionada", JSON.stringify(agenda))}
+                            onClick={() =>
+                              sessionStorage.setItem(
+                                "agendaSelecionada",
+                                JSON.stringify(agenda)
+                              )
+                            }
                           >
                             <CustomButton
                               bgColor={"white"}
@@ -162,7 +180,10 @@ const DoctorSelected = () => {
                     </h5>
                     <h5 className="endereco">
                       Média de avaliação:{" "}
-                      {(medicoSelecionado.registroAvaliacao.totalAvaliacoes/medicoSelecionado.registroAvaliacao.numeroAvaliacoes).toFixed(2)}
+                      {(
+                        medicoSelecionado.registroAvaliacao.totalAvaliacoes /
+                        medicoSelecionado.registroAvaliacao.numeroAvaliacoes
+                      ).toFixed(2)}
                     </h5>
                     {listOfReviews.map((review) => (
                       <div className="card-commentary" key={review.id}>

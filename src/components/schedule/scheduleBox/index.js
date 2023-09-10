@@ -4,16 +4,21 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 import ShowScheduleModal from "../../modal/showSchedule";
+import RemoveRowModal from "../../modal/removeRow";
 
 const ScheduleBox = ({ id, onDelete, content }) => {
-
   const [currentContent] = useState(content);
   const [modalShow, setModalShow] = useState(false);
+  const [removeModalShow, setRemoveModalShow] = useState(false);
   const navigate = useNavigate();
+
+  const openRemoveModal = () => {
+    setRemoveModalShow(true);
+  };
 
   return (
     <div className="schedule-box-container">
-      <div className="box-content flex-row col-md-10 mb-0" >
+      <div className="box-content flex-row col-md-10 mb-0">
         <div className="box-title">
           <button className="expand" onClick={() => setModalShow(true)}>
             <h3>{content.especialidadeMedica}</h3>
@@ -28,7 +33,10 @@ const ScheduleBox = ({ id, onDelete, content }) => {
         </div>
         <div className="box-buttons">
           <hr />
-          <button className="update" onClick={() => navigate("/principal/agendas/atualizar")}>
+          <button
+            className="update"
+            onClick={() => navigate("/principal/agendas/atualizar")}
+          >
             <FontAwesomeIcon
               icon={faPenToSquare}
               color="#00bf63"
@@ -37,7 +45,7 @@ const ScheduleBox = ({ id, onDelete, content }) => {
               id="plus-svg"
             />
           </button>
-          <button className="trash" onClick={() => { onDelete(id) }} >
+          <button className="trash" onClick={openRemoveModal}>
             <FontAwesomeIcon
               icon={faTrash}
               color="#00bf63"
@@ -54,9 +62,16 @@ const ScheduleBox = ({ id, onDelete, content }) => {
         content={currentContent}
         schedule={content}
       />
+      <RemoveRowModal
+        show={removeModalShow}
+        onHide={() => setRemoveModalShow(false)}
+        onDelete={() => {
+          onDelete(id);
+          setRemoveModalShow(false);
+        }}
+      />
     </div>
   );
 };
 
-export default ScheduleBox
-  ;
+export default ScheduleBox;

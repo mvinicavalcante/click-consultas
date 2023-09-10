@@ -15,25 +15,24 @@ const SchedulePage = ({ type }) => {
 
   useEffect(() => {
     ScheduleService.getAllByDoctorId(doctorId)
-      .then(e => {
-        setArrayAgendas(e.data)
+      .then((e) => {
+        setArrayAgendas(e.data);
       })
-      .catch(e => {
-        console.error(e.response.data)
+      .catch((e) => {
+        console.error(e.response.data);
       });
   }, [doctorId]);
 
   const handleDeleteComponente = (id) => {
     ScheduleService.deleteSchedule(id)
-      .then(e => {
-        toast.success(e.data)
+      .then((e) => {
+        toast.success(e.data);
+        const novoArray = arrayAgendas.filter((comp) => comp.id !== id);
+        setArrayAgendas(novoArray);
       })
-      .catch(e => {
-        toast.error(e.response.data)
+      .catch((e) => {
+        toast.error("Não foi possível excluir a agenda");
       });
-
-    const novoArray = arrayAgendas.filter(comp => comp.id !== id);
-    setArrayAgendas(novoArray);
   };
 
   return (
@@ -52,13 +51,14 @@ const SchedulePage = ({ type }) => {
             </div>
             <div className="col-logo col-12 col-lg-8">
               <div className="col-12 pt-5">
-                <h2 className="text-center">
-                  Agenda
-                </h2>
+                <h2 className="text-center">Agenda</h2>
               </div>
               <div className="schedule-details">
                 <div className="add-schedule col-12 mt-3 text-left">
-                  <button onClick={() => navigate("/principal/agendas/criar")} className="add-schedule">
+                  <button
+                    onClick={() => navigate("/principal/agendas/criar")}
+                    className="add-schedule"
+                  >
                     <FontAwesomeIcon
                       icon={faPlus}
                       color="white"
@@ -71,7 +71,11 @@ const SchedulePage = ({ type }) => {
                   <div className="row row-cols-1 row-cols-md-3 g-4 mb-5">
                     {arrayAgendas.map((agenda, index) => (
                       <div key={index} className="col">
-                        <ScheduleBox id={agenda.id} content={agenda} onDelete={handleDeleteComponente} />
+                        <ScheduleBox
+                          id={agenda.id}
+                          content={agenda}
+                          onDelete={handleDeleteComponente}
+                        />
                       </div>
                     ))}
                   </div>
@@ -83,6 +87,6 @@ const SchedulePage = ({ type }) => {
       </div>
     </>
   );
-}
+};
 
 export default SchedulePage;

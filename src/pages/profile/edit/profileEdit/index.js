@@ -25,15 +25,15 @@ const ProfileEdit = () => {
 
   useEffect(() => {
     UserService.getById(sessionStorage.patientId ?? sessionStorage.doctorId)
-      .then(response => {
-        setName(response.data.nome)
-        setCpf(response.data.cpf)
-        setTelephone(response.data.telefone)
-        setCity(response.data.cidade)
-        setState(response.data.estado)
-        setBirthdate(response.data.dataNascimento)
-        setSex(response.data.sexo)
-        setEmail(response.data.email)
+      .then((response) => {
+        setName(response.data.nome);
+        setCpf(response.data.cpf);
+        setTelephone(response.data.telefone);
+        setCity(response.data.cidade);
+        setState(response.data.estado);
+        setBirthdate(response.data.dataNascimento);
+        setSex(response.data.sexo);
+        setEmail(response.data.email);
       })
       .catch((e) => {
         toast.error(e.response.data);
@@ -44,16 +44,15 @@ const ProfileEdit = () => {
     nome: name,
     dataNascimento: birthdate,
     sexo: sex,
-    telefone: telephone
-  }
+    telefone: telephone,
+  };
 
   const handlePhotoInput = (photo) => {
     if (photo) {
       const formData = new FormData();
-      formData.append('foto', photo);
+      formData.append("foto", photo);
       setProfilePhoto(formData);
-    } else
-      setProfilePhoto(null);
+    } else setProfilePhoto(null);
   };
 
   function patchUser(e) {
@@ -63,28 +62,35 @@ const ProfileEdit = () => {
       if (password !== passwordConfirm)
         return toast.error("As senhas não são idênticas.");
 
-      UserService.patchPassword(sessionStorage.patientId ?? sessionStorage.doctorId, password)
-        .then(e => {
+      UserService.patchPassword(
+        sessionStorage.patientId ?? sessionStorage.doctorId,
+        password
+      )
+        .then((e) => {
           toast.success("Senha atualizada com sucesso.");
         })
         .catch((e) => {
           toast.error(e.response.data);
         });
-    }
-
-    else if (actionView === "dados") {
+    } else if (actionView === "dados") {
       if (sessionStorage.patientId) {
-        PatientService.patchPatient(sessionStorage.patientId, { ...user, cidade: city, estado: state })
-          .then(e => {
+        PatientService.patchPatient(sessionStorage.patientId, {
+          ...user,
+          cidade: city,
+          estado: state,
+        })
+          .then((e) => {
             toast.success("Dados atualizados com sucesso.");
           })
           .catch((e) => {
             toast.error(e.response.data);
           });
-      }
-      else if (sessionStorage.doctorId) {
+      } else if (sessionStorage.doctorId) {
         if (profilePhoto !== null) {
-          DoctorService.registerProfilePhoto(sessionStorage.doctorId, profilePhoto)
+          DoctorService.registerProfilePhoto(
+            sessionStorage.doctorId,
+            profilePhoto
+          )
             .then((e) => {
               console.log(e.data);
             })
@@ -93,7 +99,7 @@ const ProfileEdit = () => {
             });
         }
         DoctorService.patchDoctor(sessionStorage.doctorId, user)
-          .then(e => {
+          .then((e) => {
             toast.success("Dados atualizados com sucesso.");
           })
           .catch((e) => {
@@ -176,7 +182,9 @@ const ProfileEdit = () => {
                             <FormInput
                               label={"Foto de Perfil"}
                               type={"file"}
-                              onChange={(e) => handlePhotoInput(e.target.files[0])}
+                              onChange={(e) =>
+                                handlePhotoInput(e.target.files[0])
+                              }
                               required={false}
                             />
                           )}
@@ -256,10 +264,7 @@ const ProfileEdit = () => {
           </div>
         </div>
         <div className="col-12 col-md-4 pt-4 pt-md-0">
-          <FinishingSide
-            icon="fa-solid fa-user-plus"
-            action="Editar"
-          />
+          <FinishingSide icon="fa-solid fa-user-plus" action="Editar" />
         </div>
       </div>
     </div>

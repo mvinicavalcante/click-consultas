@@ -28,8 +28,6 @@ const MainSheduling = () => {
 
   }, [doctorId, patientId]);
 
-  console.log(agendamentos);
-
   return (
     <div className="p-0 overflow-hidden">
       <Header />

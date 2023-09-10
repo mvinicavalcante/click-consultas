@@ -4,30 +4,32 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 import AddRowModal from "../modal/addRow";
+import RemoveRowModal from "../modal/removeRow";
 import DoctorService from "../../services/DoctorService";
 
 const BoxContent = ({ title, type, content }) => {
   const [currentContent, setCurrentContent] = useState([]);
   const [modalShow, setModalShow] = useState(false);
+  const [removeModalShow, setRemoveModalShow] = useState(false);
+  const [itemToRemove, setItemToRemove] = useState(null);
   const doctorId = sessionStorage.doctorId;
 
   useEffect(() => {
-    setCurrentContent(content)
+    setCurrentContent(content);
   }, [content]);
 
   function deleteRow(type, itemId) {
     if (type === "crm") {
       DoctorService.deleteCRM(doctorId, itemId)
-        .then(e => {
+        .then((e) => {
           toast.success(e.data);
         })
         .catch((e) => {
           console.error(e.response.data);
         });
-    }
-    else if (type === "speciality") {
+    } else if (type === "speciality") {
       DoctorService.deleteSpecialty(doctorId, itemId)
-        .then(e => {
+        .then((e) => {
           toast.success(e.data);
         })
         .catch((e) => {
@@ -35,6 +37,17 @@ const BoxContent = ({ title, type, content }) => {
         });
     }
     setCurrentContent(currentContent.filter((item) => item.id !== itemId));
+  }
+
+  function openRemoveModal(type, id) {
+    setItemToRemove({ type, id });
+    setRemoveModalShow(true);
+  }
+
+  function confirmRemove() {
+    const { type, id } = itemToRemove;
+    deleteRow(type, id);
+    setRemoveModalShow(false);
   }
 
   return (
@@ -74,12 +87,17 @@ const BoxContent = ({ title, type, content }) => {
                   )}
                 </label>
               </div>
-              <button className="trash" onClick={() => deleteRow(type, item.id)}>
+              <button
+                className="trash"
+                onClick={() => openRemoveModal(type, item.id)}
+              >
                 <FontAwesomeIcon
                   icon={faTrash}
                   color="#00bf63"
                   width={20}
-                  id={`trash-${type === "crm" ? item.numero : item.nome}-${item.id}-svg`}
+                  id={`trash-${type === "crm" ? item.numero : item.nome}-${
+                    item.id
+                  }-svg`}
                 />
               </button>
             </div>
@@ -92,6 +110,11 @@ const BoxContent = ({ title, type, content }) => {
         type={type}
         content={currentContent}
         updateContent={setCurrentContent}
+      />
+      <RemoveRowModal
+        show={removeModalShow}
+        onHide={() => setRemoveModalShow(false)}
+        onDelete={confirmRemove}
       />
     </div>
   );
