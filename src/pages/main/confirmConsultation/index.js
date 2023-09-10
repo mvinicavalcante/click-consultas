@@ -69,7 +69,7 @@ const ConfirmConsultation = () => {
         toast.success("Agendamento realizado com sucesso.");
       })
       .catch(e => {
-        console.error(e.response.data)
+        toast.error(e.response.data)
       })
   }
 
@@ -160,8 +160,14 @@ const ConfirmConsultation = () => {
             </div>
           </div>
           <div className="col-12 text-center">
-            <h2>Valor da consulta:</h2>
-            <h2>R$ {agenda?.valorConsulta}</h2>
+            {planoDeSaude ? (
+              <h2>Atendimento por plano de saúde</h2>
+            ) : (
+              <>
+                <h2>Valor da consulta:</h2>
+                <h2>R$ {agenda?.valorConsulta}</h2>
+              </>
+            )}
           </div>
           <div className="col-12 text-center">
             <CustomButton className={"m-0"} type={"submit"} bgColor={"white"} action={"Confirmar"} />

@@ -6,8 +6,12 @@ const SchedulingService = {
     return api.get("/agendamento/" + schedulingId);
   },
 
-  getAllByPatientId(schedulingId) {
-    return api.get("/agendamento/paciente/" + schedulingId);
+  getAllByPatientId(patientId) {
+    return api.get("/agendamento/paciente/" + patientId);
+  },
+
+  getAllByDoctorId(doctorId) {
+    return api.get("/agendamento/medico/" + doctorId);
   },
 
   registerScheduling(scheduling) {

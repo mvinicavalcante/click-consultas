@@ -2,7 +2,7 @@ import "./styles.css";
 import CustomButton from "../../customButton"
 
 
-const SchedulingBox = ({ content, type, schedulingid }) => {
+const SchedulingBox = ({ content, type }) => {
   return (
     <>
       <div className="container scheduling-box-container" >
@@ -10,7 +10,7 @@ const SchedulingBox = ({ content, type, schedulingid }) => {
           <div className="container scheduling-container">
             <div className="scheduling-details">
               <div className="scheduling-details-info">
-                <h4 className="scheduling-text">Medico</h4>
+                <h4 className="scheduling-text">Médico</h4>
                 <p className="scheduling-text-description">{content.agenda.medico.nome}</p>
                 <p className="scheduling-text-description">{content.agenda.especialidadeMedica}</p>
               </div>
@@ -29,24 +29,24 @@ const SchedulingBox = ({ content, type, schedulingid }) => {
               <div className="scheduling-details-info">
                 <h4 className="scheduling-text">Endereço</h4>
                 <p className="scheduling-text-description">
-                  {content.localConsulta.logradouro},
-                  {content.localConsulta.numero},
-                  {content.localConsulta.bairro},
-                  {content.localConsulta.cidade}
+                  {content.localConsulta.logradouro + ", "}
+                  {content.localConsulta.numero + ", "}
+                  {content.localConsulta.bairro + ", "}
+                  {content.localConsulta.cidade + ", "}
                   {content.localConsulta.estado}
                 </p>
               </div>
               <div className="divider"></div>
               <div className="scheduling-details-info">
                 <h4 className="scheduling-text">Valor</h4>
-                <p className="scheduling-text-description">R${content.valorFinalConsulta}</p>
+                <p className="scheduling-text-description">R$ {content.valorFinalConsulta}</p>
               </div>
             </div>
             <div className="d-flex align-items-center">
               <CustomButton
                 className="view-button"
-                action="Visualizar Consulta"
-                path="/principal/agendamentos/visualizar"
+                action="Visualizar"
+                path={`/principal/agendamentos/visualizar/${content.id}`}
                 bgColor="light green"
               />
             </div>

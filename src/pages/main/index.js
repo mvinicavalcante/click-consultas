@@ -12,7 +12,7 @@ const Main = () => {
         {sessionStorage.doctorId ? (
           <>
             <ul className="main-itens mt-3 mt-lg-0 mb-0">
-              <li className="main-item">
+              <li className="main-item py-3">
                 <CustomButton
                   className="main-button"
                   action="Minhas agendas"
@@ -20,7 +20,7 @@ const Main = () => {
                   bgColor="green"
                 />
               </li>
-              <li className="main-item">
+              <li className="main-item py-3 py-lg-4">
                 <CustomButton
                   className="main-button"
                   action="Meus endereços"
@@ -29,7 +29,7 @@ const Main = () => {
                 />
               </li>
             </ul>
-            <ul className="main-itens ">
+            <ul className="main-itens py-3">
               <li className="main-item">
                 <CustomButton
                   className="main-button"

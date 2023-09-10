@@ -55,8 +55,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<Navigate to="/login" />} path="/" />
+          <Route element={<Navigate to="/login" />} path="/sair" />
           <Route element={<Login />} path="/login" />
-          <Route element={<Login />} path="/sair" />
 
           <Route element={<Register />} path="/cadastro" />
           <Route element={<PatientFirstPage />} path="/cadastro/paciente" />
@@ -95,7 +95,7 @@ function App() {
           <Route element={<MainSheduling />} path="/principal/agendamentos" />
           <Route
             element={<SchedulingDetails />}
-            path="/principal/agendamentos/visualizar"
+            path="/principal/agendamentos/visualizar/:schedulingId"
           />
 
           {/* ---  Rotas de PERFIL  --- */}

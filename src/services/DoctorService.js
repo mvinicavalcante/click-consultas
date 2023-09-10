@@ -80,6 +80,7 @@ const DoctorService = {
   getHistory(doctorId){
     return api.get(`/medico/historico/${doctorId}`);
   }
+  
 };
 
 export default DoctorService;

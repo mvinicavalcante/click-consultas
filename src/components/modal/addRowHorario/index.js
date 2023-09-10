@@ -17,10 +17,13 @@ const AddRowHorarioModal = (props) => {
     if (props.content.length > 0 && props.content.some(e => e.data === data))
       return toast.error("A data inserida já foi adicionada.");
 
+    if (new Date(data) < new Date())
+      return toast.error("A data inserida deve ser posterior à data atual.");
+
     try {
       props.content.push({ data, horarios: getTimeRanges(horaInicio, horaFim) });
     } catch (e) {
-      toast.error(e.message);
+      return toast.error(e.message);
     }
     props.onHide();
   }

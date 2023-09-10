@@ -17,7 +17,6 @@ const SchedulePage = ({ type }) => {
     ScheduleService.getAllByDoctorId(doctorId)
       .then(e => {
         setArrayAgendas(e.data)
-        console.log(e.data)
       })
       .catch(e => {
         console.error(e.response.data)

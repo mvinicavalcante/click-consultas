@@ -1,68 +1,38 @@
 import "./styles.css";
-import React from "react";
-
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import Header from "../../../../components/header";
 import Footer from "../../../../components/footer";
 import CustomButton from "../../../../components/customButton";
+import SchedulingService from "../../../../services/SchedulingService";
+import { toast } from "react-toastify";
 
 const SchedulingDetails = () => {
-  const userDefault = {
-    tipo: "medico",
-    nome: "João da Silva",
-    cpf: "000.000.000-00",
-    dataNascimento: "01/01/2000",
-    sexo: "Masculino",
-    email: "teste@ufape.com.br",
-    telefone: "(00) 00000-0000",
-    cidade: "Garanhuns",
-    estado: "Pernambuco",
-    senha: "123456",
-  };
+  const { schedulingId } = useParams();
+  const [scheduling, setScheduling] = useState();
+  const navigate = useNavigate();
 
-  const content = {
-    id: 1,
-    tipoConsulta: "Primeira consulta",
-    planoDeSaude: null,
-    valorFinalConsulta: 300.0,
-    detalhamento: "Sinto dores ao...",
-    horarioAgendado: {
-        id: 1,
-        data: "2023-09-01",
-        hora: "08:00:00"
-    },
-    paciente: {
-        id: 1,
-        nome: "Antônio Fernando",
-    },
-    agenda: {
-        id: 2,
-        especialidadeMedica: "Cardiologia",
-        tiposConsulta: [
-            "Revisão"
-        ],
-        planosAtendidos: [
-            "Unimed",
-            "Dunimed"
-        ],
-        valorConsulta: 100.0,
-        contato: "(87)99630-5841",
-        medico: {
-            id: 8,
-            nome: "Maria Gertrudes",
-            telefone: "34567890123",
-        }
-    },
-      localConsulta: {
-          id: 3,
-          cidade: "Bom Conselho",
-          estado: "PE",
-          cep: "55330-000",
-          bairro: "Centro",
-          logradouro: "Prof Raimundo Donato",
-          numero: 6,
-          complemento: "Ao lado da rua B",
-          apelido: "Endereco 2"
-      }
+  useEffect(() => {
+    SchedulingService.getById(schedulingId)
+      .then(e => {
+        setScheduling(e.data)
+      })
+      .catch(e => {
+        navigate("/principal/agendamentos");
+        toast.error("O agendamento não foi encontrado.");
+      })
+  }, [schedulingId, navigate]);
+
+  function deleteScheduling(e) {
+    e.preventDefault();
+    SchedulingService.deleteScheduling(schedulingId)
+      .then(e => {
+        toast.success(e.data);
+        navigate(-1);
+      })
+      .catch(e => {
+        toast.error(e.response.data)
+      })
   }
 
   return (
@@ -73,96 +43,96 @@ const SchedulingDetails = () => {
           <div className="scheduling-title mb-3">
             <h3>Consulta Agendada</h3>
           </div>
-          {userDefault.tipo === "medico" ? (
-            <div className="details">
-              <h4>{content.paciente.nome}</h4>
-
-              <div className="details-column">
-                <div className="detail-column">
-                  <div>
-                    <p className="details-text">{content.tipoConsulta}</p>
-                  </div>
-                  <div>
-                    <p className="details-text">Informações Adicionais:</p>
+          {scheduling && (
+            <>
+              {sessionStorage.doctorId ? (
+                <div className="details">
+                  <h4>{scheduling.paciente.nome}</h4>
+                  <div className="details-column">
+                    <div className="detail-column">
+                      <div>
+                        <p className="details-text">{scheduling.tipoConsulta}</p>
+                      </div>
+                      <div>
+                        <p className="details-text">Informações Adicionais:</p>
+                        <div>
+                          <p className="details-description">{scheduling.detalhamento}</p>
+                        </div>
+                      </div>
+                    </div>
                     <div>
-                      <p className="details-description">{content.detalhamento}</p>
+                      <div>
+                        <p className="details-text">{scheduling.localConsulta.apelido}</p>
+                        <div>
+                          <p className="details-description">{scheduling.agenda.contato}</p>
+                          <p className="details-description">{scheduling.localConsulta.logradouro}, {scheduling.localConsulta.numero}</p>
+                          <p className="details-description">{scheduling.localConsulta.cidade}, {scheduling.localConsulta.estado}</p>
+                          <p className="details-description">{scheduling.horarioAgendado.data}, {scheduling.horarioAgendado.hora}</p>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-                <div>
-                  <div>
-                    <p className="details-text">{content.localConsulta.apelido}</p>
                     <div>
-                      <p className="details-description">{content.agenda.contato}</p>
-                      <p className="details-description">{content.localConsulta.logradouro}, {content.localConsulta.numero}</p>
-                      <p className="details-description">{content.localConsulta.cidade}, {content.localConsulta.estado}</p>
-                      <p className="details-description">{content.horarioAgendado.data}, {content.horarioAgendado.hora}</p>
+                      <div>
+                        <p className="details-text">Valor da consulta:</p>
+                        <div className="details-description">
+                          <h4>R$ {scheduling.valorFinalConsulta}</h4>
+                        </div>
+                      </div>
                     </div>
                   </div>
+                  <form onSubmit={deleteScheduling} className="cancel-button">
+                    <CustomButton
+                      type={"submit"}
+                      action="Cancelar consulta"
+                      bgColor="red"
+                    />
+                  </form>
                 </div>
-                <div>
-                  <div>
-                    <p className="details-text">Valor da consulta:</p>
-                    <div className="details-description">
-                      <h4>R$ {content.valorFinalConsulta}</h4>
+              ) : (
+                <div className="details">
+                  <h4>{scheduling.agenda.medico.nome}</h4>
+                  <div className="details-column">
+                    <div className="doctor-container">
+                      <div>
+                        <p className="details-text">{scheduling.localConsulta.apelido}</p>
+                        <div>
+                          <p className="details-description">{scheduling.agenda.contato}</p>
+                          <p className="details-description">{scheduling.localConsulta.logradouro}, {scheduling.localConsulta.numero}</p>
+                          <p className="details-description">{scheduling.localConsulta.cidade}, {scheduling.localConsulta.estado}</p>
+                          <p className="details-description">{scheduling.horarioAgendado.data}, {scheduling.horarioAgendado.hora}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="detail-column">
+                      <div>
+                        <p className="details-text">{scheduling.tipoConsulta}</p>
+                      </div>
+                      <div>
+                        <p className="details-text">Informações Adicionais:</p>
+                        <div>
+                          <p className="details-description">{scheduling.detalhamento}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="detail-column">
+                      <div>
+                        <p className="details-text">Valor da consulta:</p>
+                        <div className="details-description">
+                          <h4>R$ {scheduling.valorFinalConsulta}</h4>
+                        </div>
+                      </div>
                     </div>
                   </div>
+                  <form onSubmit={deleteScheduling} className="cancel-button">
+                    <CustomButton
+                      type={"submit"}
+                      action="Cancelar consulta"
+                      bgColor="red"
+                    />
+                  </form>
                 </div>
-              </div>
-              <div className="cancel-button">
-                <CustomButton
-                  className=""
-                  action="Cancelar consulta"
-                  path="/principal/agendamentos"
-                  bgColor="red"
-                />
-              </div>
-            </div>
-          ) : (
-            <div className="details">
-              <h4>{content.agenda.medico.nome}</h4>
-
-              <div className="details-column">
-                <div className="doctor-container">
-                  <div>
-                    <p className="details-text">{content.localConsulta.apelido}</p>
-                    <div>
-                    <p className="details-description">{content.agenda.contato}</p>
-                      <p className="details-description">{content.localConsulta.logradouro}, {content.localConsulta.numero}</p>
-                      <p className="details-description">{content.localConsulta.cidade}, {content.localConsulta.estado}</p>
-                      <p className="details-description">{content.horarioAgendado.data}, {content.horarioAgendado.hora}</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="detail-column">
-                  <div>
-                    <p className="details-text">{content.tipoConsulta}</p>
-                  </div>
-                  <div>
-                    <p className="details-text">Informações Adicionais:</p>
-                    <div>
-                      <p className="details-description">{content.detalhamento}</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="detail-column">
-                  <div>
-                    <p className="details-text">Valor da consulta:</p>
-                    <div className="details-description">
-                      <h4>R$ {content.valorFinal}</h4>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="cancel-button">
-                <CustomButton
-                  className=""
-                  action="Cancelar consulta"
-                  path="/principal/agendamentos"
-                  bgColor="red"
-                />
-              </div>
-            </div>
+              )}
+            </>
           )}
         </>
       </div>

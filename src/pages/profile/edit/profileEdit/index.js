@@ -172,12 +172,14 @@ const ProfileEdit = () => {
                             value={telephone}
                             onInput={(e) => setTelephone(e.target.value)}
                           />
-                          <FormInput
-                            label={"Foto de Perfil"}
-                            type={"file"}
-                            onChange={(e) => handlePhotoInput(e.target.files[0])}
-                            required={false}
-                          />
+                          {sessionStorage.doctorId && (
+                            <FormInput
+                              label={"Foto de Perfil"}
+                              type={"file"}
+                              onChange={(e) => handlePhotoInput(e.target.files[0])}
+                              required={false}
+                            />
+                          )}
                           {sessionStorage.patientId && (
                             <FormInput
                               id={"cidade"}
