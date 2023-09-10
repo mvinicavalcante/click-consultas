@@ -1,0 +1,17 @@
+.redefine-password-inputs{
+    display: flex;
+}
+
+.redefine-password-input{
+    width: 50em;
+    margin: 10px;
+}
+
+@media screen and (max-width: 991px)  {
+    .redefine-password-inputs{
+        display: grid;
+    }
+    .redefine-password-input{
+        width: auto;
+    }
+}

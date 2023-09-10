@@ -32,6 +32,10 @@ const UserService = {
 
   deletePix(userId, pixId) {
     return api.delete(`/usuario/${userId}/pix/${pixId}`);
+  },
+
+  patchPasswordByEmail(userEmail, password){
+    return api.patch(`/usuario/email/${userEmail}/senha`, password);
   }
 
 }

@@ -3,12 +3,14 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import FormInput from "../formInput";
+import RedefinePasswordModal from "../../modal/redefinePassword";
 import PatientService from "../../../services/PatientService";
 import DoctorService from "../../../services/DoctorService";
 
 const FormBoxLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [modalShow, setModalShow] = useState(false);
   const navigate = useNavigate();
 
   function login(e) {
@@ -32,6 +34,7 @@ const FormBoxLogin = () => {
   }
 
   return (
+    <div>
     <form onSubmit={login} className="form-box p-4">
       <FormInput
         label={"E-mail"}
@@ -50,9 +53,9 @@ const FormBoxLogin = () => {
         classNameGroup={"pt-4 m-0"}
       />
       <div className="text-end mt-2">
-        <a href="redefine-senha" className="forgot-password">
+        <span className="forgot-password" onClick={() => setModalShow(true)}>
           Esqueci minha senha
-        </a>
+        </span>
       </div>
 
       <div className="text-center mt-5">
@@ -67,6 +70,11 @@ const FormBoxLogin = () => {
         </p>
       </div>
     </form>
+    <RedefinePasswordModal
+      show={modalShow}
+      onHide={() => { setModalShow(false)}}
+    />
+    </div>
   );
 };
 
