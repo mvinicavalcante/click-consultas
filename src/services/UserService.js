@@ -36,6 +36,10 @@ const UserService = {
 
   patchPasswordByEmail(userEmail, password){
     return api.patch(`/usuario/email/${userEmail}/senha`, password);
+  },
+
+  getReview(idConsulta){
+    return api.get(`/avaliacao/consulta/${idConsulta}`);
   }
 
 }

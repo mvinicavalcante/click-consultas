@@ -1,7 +1,11 @@
 import "./styles.css";
 import CustomButton from "../customButton"
+import { useState } from "react";
+import ShowReviewModal from "../modal/showReview";
 
 const HistoryBox = ({ content, type, action }) => {
+
+  const[modalShow, setModalShow] = useState();
 
   function formatarData(data) {
     const partes = data.split('-');
@@ -62,12 +66,10 @@ const HistoryBox = ({ content, type, action }) => {
             </div>
           ) : (
             <div>
-              <CustomButton
-                className="review-button-history"
-                action="Consulta avaliada"
-                path="/perfil/historico"
-                bgColor="gray"
-              />
+              <button className="review-button-history-gray rounded-5" 
+              onClick={() => setModalShow(true)}>
+              Consulta avaliada
+              </button>
             </div>
           )
         ) : (
@@ -76,22 +78,25 @@ const HistoryBox = ({ content, type, action }) => {
               <CustomButton
                 className="review-button-history"
                 action="Consulta não avaliada"
-                path="/perfil/historico"
                 bgColor="gray"
               />
             </div>
           ) : (
             <div>
-              <CustomButton
-                className="review-button-history"
-                action="Visualizar avaliação"
-                path="/perfil/historico"
-                bgColor="light green"
-              />
+              <button className="review-button-history-green rounded-5" 
+              onClick={() => setModalShow(true)}>
+              Visualizar avaliação
+              </button>
             </div>
           )
         )}
       </div>
+      <ShowReviewModal
+        show={modalShow}
+        onHide={() => { setModalShow(false)}}
+        content={content.id}
+        author={content.paciente.nome}
+      />
     </>
   )
 }

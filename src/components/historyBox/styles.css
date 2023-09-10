@@ -37,10 +37,35 @@
     margin: 0;
 }
 
-.review-button-history{
+.review-button-history-green{
     margin-top: 15px;
+    background-color: #05DA73;
+    color: white;
+    font-size: 24px;
+    border: none;
+    outline: none;
+    padding: 1vh 5vw;
+    box-shadow: 0px 3px 4px rgba(120, 120, 120);
 }
 
+.review-button-history-green:hover{
+    background-color: #05DA73 !important;
+}
+
+.review-button-history-gray{
+    margin-top: 15px;
+    background-color: #A9A9A9;
+    color: white;
+    font-size: 24px;
+    border: none;
+    outline: none;
+    padding: 1vh 5vw;
+    box-shadow: 0px 3px 4px rgba(120, 120, 120);
+}
+
+.review-button-history-gray:hover{
+    background-color: #A9A9A9 !important;
+}
 
 @media screen and (max-width: 1030px){
     .divider{
@@ -59,3 +84,10 @@
         margin: 0;
     }
 }
+
+@media screen and (max-width: 500px) {
+    .review-button-history {
+      max-width: 60vw;
+      word-wrap: break-word;
+    }
+  }
