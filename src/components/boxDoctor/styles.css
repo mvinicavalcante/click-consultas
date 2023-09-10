@@ -17,6 +17,20 @@
   flex-direction: column;
 }
 
+.btn-agendar-consulta {
+  background-color: #1b3d7c;
+  color: white;
+  border: none;
+}
+
+.btn-agendar-consulta:hover {
+  background-color: #16305e;
+}
+
+.btn-agendar-consulta:disabled {
+  background-color: #1E3E7AB0;
+}
+
 @media screen and (max-width: 500px) {
   .infos {
     padding: 10px;

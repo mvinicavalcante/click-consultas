@@ -31,7 +31,7 @@ const DoctorSelected = () => {
       })
       .catch(e => { })
 
-      DoctorService.getProfilePhotoByDoctorId(JSON.parse(medicoFromSession)?.id)
+    DoctorService.getProfilePhotoByDoctorId(JSON.parse(medicoFromSession)?.id)
       .then((response) => {
         const contentType = response.headers['content-type'];
         const arrayBufferView = new Uint8Array(response.data);
@@ -92,11 +92,6 @@ const DoctorSelected = () => {
                 {medicoSelecionado.especialidades.map((especialidade) => (
                   <h5 className="speciality">{especialidade.nome}</h5>
                 ))}
-                <CustomButton
-                  bgColor={"green"}
-                  action={"Agendar"}
-                  path={"/principal/confirmar-consulta"}
-                />
               </div>
             </div>
             {/* ---  Fim do "header" de informações  --- */}
@@ -125,7 +120,7 @@ const DoctorSelected = () => {
                     {agendas?.map((agenda, index) => {
                       return (
                         <div className="info-content mb-4 row border border-white rounded-4 p-3 mx-4" key={index}>
-                          <div className="col-6">
+                          <div className="col-6 col-lg-5">
                             <h3>{agenda.especialidadeMedica}</h3>
                             <h5 className="endereco ms-2">
                               <h4>{agenda.enderecoMedico.apelido}</h4>
@@ -134,9 +129,9 @@ const DoctorSelected = () => {
                               {agenda.enderecoMedico.estado}
                             </h5>
                           </div>
-                          <div className="col-6 align-self-center">
+                          <div className="col-6 col-lg-4 align-self-center">
                             <h4>Atendimentos:</h4>
-                            <div className="d-flex align-items-center">
+                            <div className="d-flex">
                               {agenda.horariosDisponiveis?.map((horarios) => {
                                 return (
                                   <p className="me-4">{new Date(horarios.data).toLocaleDateString('pt-BR')}</p>
@@ -144,6 +139,17 @@ const DoctorSelected = () => {
                               })}
                             </div>
                             <h5>Contato: {agenda.contato}</h5>
+                          </div>
+                          <div
+                            className="col-12 col-lg-3 py-2 py-lg-0 text-center align-self-center"
+                            onClick={() => sessionStorage.setItem("agendaSelecionada", JSON.stringify(agenda))}
+                          >
+                            <CustomButton
+                              bgColor={"white"}
+                              action={"Agendar"}
+                              path={"/principal/confirmar-consulta"}
+                              className={"px-5 m-0"}
+                            />
                           </div>
                         </div>
                       );

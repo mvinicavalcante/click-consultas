@@ -1,3 +1,22 @@
 .box-confirm-consultation {
   background-color: #00BF63;
 }
+
+.form-scheduling  {
+  width: 70%;
+}
+
+.col-form-scheduling {
+  width: 75%;
+}
+
+@media screen and (max-width: 992px) {
+  .form-scheduling  {
+    width: 90%;
+  }
+  
+  .col-form-scheduling {
+    width: 85%;
+  }
+
+}

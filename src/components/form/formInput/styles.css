@@ -15,6 +15,11 @@
   font-size: 14px;
 }
 
+.form-text-area {
+  border-radius: 16px;
+  border: none;
+}
+
 .form-label {
   color: white;
 }
@@ -24,7 +29,9 @@
 .form-select:active,
 .form-select:focus, 
 .form-control:active,
-.form-control:focus {
+.form-control:focus,
+.form-text-area:active,
+.form-text-area:focus  {
   outline: 0;
 }
 

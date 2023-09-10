@@ -44,7 +44,7 @@ const BoxDoctor = ({ id, name, address,speciality, avatar, onClick }) => {
 
           <div className="col-md-2 pt-3">
             <button
-              className="btn btn-primary"
+              className="btn btn-agendar-consulta py-2"
               href="/consultas"
               onClick={onClick}
               disabled={address.length === 0 && true}
