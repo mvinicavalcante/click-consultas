@@ -114,7 +114,7 @@ function App() {
             path="/perfil/editar-profissional"
           />
           <Route element={<History />} path="/perfil/historico" />
-          <Route element={<Review />} path="/avaliar" />
+          <Route path="avaliar/:id" element={<Review />} />
 
           {/* ---  Rotas de CONSULTA  --- */}
           <Route

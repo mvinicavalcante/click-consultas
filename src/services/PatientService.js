@@ -22,8 +22,8 @@ const PatientService = {
     return api.post(`/paciente/${patientId}/plano`, plan);
   },
 
-  registerReview(avaliacao){
-    return api.post("/avaliacao", avaliacao);
+  registerReview(avaliacao, patientId, doctorId){
+    return api.post(`/avaliacao/${patientId}/${doctorId}`, avaliacao);
   },
 
   getHistory(patientId){

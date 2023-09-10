@@ -10,8 +10,15 @@
     color: #00bf63;
 }
 
+.review-star-button{
+    width: 50%;
+    text-align: center;
+}
+
 .review-star-button-action{
     border: none;
+    margin: 0.3vw;
+    cursor: pointer;
 }
 
 .review-star-button-action:hover{
