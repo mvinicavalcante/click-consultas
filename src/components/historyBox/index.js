@@ -58,7 +58,7 @@ const HistoryBox = ({ content, type, action }) => {
           content.status === "Disponivel" ? (
             <div>
               <CustomButton
-                className="review-button-history"
+                className="review-button-history mt-3"
                 action="Avaliar consulta"
                 path={`${action}/${content.id}`}
                 bgColor="light green"
@@ -73,10 +73,10 @@ const HistoryBox = ({ content, type, action }) => {
             </div>
           )
         ) : (
-          content.status === "disponivel" ? (
+          content.status === "Disponivel" ? (
             <div>
               <CustomButton
-                className="review-button-history"
+                className="review-button-history mt-3"
                 action="Consulta não avaliada"
                 bgColor="gray"
               />

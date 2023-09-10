@@ -148,7 +148,7 @@ const ScheduleDetails = ({ type }) => {
           </form>
         </div>
         <div className="col-12 col-md-4 d-flex flex-column justify-content-center align-items-center pt-3 pt-md-0">
-          <FinishingSide icon="fa-solid fa-book-medical" action={"Cadastrar"} />
+          <FinishingSide icon="fa-solid fa-book-medical" action={type} />
         </div>
       </div>
     </div>
