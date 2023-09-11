@@ -57,7 +57,7 @@ const DoctorSecondPage = () => {
         toast.error(e.response.data);
       });
 
-    navigate("/aguarda-confirmacao");
+    navigate("/principal");
   }
 
   return (
